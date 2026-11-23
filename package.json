@@ -9,12 +9,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "typecheck": "tsc -b",
+    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "data": "node scripts/build-data.ts"
   },
