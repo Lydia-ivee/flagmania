@@ -2,6 +2,7 @@
 // Run with `npm run data`. The output is committed so normal builds need no network.
 
 import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { normalise } from '../src/core/matching.ts'
 
 type UnState = { iso2: string; unStatus: 'member' | 'observer' }
 
@@ -13,12 +14,20 @@ type FlagIconsEntry = {
   iso: boolean
 }
 
+type Override = {
+  iso2: string
+  addCapitals?: string[]
+  addCapitalAltNames?: string[]
+  reason: string
+}
+
 type Country = {
   iso2: string
   wikidata: string
   name: string
   altNames: string[]
   capitals: string[]
+  capitalAltNames: string[]
   region: string
   unStatus: UnState['unStatus']
 }
@@ -34,6 +43,8 @@ const flagIcons: FlagIconsEntry[] = JSON.parse(
   await readFile(at('node_modules/flag-icons/country.json'), 'utf8'),
 )
 const flagIconsByCode = new Map(flagIcons.map((entry) => [entry.code, entry]))
+// Editorial changes to Wikidata, each with a written reason. See docs/PRD.md, OQ-6.
+const overrides: Override[] = JSON.parse(await readFile(at('scripts/overrides.json'), 'utf8'))
 
 // One row per Wikidata item carrying each ISO code. Capitals with an end date or a
 // deprecated rank are left out, so former capitals such as Almaty do not appear.
@@ -43,6 +54,7 @@ const query = `
 SELECT ?item ?iso ?label ?sovereign
   (GROUP_CONCAT(DISTINCT ?alias; separator="|") AS ?aliases)
   (GROUP_CONCAT(DISTINCT ?capitalLabel; separator="|") AS ?capitals)
+  (GROUP_CONCAT(DISTINCT ?capitalAlias; separator="|") AS ?capitalAliases)
 WHERE {
   VALUES ?iso { ${states.map((s) => `"${s.iso2.toUpperCase()}"`).join(' ')} }
   ?item wdt:P297 ?iso .
@@ -59,12 +71,13 @@ WHERE {
     OPTIONAL { ?capital rdfs:label ?capitalEn FILTER(LANG(?capitalEn) = "en") }
     OPTIONAL { ?capital rdfs:label ?capitalMul FILTER(LANG(?capitalMul) = "mul") }
     BIND(COALESCE(?capitalEn, ?capitalMul) AS ?capitalLabel)
+    OPTIONAL { ?capital skos:altLabel ?capitalAlias FILTER(LANG(?capitalAlias) IN ("en", "mul")) }
   }
 }
 GROUP BY ?item ?iso ?label ?sovereign`
 
 type Row = Record<
-  'item' | 'iso' | 'label' | 'sovereign' | 'aliases' | 'capitals',
+  'item' | 'iso' | 'label' | 'sovereign' | 'aliases' | 'capitals' | 'capitalAliases',
   { value: string }
 >
 
@@ -78,10 +91,16 @@ const split = (value: string) => (value ? value.split('|').filter(Boolean) : [])
 
 // Aliases on Wikidata include codes, emoji, abbreviations and other scripts. Keep plain
 // Latin-script names only. These are used to accept typed answers and are never shown.
+// Commas and brackets mark inverted or qualified forms such as "Lanka, Sri" or
+// "Korea (South)", which would let a bare "Korea" through, so those go too.
 const isUsefulAlias = (alias: string) =>
   alias.length >= 4 &&
-  /^\p{Script=Latin}[\p{Script=Latin}\p{M} '’.,()-]*$/u.test(alias) &&
+  /^\p{Script=Latin}[\p{Script=Latin}\p{M} '’.-]*$/u.test(alias) &&
   alias !== alias.toUpperCase()
+
+/** "Cape" is the start of "Cape Town", not another name for it. */
+const isWordPrefixOf = (alias: string, names: readonly string[]) =>
+  names.some((n) => n.toLowerCase().startsWith(`${alias.toLowerCase()} `))
 
 const problems: string[] = []
 const warnings: string[] = []
@@ -103,7 +122,10 @@ for (const state of states) {
     continue
   }
 
-  const capitals = split(row.capitals.value).sort()
+  const override = overrides.find((o) => o.iso2 === state.iso2)
+  const capitals = [
+    ...new Set([...split(row.capitals.value), ...(override?.addCapitals ?? [])]),
+  ].sort()
   if (capitals.length === 0) problems.push(`${iso} has no current capital on Wikidata`)
   if (icons.capital && !capitals.includes(icons.capital)) {
     warnings.push(
@@ -114,7 +136,17 @@ for (const state of states) {
   const name = icons.name
   const seen = new Set([name.toLowerCase()])
   const altNames = [row.label.value, ...split(row.aliases.value).filter(isUsefulAlias)]
+    .filter((alt) => !isWordPrefixOf(alt, [name]))
     .filter((alt) => !seen.has(alt.toLowerCase()) && seen.add(alt.toLowerCase()))
+    .sort()
+
+  const capitalSeen = new Set(capitals.map((c) => c.toLowerCase()))
+  const capitalAltNames = [
+    ...split(row.capitalAliases.value).filter(isUsefulAlias),
+    ...(override?.addCapitalAltNames ?? []),
+  ]
+    .filter((alt) => !isWordPrefixOf(alt, capitals))
+    .filter((alt) => !capitalSeen.has(alt.toLowerCase()) && capitalSeen.add(alt.toLowerCase()))
     .sort()
 
   countries.push({
@@ -123,14 +155,51 @@ for (const state of states) {
     name,
     altNames,
     capitals,
+    capitalAltNames,
     region: icons.continent,
     unStatus: state.unStatus,
   })
 }
 
+for (const override of overrides) {
+  if (!states.some((s) => s.iso2 === override.iso2)) {
+    problems.push(`Override for unknown code ${override.iso2}`)
+  }
+  if (!override.reason.trim()) problems.push(`Override for ${override.iso2} has no reason`)
+}
+
 if (problems.length > 0) {
   console.error(problems.join('\n'))
   process.exit(1)
+}
+
+// An alias shared by two countries, or equal to another country's main answer, would make a
+// typed answer ambiguous. "Congo" is an alias of both Congos, so neither keeps it.
+const dropShared = (pick: (c: Country) => string[], main: (c: Country) => string[]) => {
+  const owners = new Map<string, Set<string>>()
+  for (const country of countries) {
+    for (const value of [...pick(country), ...main(country)]) {
+      // Compare the way typed answers are compared, so "The Garden City" meets "Garden City".
+      const key = normalise(value)
+      owners.set(key, (owners.get(key) ?? new Set()).add(country.iso2))
+    }
+  }
+  return (country: Country) =>
+    pick(country).filter((alt) => (owners.get(normalise(alt))?.size ?? 0) === 1)
+}
+const keepCountryAlts = dropShared(
+  (c) => c.altNames,
+  (c) => [c.name],
+)
+const keepCapitalAlts = dropShared(
+  (c) => c.capitalAltNames,
+  (c) => c.capitals,
+)
+for (const country of countries) {
+  const altNames = keepCountryAlts(country)
+  const capitalAltNames = keepCapitalAlts(country)
+  country.altNames = altNames
+  country.capitalAltNames = capitalAltNames
 }
 
 countries.sort((a, b) => a.name.localeCompare(b.name, 'en'))

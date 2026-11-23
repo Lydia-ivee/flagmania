@@ -4,8 +4,11 @@ import { act, cleanup, fireEvent, render, screen, within } from '@testing-librar
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { App } from './App.tsx'
 import { countries } from './data/countries.ts'
+import { catalogueFor } from './decks.ts'
 import { seeded } from './core/random.ts'
-import { openDb } from './storage/db.ts'
+import { newItemState } from './core/scheduler.ts'
+import type { ItemState } from './core/types.ts'
+import { openDb, type FlagmaniaDb } from './storage/db.ts'
 
 afterEach(() => {
   cleanup()
@@ -14,6 +17,8 @@ afterEach(() => {
 
 let dbCount = 0
 const freshDb = () => openDb(`flagmania-app-test-${dbCount++}`)
+const allCards = catalogueFor({ decks: { flags: true, capitals: true } }).length
+const flagCards = catalogueFor({ decks: { flags: true, capitals: false } }).length
 
 /** Answers every card with "True" until the summary appears. Returns how many cards it saw. */
 async function playSession() {
@@ -26,24 +31,37 @@ async function playSession() {
   throw new Error('The session never finished')
 }
 
-/** Reads the card on screen and returns the button that answers it correctly. */
+/** Reads the true or false card on screen and returns the button that answers it correctly. */
 const rightAnswerButton = () => {
-  const src = document.querySelector('.swipe-card img')?.getAttribute('src') ?? ''
-  const shown = countries.find((c) => src.endsWith(`/${c.iso2}.svg`))
-  const claimed = document.querySelector('.claim strong')?.textContent
-  return screen.getByRole('button', { name: shown?.name === claimed ? 'True' : 'False' })
+  const title = document.querySelector('.swipe-card .prompt-title')?.textContent ?? ''
+  const claimed = document.querySelector('.claim strong')?.textContent ?? ''
+  const byName = (name: string) => countries.find((c) => c.name === name)
+  let isTrue: boolean
+  if (!title) {
+    // Flag cards. The flag shown and the country named match when the claim is true.
+    const src = document.querySelector('.swipe-card img')?.getAttribute('src') ?? ''
+    const shown = countries.find((c) => src.endsWith(`/${c.iso2}.svg`))
+    isTrue = shown?.name === claimed
+  } else if (byName(title)) {
+    isTrue = byName(title)?.capitals.includes(claimed) ?? false
+  } else {
+    isTrue = byName(claimed)?.capitals.includes(title) ?? false
+  }
+  return screen.getByRole('button', { name: isTrue ? 'True' : 'False' })
 }
 
+/** New items always start as true or false cards. */
 const startAndWaitForCard = async () => {
   fireEvent.click(await screen.findByRole('button', { name: 'Start session' }))
-  await screen.findByText(/This is the flag of/)
+  await screen.findByRole('button', { name: 'True' })
 }
 
 describe('a first session', () => {
   it('plays through, then keeps progress after a reload', async () => {
     const db = freshDb()
     render(<App db={db} random={seeded(42)} />)
-    expect(await screen.findByText('0 of 195')).toBeTruthy()
+    expect(allCards).toBe(780 - 13)
+    expect(await screen.findByText(`0 of ${allCards}`)).toBeTruthy()
 
     const cards = await playSession()
     expect(screen.getByText(/right first time/).textContent).toMatch(/^\d+ of 8 right first time$/)
@@ -58,8 +76,8 @@ describe('a first session', () => {
     // Close the page and open it again with the same database.
     cleanup()
     render(<App db={db} random={seeded(43)} />)
-    expect(await screen.findByText('8 of 195')).toBeTruthy()
-    const boxes = screen.getByRole('figure', { name: 'Flags in each box' })
+    expect(await screen.findByText(`8 of ${allCards}`)).toBeTruthy()
+    const boxes = screen.getByRole('figure', { name: 'Cards in each box' })
     expect(within(boxes).getByText('Box 2')).toBeTruthy()
   })
 })
@@ -120,7 +138,7 @@ describe('keyboard', () => {
     fireEvent.keyDown(window, { key: 'd' })
     await screen.findByRole('heading', { name: 'Not this time' })
     const live = document.querySelector('[aria-live="polite"]')
-    expect(live?.textContent).toMatch(/^Not this time\. This is the flag of .+\.$/)
+    expect(live?.textContent).toMatch(/^Not this time\. .+\.$/)
   })
 })
 
@@ -171,5 +189,117 @@ describe('when saved progress cannot be read', () => {
     fireEvent.click(screen.getByRole('button', { name: 'True' }))
     await screen.findByRole('button', { name: 'Next' })
     expect(put).not.toHaveBeenCalled()
+  })
+})
+
+/** Saves one item as already learned to this box and tier, due now, then opens the app. */
+async function openWithDueItem(id: string, box: ItemState['box'], tier: ItemState['tier']) {
+  const db = freshDb()
+  await db.items.put({ ...newItemState(id, Date.now() - 1000), box, tier })
+  render(<App db={db} random={seeded(21)} />)
+  fireEvent.click(await screen.findByRole('button', { name: 'Start session' }))
+  return db
+}
+
+const stored = async (db: FlagmaniaDb, id: string) => db.items.get(id)
+
+describe('formats', () => {
+  it('asks a box 2, tier 1 item as two options and moves it on when right', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 1)
+    expect(await screen.findByText('Pick the country')).toBeTruthy()
+    const options = document.querySelectorAll('.choice-pad .option')
+    expect(options).toHaveLength(2)
+    fireEvent.click(screen.getByRole('button', { name: /France/ }))
+    expect(await screen.findByRole('heading', { name: 'Right' })).toBeTruthy()
+    expect(await stored(db, 'fr-flag-to-country')).toMatchObject({ box: 2, tier: 2 })
+  })
+
+  it('asks four options at tier 2, and a right answer reaches box 3', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 2)
+    await screen.findByText('Pick the country')
+    expect(document.querySelectorAll('.choice-pad .option')).toHaveLength(4)
+    fireEvent.click(screen.getByRole('button', { name: /France/ }))
+    await screen.findByRole('heading', { name: 'Right' })
+    expect(await stored(db, 'fr-flag-to-country')).toMatchObject({ box: 3, tier: 3 })
+  })
+
+  it('treats D as "don\'t know" on four options and drops a tier', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 2)
+    await screen.findByText('Pick the country')
+    fireEvent.keyDown(window, { key: 'd' })
+    await screen.findByRole('heading', { name: 'Not this time' })
+    expect(await stored(db, 'fr-flag-to-country')).toMatchObject({ box: 1, tier: 1 })
+  })
+
+  it('asks a box 3, tier 3 item as a typed answer and forgives a typo', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 3, 3)
+    const input = await screen.findByRole('textbox', { name: 'Country' })
+    fireEvent.change(input, { target: { value: 'Frnace' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Check' }))
+    expect(await screen.findByRole('heading', { name: 'Right' })).toBeTruthy()
+    const feedback = document.querySelector('.feedback') as HTMLElement
+    expect(within(feedback).getByText(/The usual spelling is France/)).toBeTruthy()
+    expect(await stored(db, 'fr-flag-to-country')).toMatchObject({ box: 4, tier: 3 })
+  })
+
+  it('does not answer when D is typed into the answer box', async () => {
+    await openWithDueItem('fr-country-to-capital', 3, 3)
+    const input = await screen.findByRole('textbox', { name: 'Capital' })
+    fireEvent.keyDown(input, { key: 'd' })
+    expect(screen.queryByRole('heading', { name: 'Not this time' })).toBeNull()
+  })
+
+  it('accepts any capital of a country with several', async () => {
+    await openWithDueItem('za-country-to-capital', 3, 3)
+    const input = await screen.findByRole('textbox', { name: 'Capital' })
+    fireEvent.change(input, { target: { value: 'cape town' } })
+    fireEvent.click(screen.getByRole('button', { name: 'Check' }))
+    expect(await screen.findByRole('heading', { name: 'Right' })).toBeTruthy()
+    const feedback = document.querySelector('.feedback') as HTMLElement
+    expect(within(feedback).getByText(/Bloemfontein or Cape Town or Pretoria/)).toBeTruthy()
+  })
+
+  it('never asks for a flag to be typed', async () => {
+    await openWithDueItem('fr-country-to-flag', 5, 3)
+    expect(await screen.findByText('Pick its flag')).toBeTruthy()
+    expect(document.querySelectorAll('.choice-pad .option img')).toHaveLength(4)
+  })
+})
+
+describe('one answer per card', () => {
+  it('counts one answer when "don\'t know" lands while a swipe is still flying out', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 2)
+    await screen.findByText('Pick the country')
+    // ArrowUp starts the fly-out. D arrives before it finishes.
+    fireEvent.keyDown(window, { key: 'ArrowUp' })
+    fireEvent.keyDown(window, { key: 'd' })
+    await screen.findByRole('button', { name: 'Next' })
+    await act(() => new Promise((resolve) => setTimeout(resolve, 400)))
+    const item = await stored(db, 'fr-flag-to-country')
+    // The item started with no answers, so exactly one must be recorded.
+    expect((item?.correctCount ?? 0) + (item?.wrongCount ?? 0)).toBe(1)
+    expect(item).toMatchObject({ box: 1, wrongCount: 1 })
+  })
+})
+
+describe('screen readers', () => {
+  it('names the country on a card, not just the instruction', async () => {
+    await openWithDueItem('fr-country-to-capital', 2, 1)
+    const card = await screen.findByRole('group', { name: 'France Pick its capital' })
+    expect(card).toBeTruthy()
+  })
+})
+
+describe('decks', () => {
+  it('switches the capitals deck off, keeps one deck on and remembers it', async () => {
+    const db = freshDb()
+    render(<App db={db} random={seeded(30)} />)
+    fireEvent.click(await screen.findByRole('button', { name: 'Capitals' }))
+    expect(await screen.findByText(`0 of ${flagCards}`)).toBeTruthy()
+    expect(screen.getByRole('button', { name: 'Flags' }).hasAttribute('disabled')).toBe(true)
+
+    cleanup()
+    render(<App db={db} random={seeded(31)} />)
+    expect(await screen.findByText(`0 of ${flagCards}`)).toBeTruthy()
   })
 })

@@ -89,6 +89,7 @@ Priorities use MoSCoW (Must, Should, Could, Won't).
 
 - Facets are scheduled independently. Knowing the flag of Chad says nothing about knowing its capital.
 - The flags deck holds the first two facets and the capitals deck holds the last two. The learner turns each deck on or off.
+- Capital-to-country is skipped where the capital names the country, such as Kuwait City or Vatican City, because the prompt would give the answer away. This drops 13 items, so the two decks hold 767 items between them.
 
 ### 6.2 The swipe mechanic
 
@@ -99,7 +100,7 @@ Every question is a card. The answer options sit at the card's edges and the lea
 | T0   | True or false claim, such as "Canberra is the capital of Australia" | Right for true and left for false. Down means "don't know" | Claims are true half the time                        |
 | T1   | Two options                                                         | Left or right                                              | One distractor                                       |
 | T2   | Four options                                                        | Up, down, left or right                                    | Three distractors                                    |
-| T3   | Typed answer                                                        | Type, then press Enter or swipe up                         | Not available for country-to-flag, which stays at T2 |
+| T3   | Typed answer                                                        | Type, then press Enter                                     | Not available for country-to-flag, which stays at T2 |
 
 - A sideways swipe commits once the card passes 35% of its own width, and a downward swipe at 25% of its height. Below that it springs back. Measuring against the card keeps the distance the same on a phone and a wide laptop screen.
 - The card tilts and the chosen option highlights during the drag, so the learner sees what they are about to pick before letting go.
@@ -148,8 +149,9 @@ Rules, applied per item after each answer.
 #### Typed answer matching
 
 - Normalise both strings by lowercasing, stripping diacritics, punctuation and a leading "the".
-- Accept any listed alternative name, such as "Ivory Coast" for Côte d'Ivoire or "Czechia" and "Czech Republic".
+- Accept any listed alternative name, such as "Ivory Coast" for Côte d'Ivoire or "Czechia" and "Czech Republic". Alternative names must be typed exactly. Only the main name allows typos.
 - Allow an edit distance of 1 for answers up to 6 letters and 2 for longer ones. A near miss counts as correct and shows the proper spelling.
+- Never accept another item's answer. A typo that sits as close to another country as to the right one does not count, and the feedback says the answer could mean more than one. An alias shared by two countries, such as "Congo", is dropped from both.
 - Countries with more than one capital accept any of them. South Africa and Bolivia accept any of their capitals. The feedback state lists all of them.
 
 ### 6.4 Progress and settings
@@ -342,14 +344,14 @@ M0 to M4 is version 1.0. M5 is optional and starts only once 1.0 is in daily use
 
 ## 14. Open questions
 
-| ID   | Question                                                                                                                                                                                                        | Leaning                                                                                                                                                                |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| OQ-1 | React or Svelte                                                                                                                                                                                                 | React, for recognition on a profile                                                                                                                                    |
-| OQ-2 | How flag questions work for screen reader users, since alt text would give the answer away                                                                                                                      | Offer a text description of the flag as an opt-in mode, or exclude flag-to-country for screen readers and say so                                                       |
-| OQ-3 | Whether the territories deck is in 1.0                                                                                                                                                                          | Leave it for after 1.0                                                                                                                                                 |
-| OQ-4 | Whether landmark photos are worth the licence work, or names with a map pin are enough                                                                                                                          | Decide at M5 after a trial with ten countries                                                                                                                          |
-| OQ-5 | Whether cross-device sync is ever wanted                                                                                                                                                                        | Not in scope. Export and import covers the need for now.                                                                                                               |
-| OQ-6 | Which capital to teach where it is contested or moving. Wikidata currently gives Israel as Jerusalem, Palestine as East Jerusalem or Ramallah, Equatorial Guinea as Ciudad de la Paz and Yemen as Aden or Sanaa | Accept every listed capital in typed answers. Add a small overrides file with a reason for each change, such as adding Malabo for Equatorial Guinea. Decide before M2. |
+| ID   | Question                                                                                                                                                                                                        | Leaning                                                                                                                                                                                          |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| OQ-1 | React or Svelte                                                                                                                                                                                                 | React, for recognition on a profile                                                                                                                                                              |
+| OQ-2 | How flag questions work for screen reader users, since alt text would give the answer away                                                                                                                      | Offer a text description of the flag as an opt-in mode, or exclude flag-to-country for screen readers and say so                                                                                 |
+| OQ-3 | Whether the territories deck is in 1.0                                                                                                                                                                          | Leave it for after 1.0                                                                                                                                                                           |
+| OQ-4 | Whether landmark photos are worth the licence work, or names with a map pin are enough                                                                                                                          | Decide at M5 after a trial with ten countries                                                                                                                                                    |
+| OQ-5 | Whether cross-device sync is ever wanted                                                                                                                                                                        | Not in scope. Export and import covers the need for now.                                                                                                                                         |
+| OQ-6 | Which capital to teach where it is contested or moving. Wikidata currently gives Israel as Jerusalem, Palestine as East Jerusalem or Ramallah, Equatorial Guinea as Ciudad de la Paz and Yemen as Aden or Sanaa | Accept every listed capital in typed answers. Decided 23 November 2026. Every listed capital counts as right. `scripts/overrides.json` adds Malabo for Equatorial Guinea, with a written reason. |
 
 ## 15. Glossary
 

@@ -65,3 +65,9 @@ export function applyAnswer(state: ItemState, answer: Answer, facet: Facet): Ite
 }
 
 export const isDue = (state: ItemState, now: number) => state.dueAt <= now
+
+/** The format to ask an item in. New items start at T0. */
+export function askTier(state: ItemState | undefined, facet: Facet): Tier {
+  if (!state) return 0
+  return Math.min(state.tier, tierCap(facet, state.box)) as Tier
+}

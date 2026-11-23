@@ -27,6 +27,7 @@
         "Afghaunistaun"
       ],
       "capitals": ["Kabul"],
+      "capitalAltNames": ["Cabool", "Cabul", "Caubul", "Kabol", "Kaboul"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -44,6 +45,7 @@
         "Shqipërisë"
       ],
       "capitals": ["Tirana"],
+      "capitalAltNames": ["Tirane", "Tiranë"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -53,6 +55,7 @@
       "name": "Algeria",
       "altNames": ["Djazaïr", "Dzayer", "People's Democratic Republic of Algeria"],
       "capitals": ["Algiers"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -62,6 +65,7 @@
       "name": "Andorra",
       "altNames": ["Principality of Andorra", "Principality of the Valleys of Andorra"],
       "capitals": ["Andorra la Vella"],
+      "capitalAltNames": [],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -71,6 +75,18 @@
       "name": "Angola",
       "altNames": ["Ngola", "Republic of Angola"],
       "capitals": ["Luanda"],
+      "capitalAltNames": [
+        "Loanda",
+        "Saint Paul of Loanda",
+        "Saint Paul of Luanda",
+        "Sao Paulo de Loanda",
+        "St Paul of Loanda",
+        "St Paul of Luanda",
+        "St. Paul of Loanda",
+        "St. Paul of Luanda",
+        "São Paulo da Assunção de Loanda",
+        "São Paulo de Loanda"
+      ],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -80,6 +96,7 @@
       "name": "Antigua and Barbuda",
       "altNames": ["Antigua-Barbuda"],
       "capitals": ["St. John's"],
+      "capitalAltNames": ["Saint John's", "Sen Jaan", "St John's", "St. John's City"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -89,6 +106,12 @@
       "name": "Argentina",
       "altNames": ["Argentine Republic", "Republic of Argentina", "Republica Argentina"],
       "capitals": ["Buenos Aires"],
+      "capitalAltNames": [
+        "Buenos Ayres",
+        "Ciudad Autonoma de Buenos Aires",
+        "Ciudad Autónoma de Buenos Aires",
+        "Ciudad de Buenos Aires"
+      ],
       "region": "South America",
       "unStatus": "member"
     },
@@ -98,6 +121,15 @@
       "name": "Armenia",
       "altNames": ["Hayastan", "Hayastani Hanrapetut’yun", "Republic of Armenia"],
       "capitals": ["Yerevan"],
+      "capitalAltNames": [
+        "Erevan",
+        "Erivan",
+        "Iravan",
+        "Irevan",
+        "Ravan",
+        "Revan",
+        "The Pink City"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -118,6 +150,7 @@
         "The Commonwealth of Australia"
       ],
       "capitals": ["Canberra"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -127,6 +160,7 @@
       "name": "Austria",
       "altNames": ["Republic of Austria"],
       "capitals": ["Vienna"],
+      "capitalAltNames": ["Wien"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -136,6 +170,7 @@
       "name": "Azerbaijan",
       "altNames": ["Azərbaycan", "Azərbaycan Respublikası", "Republic of Azerbaijan"],
       "capitals": ["Baku"],
+      "capitalAltNames": ["Baki", "Baky", "City of Winds"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -143,8 +178,9 @@
       "iso2": "bs",
       "wikidata": "Q778",
       "name": "Bahamas",
-      "altNames": ["Bahama Islands", "Bahamas, The", "Commonwealth of The Bahamas", "The Bahamas"],
+      "altNames": ["Bahama Islands", "Commonwealth of The Bahamas", "The Bahamas"],
       "capitals": ["Nassau"],
+      "capitalAltNames": ["City of Nassau"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -160,6 +196,7 @@
         "Mamlakat al-Baḥrayn"
       ],
       "capitals": ["Manama"],
+      "capitalAltNames": ["al-Manāmah"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -174,6 +211,7 @@
         "People's Republic of Bangladesh"
       ],
       "capitals": ["Dhaka"],
+      "capitalAltNames": ["Dacca", "Dhaka City"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -183,6 +221,7 @@
       "name": "Barbados",
       "altNames": ["Barbadoes"],
       "capitals": ["Bridgetown"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -203,6 +242,7 @@
         "White Ruthenia"
       ],
       "capitals": ["Minsk"],
+      "capitalAltNames": ["Mensk", "Miensk", "Minskas", "Mińsk"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -212,6 +252,7 @@
       "name": "Belgium",
       "altNames": ["Kingdom of Belgium"],
       "capitals": ["Brussels"],
+      "capitalAltNames": ["Brussel", "Brussels City", "Bruxelles", "City of Brussels"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -221,6 +262,7 @@
       "name": "Belize",
       "altNames": [],
       "capitals": ["Belmopan"],
+      "capitalAltNames": ["City of Promise", "The Planned City"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -230,6 +272,7 @@
       "name": "Benin",
       "altNames": ["Dahomey", "Republic of Benin"],
       "capitals": ["Cotonou", "Porto-Novo"],
+      "capitalAltNames": ["Ajashe", "Hogbonu", "Kútɔ̀nú"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -239,6 +282,7 @@
       "name": "Bhutan",
       "altNames": ["Kingdom of Bhutan"],
       "capitals": ["Thimphu"],
+      "capitalAltNames": ["Thimpu"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -246,12 +290,17 @@
       "iso2": "bo",
       "wikidata": "Q750",
       "name": "Bolivia",
-      "altNames": [
-        "Bolivia (Plurinational State of)",
-        "Plurinational State of Bolivia",
-        "Republic of Bolivia"
-      ],
+      "altNames": ["Plurinational State of Bolivia", "Republic of Bolivia"],
       "capitals": ["La Paz", "Sucre"],
+      "capitalAltNames": [
+        "Charcas",
+        "Chuqi Yapu",
+        "Chuqiyapu",
+        "Chuquisaca",
+        "La Plata",
+        "Nuestra Señora de La Paz",
+        "The Illustrious and Heroic Sucre"
+      ],
       "region": "South America",
       "unStatus": "member"
     },
@@ -261,6 +310,7 @@
       "name": "Bosnia and Herzegovina",
       "altNames": ["Bosnia and Hercegovina", "Bosnia-Herzegovina"],
       "capitals": ["Sarajevo"],
+      "capitalAltNames": ["Bosna-Serai", "City of Sarajevo"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -270,6 +320,7 @@
       "name": "Botswana",
       "altNames": ["Lefatshe la Botswana", "Republic of Botswana"],
       "capitals": ["Gaborone"],
+      "capitalAltNames": ["Gaberones", "Gabs", "Motse-Mshate"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -279,6 +330,7 @@
       "name": "Brazil",
       "altNames": ["Brasil", "Federative Republic of Brazil"],
       "capitals": ["Brasília"],
+      "capitalAltNames": [],
       "region": "South America",
       "unStatus": "member"
     },
@@ -286,8 +338,9 @@
       "iso2": "bn",
       "wikidata": "Q921",
       "name": "Brunei Darussalam",
-      "altNames": ["Brunei", "Nation of Brunei, the Abode of Peace", "Negara Brunei Darussalam"],
+      "altNames": ["Negara Brunei Darussalam"],
       "capitals": ["Bandar Seri Begawan"],
+      "capitalAltNames": ["Bandar Brunei", "Brunei Town", "Seri Begawan"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -297,6 +350,7 @@
       "name": "Bulgaria",
       "altNames": ["Bulgarian Republic", "Republic of Bulgaria"],
       "capitals": ["Sofia"],
+      "capitalAltNames": ["Serdica", "Sofija", "Sredets", "Sredez"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -306,6 +360,7 @@
       "name": "Burkina Faso",
       "altNames": ["Republic of Burkina Faso"],
       "capitals": ["Ouagadougou"],
+      "capitalAltNames": ["Kumbee-Tenga", "Ouaga", "Wagadugu"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -315,6 +370,7 @@
       "name": "Burundi",
       "altNames": ["Gouvernement du Burundi", "Republic of Burundi", "Republika y'Uburundi"],
       "capitals": ["Gitega"],
+      "capitalAltNames": ["Kitega"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -329,6 +385,7 @@
         "Republic of Cape Verde"
       ],
       "capitals": ["Praia"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -345,6 +402,7 @@
         "Kingdom of Cambodia"
       ],
       "capitals": ["Phnom Penh"],
+      "capitalAltNames": [],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -354,6 +412,7 @@
       "name": "Cameroon",
       "altNames": ["Republic of Cameroon"],
       "capitals": ["Yaoundé"],
+      "capitalAltNames": ["Ongola", "Yaounde"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -363,6 +422,7 @@
       "name": "Canada",
       "altNames": [],
       "capitals": ["Ottawa"],
+      "capitalAltNames": ["City of Ottawa"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -372,6 +432,7 @@
       "name": "Central African Republic",
       "altNames": ["Central Africa"],
       "capitals": ["Bangui"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -381,6 +442,7 @@
       "name": "Chad",
       "altNames": ["Republic of Chad"],
       "capitals": ["N'Djamena"],
+      "capitalAltNames": ["N'Djaména", "NDjamena"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -388,8 +450,9 @@
       "iso2": "cl",
       "wikidata": "Q298",
       "name": "Chile",
-      "altNames": ["Republic of Chile", "República de Chile"],
+      "altNames": ["Republic of Chile"],
       "capitals": ["Santiago"],
+      "capitalAltNames": ["Greater Santiago", "Santiago de Chile"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -408,6 +471,42 @@
         "the People's Republic of China"
       ],
       "capitals": ["Beijing"],
+      "capitalAltNames": [
+        "Beeijing",
+        "Bei Jing Shi",
+        "Beijing Shi",
+        "Beiping",
+        "Bākgīng",
+        "Běijīng",
+        "Chi-ch'eng",
+        "Chi-cheng",
+        "Chi-ch’êng",
+        "Chung-tu",
+        "Chungtu",
+        "Jicheng",
+        "Khanbalik",
+        "Khanbaliq",
+        "Pak-kiann",
+        "Pe-king",
+        "Pei-ching",
+        "Pei-p'ing",
+        "Pei-ping",
+        "Peip'ing",
+        "Peiping",
+        "Pekin",
+        "Peking",
+        "Peking Shi",
+        "Poh-cin",
+        "Shun-t'ien",
+        "Shun-tien",
+        "Shuntian",
+        "Shuntian Fu",
+        "Shuntianfu",
+        "Yan-ching",
+        "Yanjing",
+        "Yanking",
+        "Zhongdu"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -417,6 +516,7 @@
       "name": "Colombia",
       "altNames": ["Colombiá", "Republic of Colombia", "The Republic of Colombia"],
       "capitals": ["Bogotá"],
+      "capitalAltNames": ["Bogota", "Santa Fe de Bogotá", "Santafé de Bogotá"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -436,6 +536,7 @@
         "the Comoros"
       ],
       "capitals": ["Moroni"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -445,6 +546,7 @@
       "name": "Costa Rica",
       "altNames": ["Republic of Costa Rica"],
       "capitals": ["San José"],
+      "capitalAltNames": ["San Jose"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -467,6 +569,7 @@
         "The Ivory Coast"
       ],
       "capitals": ["Yamoussoukro"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -476,6 +579,7 @@
       "name": "Croatia",
       "altNames": ["Republic of Croatia"],
       "capitals": ["Zagreb"],
+      "capitalAltNames": ["Agram", "Agranum", "Zagabria", "Zágráb"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -485,6 +589,7 @@
       "name": "Cuba",
       "altNames": ["Republic of Cuba"],
       "capitals": ["Havana"],
+      "capitalAltNames": ["Habana", "La Habana"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -498,6 +603,21 @@
         "Republic of Cyprus"
       ],
       "capitals": ["Nicosia"],
+      "capitalAltNames": [
+        "Ledra",
+        "Ledrae",
+        "Ledroi",
+        "Ledron",
+        "Lefkosa",
+        "Lefkosia",
+        "Lefkoşa",
+        "Leucopolis",
+        "Leucosia",
+        "Leucotheon",
+        "Leukoi Theoi",
+        "Leuteon",
+        "Nicosie"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -507,6 +627,7 @@
       "name": "Czech Republic",
       "altNames": ["Czechia", "the Czech Republic", "Česká republika"],
       "capitals": ["Prague"],
+      "capitalAltNames": ["City of Prague", "Hlavní město Praha", "Prag", "Praga", "Praha"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -515,8 +636,6 @@
       "wikidata": "Q974",
       "name": "Democratic Republic of the Congo",
       "altNames": [
-        "Congo",
-        "Congo (Kinshasa)",
         "Congo-Kinshasa",
         "DR Congo",
         "DR Kongo",
@@ -528,6 +647,7 @@
         "Zaire"
       ],
       "capitals": ["Kinshasa"],
+      "capitalAltNames": ["Leopoldstad", "Leopoldville", "Léopoldville"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -537,6 +657,7 @@
       "name": "Denmark",
       "altNames": ["Danemark", "Dania", "Danmark", "Denmark proper", "metropolitan Denmark"],
       "capitals": ["Copenhagen"],
+      "capitalAltNames": ["Hafn", "Kbh.", "Kobenhavn", "Kopenhagen", "Köbenhavn", "København"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -546,6 +667,7 @@
       "name": "Djibouti",
       "altNames": ["Gabuuti", "Jabuuti", "Jībūtī", "Republic of Djibouti"],
       "capitals": ["Djibouti"],
+      "capitalAltNames": ["Djibouti City"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -560,6 +682,7 @@
         "Wai'tu kubuli"
       ],
       "capitals": ["Roseau"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -569,6 +692,12 @@
       "name": "Dominican Republic",
       "altNames": ["DomRep", "Dominicana", "Republica Dominicana", "República Dominicana"],
       "capitals": ["Santo Domingo"],
+      "capitalAltNames": [
+        "Ciudad Trujillo",
+        "San Domingo",
+        "Santo Domingo de Guzman",
+        "Santo Domingo de Guzmán"
+      ],
       "region": "North America",
       "unStatus": "member"
     },
@@ -584,6 +713,7 @@
         "The Ecuadorian State"
       ],
       "capitals": ["Quito"],
+      "capitalAltNames": ["Kitu", "San Francisco de Quito"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -599,6 +729,7 @@
         "Republic of Egypt"
       ],
       "capitals": ["Cairo"],
+      "capitalAltNames": ["Qahira", "al-Qāhira", "ghahere"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -608,6 +739,7 @@
       "name": "El Salvador",
       "altNames": ["Republic of El Salvador", "Salvador"],
       "capitals": ["San Salvador"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -616,7 +748,8 @@
       "wikidata": "Q983",
       "name": "Equatorial Guinea",
       "altNames": ["Republic of Equatorial Guinea"],
-      "capitals": ["Ciudad de la Paz"],
+      "capitals": ["Ciudad de la Paz", "Malabo"],
+      "capitalAltNames": ["Oyala"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -626,6 +759,7 @@
       "name": "Eritrea",
       "altNames": ["Ertrā", "Iritriyā", "State of Eritrea"],
       "capitals": ["Asmara"],
+      "capitalAltNames": ["Asmera"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -635,6 +769,7 @@
       "name": "Estonia",
       "altNames": ["Eesti", "Eesti Vabariik", "Estland", "Republic of Estonia"],
       "capitals": ["Tallinn"],
+      "capitalAltNames": ["Kolywan", "Lindanäs", "Lyndanisse", "Reuel", "Reval", "Revel", "Rewel"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -644,6 +779,7 @@
       "name": "Eswatini",
       "altNames": ["Kingdom of Eswatini", "Kingdom of Swaziland", "Swaziland", "Umbuso weSwatini"],
       "capitals": ["Lobamba", "Mbabane"],
+      "capitalAltNames": ["Mbabané"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -653,6 +789,7 @@
       "name": "Ethiopia",
       "altNames": ["Federal Democratic Republic of Ethiopia"],
       "capitals": ["Addis Ababa"],
+      "capitalAltNames": ["Addis Abeba", "Addis Abäba", "Finfinne"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -660,13 +797,9 @@
       "iso2": "fm",
       "wikidata": "Q702",
       "name": "Federated States of Micronesia",
-      "altNames": [
-        "Fed. Sts. Micronesia",
-        "Fed. Sts. of Micronesia",
-        "Federated States of Micronesia, FSM",
-        "Micronesia"
-      ],
+      "altNames": ["Fed. Sts. Micronesia", "Fed. Sts. of Micronesia", "Micronesia"],
       "capitals": ["Palikir"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -683,6 +816,7 @@
         "Viti"
       ],
       "capitals": ["Suva"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -699,6 +833,7 @@
         "Suomi"
       ],
       "capitals": ["Helsinki"],
+      "capitalAltNames": ["Helsingfors", "Helsingia", "Helsingin kaupunki", "Hesa", "Stadi"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -708,6 +843,7 @@
       "name": "France",
       "altNames": ["Francia", "French Republic", "République française"],
       "capitals": ["Paris"],
+      "capitalAltNames": ["City of Light", "City of Love", "Lutetia"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -717,6 +853,7 @@
       "name": "Gabon",
       "altNames": ["Gabonese Republic", "Republique Gabonaise", "République Gabonaise"],
       "capitals": ["Libreville"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -726,6 +863,7 @@
       "name": "Gambia",
       "altNames": ["Islamic Republic of the Gambia", "Republic of the Gambia", "The Gambia"],
       "capitals": ["Banjul"],
+      "capitalAltNames": ["Bathurst", "City of Banjul"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -733,13 +871,9 @@
       "iso2": "ge",
       "wikidata": "Q230",
       "name": "Georgia",
-      "altNames": [
-        "Georgia (Sakartvelo)",
-        "Georgia (country)",
-        "Republic of Georgia",
-        "Sakartvelo"
-      ],
+      "altNames": ["Republic of Georgia", "Sakartvelo"],
       "capitals": ["Tbilisi"],
+      "capitalAltNames": ["Tbilissi", "Tiflis", "Tpilisi", "Tpilissi"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -749,6 +883,7 @@
       "name": "Germany",
       "altNames": ["Federal Republic of Germany"],
       "capitals": ["Berlin"],
+      "capitalAltNames": [],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -758,6 +893,7 @@
       "name": "Ghana",
       "altNames": ["Republic of Ghana"],
       "capitals": ["Accra"],
+      "capitalAltNames": ["Akra"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -765,8 +901,9 @@
       "iso2": "gr",
       "wikidata": "Q41",
       "name": "Greece",
-      "altNames": ["Ellada", "Greek Republic", "Hellas", "Hellas, Greece", "Hellenic Republic"],
+      "altNames": ["Ellada", "Greek Republic", "Hellas", "Hellenic Republic"],
       "capitals": ["Athens"],
+      "capitalAltNames": ["Athenae", "Athens city"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -776,6 +913,7 @@
       "name": "Grenada",
       "altNames": [],
       "capitals": ["St. George's"],
+      "capitalAltNames": ["Saint George's", "Saint Georges"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -785,6 +923,13 @@
       "name": "Guatemala",
       "altNames": ["Republic of Guatemala", "República de Guatemala"],
       "capitals": ["Guatemala City"],
+      "capitalAltNames": [
+        "City of Guatemala",
+        "Ciudad de Guatemala",
+        "Guate",
+        "New Guatemala of Assumption",
+        "Nueva Guatemala de la Asunción"
+      ],
       "region": "North America",
       "unStatus": "member"
     },
@@ -794,6 +939,7 @@
       "name": "Guinea",
       "altNames": ["Guinea-Conakry", "Republic of Guinea"],
       "capitals": ["Conakry"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -803,6 +949,7 @@
       "name": "Guinea-Bissau",
       "altNames": ["Republic of Guinea-Bissau"],
       "capitals": ["Bissau"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -812,6 +959,7 @@
       "name": "Guyana",
       "altNames": ["Co-operative Republic of Guyana", "Republic of Guyana"],
       "capitals": ["Georgetown"],
+      "capitalAltNames": ["Garden City of the Caribbean"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -821,6 +969,7 @@
       "name": "Haiti",
       "altNames": ["Ayiti", "Haitian Republic", "Hayti", "Republic of Haiti"],
       "capitals": ["Port-au-Prince"],
+      "capitalAltNames": ["Port au Prince", "Pòtoprens"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -841,6 +990,17 @@
         "Vatican City State"
       ],
       "capitals": ["Vatican City"],
+      "capitalAltNames": [
+        "Città del Vaticano",
+        "Civitas Vaticana",
+        "Holy See",
+        "Papal State",
+        "State of Vatican City",
+        "Stato della Città del Vaticano",
+        "Status Civitatis Vaticanae",
+        "The Vatican",
+        "Vatican City State"
+      ],
       "region": "Europe",
       "unStatus": "observer"
     },
@@ -850,6 +1010,7 @@
       "name": "Honduras",
       "altNames": ["Honduran Republic", "Republic of Honduras"],
       "capitals": ["Tegucigalpa"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -859,6 +1020,23 @@
       "name": "Hungary",
       "altNames": [],
       "capitals": ["Budapest"],
+      "capitalAltNames": [
+        "Alt-Ofen",
+        "Buda",
+        "Buda Pest",
+        "Buda-Pest",
+        "Buda-Pesth",
+        "Budapesta",
+        "Budapeszt",
+        "Budapešť",
+        "Budim",
+        "Budon",
+        "Budín",
+        "Ofen",
+        "Pest",
+        "Pešta",
+        "Pešť"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -868,6 +1046,7 @@
       "name": "Iceland",
       "altNames": ["Icelandic republic", "Isl.", "Republic of Iceland", "Ysland"],
       "capitals": ["Reykjavík"],
+      "capitalAltNames": ["Reykjavik", "Reykjavikurborg", "Reykjavíkurborg"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -889,6 +1068,13 @@
         "Tianzhu"
       ],
       "capitals": ["New Delhi"],
+      "capitalAltNames": [
+        "Delhi",
+        "NDMC area",
+        "Nai Dilli",
+        "Nayi Dilli",
+        "New Delhi Municipal Council Area"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -898,6 +1084,14 @@
       "name": "Indonesia",
       "altNames": ["Republic of Indonesia", "Republik Indonesia"],
       "capitals": ["Jakarta"],
+      "capitalAltNames": [
+        "DKI Jakarta",
+        "Djakarta",
+        "Jakarta Province",
+        "Jakarta Specific Region",
+        "Specific Capital Region of Jakarta",
+        "Specific Region of Jakarta"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -907,6 +1101,7 @@
       "name": "Iran",
       "altNames": ["Islamic Rep. Iran", "Islamic Republic of Iran"],
       "capitals": ["Tehran"],
+      "capitalAltNames": ["Teheran", "Ṭihrán"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -916,6 +1111,7 @@
       "name": "Iraq",
       "altNames": ["Republic of Iraq"],
       "capitals": ["Baghdad"],
+      "capitalAltNames": ["Bagdad", "Bagdat", "Baghdād"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -933,6 +1129,7 @@
         "Éire"
       ],
       "capitals": ["Dublin"],
+      "capitalAltNames": ["Baile Átha Cliath", "City of Dublin", "Dublin city"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -942,6 +1139,13 @@
       "name": "Israel",
       "altNames": ["State of Israel", "Yisrael"],
       "capitals": ["Jerusalem"],
+      "capitalAltNames": [
+        "Aelia Capitolina",
+        "Al-Quds",
+        "J'lem",
+        "Mint of Aelia Capitolina",
+        "Yerushalayim"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -951,6 +1155,16 @@
       "name": "Italy",
       "altNames": ["Italia", "Italian Republic", "Republic of Italy"],
       "capitals": ["Rome"],
+      "capitalAltNames": [
+        "Capital of the World",
+        "City of Marble",
+        "City of Seven Hills",
+        "Eternal City",
+        "Roma",
+        "The Capital of the World",
+        "The City of Marble",
+        "The Eternal City"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -960,6 +1174,7 @@
       "name": "Jamaica",
       "altNames": ["Commonwealth of Jamaica"],
       "capitals": ["Kingston"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -979,6 +1194,20 @@
         "State of Japan"
       ],
       "capitals": ["Tokyo"],
+      "capitalAltNames": [
+        "Jedo",
+        "Tokei",
+        "Tokio",
+        "Tokyo Metropolis",
+        "Tokyo Metropolitan prefecture",
+        "Tokyo Prefecture",
+        "Tokyo-to",
+        "Tôkyô",
+        "Tôkyô-to",
+        "Tōkyō",
+        "Tōkyō-to",
+        "Yedo"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -994,6 +1223,7 @@
         "Yarden"
       ],
       "capitals": ["Amman"],
+      "capitalAltNames": ["Aman", "Ammon", "Mint of Philadelphia", "Philadelphia"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1003,6 +1233,7 @@
       "name": "Kazakhstan",
       "altNames": ["Qazaqstan", "Republic of Kazakhstan", "Republic of Qazaqstan"],
       "capitals": ["Astana"],
+      "capitalAltNames": ["Akmola", "Akmolinsk", "Aqmola", "Nur-Sultan", "Tselinograd"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1012,6 +1243,12 @@
       "name": "Kenya",
       "altNames": ["Republic of Kenya"],
       "capitals": ["Nairobi"],
+      "capitalAltNames": [
+        "Kenya capital",
+        "Kenya capital city",
+        "Kenya's capital",
+        "Kenyan capital"
+      ],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1021,6 +1258,7 @@
       "name": "Kiribati",
       "altNames": ["Republic of Kiribati"],
       "capitals": ["South Tarawa"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1030,6 +1268,7 @@
       "name": "Kuwait",
       "altNames": ["State of Kuwait"],
       "capitals": ["Kuwait City"],
+      "capitalAltNames": ["Al Kuwait", "al-Kuwait"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1039,6 +1278,7 @@
       "name": "Kyrgyzstan",
       "altNames": ["Kyrgyz Republic"],
       "capitals": ["Bishkek"],
+      "capitalAltNames": ["Frunze", "Pishpek"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1048,6 +1288,24 @@
       "name": "Laos",
       "altNames": ["Lao PDR", "Lao People's Democratic Republic"],
       "capitals": ["Vientiane"],
+      "capitalAltNames": [
+        "Bientani",
+        "Nakhon Viangchan",
+        "Viang chan",
+        "Viangchan",
+        "Vien Chang",
+        "Vienchan",
+        "Vieng-Cæn",
+        "Viengchan",
+        "Vientane",
+        "Vieṅ Čan",
+        "Vieṅg-Čăn",
+        "Vyentyan",
+        "Wei-t'ien",
+        "Wiangcan",
+        "Wīangčhan",
+        "urban Vientiane"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1064,6 +1322,7 @@
         "Republic of Latvia"
       ],
       "capitals": ["Riga"],
+      "capitalAltNames": ["Rige", "Riia", "Rija", "Ryga", "Rīgõ"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1073,6 +1332,7 @@
       "name": "Lebanon",
       "altNames": ["Lebanese Republic", "Lubnan", "Republic of Lebanon", "State of Lebanon"],
       "capitals": ["Beirut"],
+      "capitalAltNames": ["Beyrout"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1082,6 +1342,7 @@
       "name": "Lesotho",
       "altNames": ["Kingdom of Lesotho", "The Mountain Kingdom"],
       "capitals": ["Maseru"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1091,6 +1352,7 @@
       "name": "Liberia",
       "altNames": ["Liber", "Republic of Liberia"],
       "capitals": ["Monrovia"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1100,6 +1362,7 @@
       "name": "Libya",
       "altNames": ["State of Libya"],
       "capitals": ["Tripoli"],
+      "capitalAltNames": ["Tarabulus", "Trablusgarp"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1109,6 +1372,7 @@
       "name": "Liechtenstein",
       "altNames": ["Principality of Liechtenstein"],
       "capitals": ["Vaduz"],
+      "capitalAltNames": [],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1118,6 +1382,17 @@
       "name": "Lithuania",
       "altNames": ["Lietuvos Respublika", "Republic of Lithuania"],
       "capitals": ["Vilnius"],
+      "capitalAltNames": [
+        "Vilna",
+        "Vilnia",
+        "Vilno",
+        "Vilnyus",
+        "Vilnė",
+        "Viĺnia",
+        "Viļņa",
+        "Wilna",
+        "Wilno"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1127,6 +1402,7 @@
       "name": "Luxembourg",
       "altNames": ["Grand Duchy of Luxembourg", "Luxemburg"],
       "capitals": ["Luxembourg"],
+      "capitalAltNames": ["City of Luxembourg", "Luxembourg City", "Luxemburg"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1136,6 +1412,7 @@
       "name": "Madagascar",
       "altNames": ["Malagascar", "Malagaskar", "Republic of Madagascar"],
       "capitals": ["Antananarivo"],
+      "capitalAltNames": ["Analamanga", "Iarivo", "Tananarive"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1145,6 +1422,7 @@
       "name": "Malawi",
       "altNames": ["Republic of Malawi"],
       "capitals": ["Lilongwe"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1154,6 +1432,7 @@
       "name": "Malaysia",
       "altNames": ["Federation of Malaysia", "Malaysia Federation"],
       "capitals": ["Kuala Lumpur", "Putrajaya"],
+      "capitalAltNames": ["Federal Territory of Kuala Lumpur", "Federal Territory of Purajaya"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1163,6 +1442,7 @@
       "name": "Maldives",
       "altNames": ["Republic of Maldives"],
       "capitals": ["Malé"],
+      "capitalAltNames": ["Malé City"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1172,6 +1452,7 @@
       "name": "Mali",
       "altNames": ["Republic of Mali"],
       "capitals": ["Bamako"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1181,6 +1462,16 @@
       "name": "Malta",
       "altNames": ["Republic of Malta"],
       "capitals": ["Valletta"],
+      "capitalAltNames": [
+        "Capital of Malta",
+        "Citta Umilissima",
+        "Città Umilissima",
+        "Il-Belt Valletta",
+        "La Valleta",
+        "La Valletta",
+        "Valetta",
+        "Valleta"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1190,6 +1481,7 @@
       "name": "Marshall Islands",
       "altNames": ["Republic of the Marshall Islands"],
       "capitals": ["Majuro"],
+      "capitalAltNames": ["Mājro"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1208,6 +1500,14 @@
         "Murutaane"
       ],
       "capitals": ["Nouakchott"],
+      "capitalAltNames": [
+        "Capital of Mauritania",
+        "Nawakshut",
+        "Nawākshūṭ",
+        "Nouakchot",
+        "Noukchott",
+        "Nuwākshūṭ"
+      ],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1217,6 +1517,7 @@
       "name": "Mauritius",
       "altNames": ["Maurice", "Moris", "Republic of Mauritius"],
       "capitals": ["Port Louis"],
+      "capitalAltNames": ["Polwi", "Porlwi", "Port-Louis"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1232,6 +1533,7 @@
         "United States of Mexico"
       ],
       "capitals": ["Mexico City"],
+      "capitalAltNames": ["City of Mexico", "Ciudad de México", "Mexico D.F."],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1241,6 +1543,24 @@
       "name": "Moldova",
       "altNames": ["Moldavia", "Republic of Moldova", "Republica Moldova"],
       "capitals": ["Chișinău"],
+      "capitalAltNames": [
+        "Chisinau",
+        "Chisnau",
+        "Chişinău",
+        "Keshenev",
+        "Keshinov",
+        "Khisinau",
+        "Kischinew",
+        "Kischiniov",
+        "Kiscinev",
+        "Kishinef",
+        "Kishinev",
+        "Kishinëv",
+        "Kiszyniów",
+        "Kişinev",
+        "Kišinìv",
+        "Kyshyniv"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1259,6 +1579,16 @@
         "Prinçipatu de Mùnegu"
       ],
       "capitals": ["Monaco"],
+      "capitalAltNames": [
+        "Fort-Hercule",
+        "Mùnegu",
+        "Principality and Diocese of Monaco",
+        "Principality of Monaco",
+        "Principato di Monaco",
+        "Principatu de Mu̍negu",
+        "Principauté de Monaco",
+        "Prinçipatu de Mùnegu"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1268,6 +1598,22 @@
       "name": "Mongolia",
       "altNames": ["Mongol State", "State of Mongolia"],
       "capitals": ["Ulaanbaatar"],
+      "capitalAltNames": [
+        "East Hüree",
+        "Hüree",
+        "Ih Huree",
+        "Ikh Khüree",
+        "Khan of Urga",
+        "Khüree",
+        "Kulun",
+        "Niislel Hüree",
+        "Ulan Bator",
+        "Ulan-Bator",
+        "Ulanbator",
+        "Urga",
+        "Wulan Batuo",
+        "Örgöö"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1277,6 +1623,15 @@
       "name": "Montenegro",
       "altNames": ["Republic of Montenegro"],
       "capitals": ["Podgorica"],
+      "capitalAltNames": [
+        "Burguriçe",
+        "Capital of Montenegro",
+        "Podgoritsa",
+        "Podgoritza",
+        "Podgorizza",
+        "Titograd",
+        "Titogrado"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1286,6 +1641,7 @@
       "name": "Morocco",
       "altNames": ["Kingdom of Morocco", "Lmaġrib", "Maroc", "Marocco", "al-Maġrib"],
       "capitals": ["Rabat"],
+      "capitalAltNames": ["Rabbat"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1295,6 +1651,7 @@
       "name": "Mozambique",
       "altNames": ["Moçambique", "Republic of Mozambique", "República de Moçambique"],
       "capitals": ["Maputo"],
+      "capitalAltNames": ["Cam Phumo", "Lourenço Marques"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1310,6 +1667,7 @@
         "Union of Burma"
       ],
       "capitals": ["Naypyidaw"],
+      "capitalAltNames": ["Nay Pyi Taw", "Naypyitaw"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1319,6 +1677,7 @@
       "name": "Namibia",
       "altNames": ["Republic of Namibia"],
       "capitals": ["Windhoek"],
+      "capitalAltNames": ["Otjomuise", "Windhuk", "Windhök", "ǀAi-ǁGams"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1328,6 +1687,7 @@
       "name": "Nauru",
       "altNames": ["Naoero", "Pleasant Island", "Republic of Naoero", "Republic of Nauru"],
       "capitals": ["Yaren District"],
+      "capitalAltNames": ["Makwa", "Moqua"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1371,6 +1731,23 @@
         "Paï-pou"
       ],
       "capitals": ["Kathmandu"],
+      "capitalAltNames": [
+        "Cadmendu",
+        "Catmandir",
+        "Catmeduour",
+        "City of Temples",
+        "Kadmendu",
+        "Kantipur",
+        "Kasthamandap",
+        "Kathmandu Metropolitan City",
+        "Kathmandu Valley",
+        "Katmandir",
+        "Katmandou",
+        "Katmandu",
+        "Khatmandu",
+        "Káthmándú",
+        "Yambu"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1387,6 +1764,7 @@
         "the Netherlands"
       ],
       "capitals": ["Amsterdam"],
+      "capitalAltNames": ["A'dam", "Mokum"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1396,6 +1774,14 @@
       "name": "New Zealand",
       "altNames": ["Aotearoa", "Aotearoa New Zealand", "Dominion of New Zealand", "Niu Tīreni"],
       "capitals": ["Wellington"],
+      "capitalAltNames": [
+        "Port Nicholson",
+        "Port Nick",
+        "Pōneke",
+        "Te Whanga-nui-a-Tara",
+        "Te Whanganui-a-Tara",
+        "Wellington metropolitan area"
+      ],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1405,6 +1791,7 @@
       "name": "Nicaragua",
       "altNames": ["Republic of Nicaragua"],
       "capitals": ["Managua"],
+      "capitalAltNames": ["City of Managua", "Managua City", "Santiago de Managua"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1414,6 +1801,7 @@
       "name": "Niger",
       "altNames": ["Republic Niger", "Republic of Niger", "Republic of the Niger", "The Niger"],
       "capitals": ["Niamey"],
+      "capitalAltNames": ["Niamey Urban Community"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1423,6 +1811,7 @@
       "name": "Nigeria",
       "altNames": ["Federal Republic of Nigeria", "Naija"],
       "capitals": ["Abuja"],
+      "capitalAltNames": ["Federal Capital Territory"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1432,6 +1821,7 @@
       "name": "North Korea",
       "altNames": ["DPR Korea", "Democratic People's Republic of Korea", "N. Korea"],
       "capitals": ["Pyongyang"],
+      "capitalAltNames": ["Capital of Revolution", "Pyeongyang", "P’yŏng-yang", "Ryugyong"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1448,6 +1838,7 @@
         "Republic of North Macedonia"
       ],
       "capitals": ["Skopje"],
+      "capitalAltNames": ["Escópia", "Shkup", "Shkupi", "Skoplje", "Üsküb"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1457,6 +1848,7 @@
       "name": "Norway",
       "altNames": ["Kingdom of Norway"],
       "capitals": ["Oslo"],
+      "capitalAltNames": ["Christiania", "Kristiania"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1466,6 +1858,7 @@
       "name": "Oman",
       "altNames": ["Sultanate of Oman", "Uman"],
       "capitals": ["Muscat"],
+      "capitalAltNames": ["Maskat", "Muskat"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1475,6 +1868,7 @@
       "name": "Pakistan",
       "altNames": ["Hồi Quốc", "Islamic Republic of Pakistan", "Republic of Pakistan", "Tây Hồi"],
       "capitals": ["Islamabad"],
+      "capitalAltNames": [],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1492,6 +1886,7 @@
         "Republic of Palau"
       ],
       "capitals": ["Ngerulmud"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1501,6 +1896,7 @@
       "name": "Panama",
       "altNames": ["Republic of Panama"],
       "capitals": ["Panama City"],
+      "capitalAltNames": ["Ciudad de Panama", "Ciudad de Panamá", "Panamá"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1510,6 +1906,7 @@
       "name": "Papua New Guinea",
       "altNames": ["Independent State of Papua New Guinea"],
       "capitals": ["Port Moresby"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1519,6 +1916,7 @@
       "name": "Paraguay",
       "altNames": ["Heart of South America", "Republic of Paraguay"],
       "capitals": ["Asunción"],
+      "capitalAltNames": ["Assumption", "Asuncion", "Nuestra Señora Santa María de la Asunción"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -1528,6 +1926,7 @@
       "name": "Peru",
       "altNames": ["Republic of Peru", "Republica del Peru", "República del Perú"],
       "capitals": ["Lima"],
+      "capitalAltNames": ["City of the Kings"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -1537,6 +1936,11 @@
       "name": "Philippines",
       "altNames": ["Philippine Islands", "Republic of the Philippines", "The Philippines"],
       "capitals": ["Manila"],
+      "capitalAltNames": [
+        "City of Manila",
+        "Pearl of the Orient",
+        "Queen City of the Pacific and others"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1546,6 +1950,7 @@
       "name": "Poland",
       "altNames": ["Polonia", "Republic of Poland"],
       "capitals": ["Warsaw"],
+      "capitalAltNames": ["Warszawa"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1555,6 +1960,7 @@
       "name": "Portugal",
       "altNames": ["Portuguese Republic", "República Portuguesa"],
       "capitals": ["Lisbon"],
+      "capitalAltNames": ["Lisboa"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1564,6 +1970,7 @@
       "name": "Qatar",
       "altNames": ["State of Qatar"],
       "capitals": ["Doha"],
+      "capitalAltNames": [],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1572,8 +1979,6 @@
       "wikidata": "Q971",
       "name": "Republic of the Congo",
       "altNames": [
-        "Congo",
-        "Congo (Brazzaville)",
         "Congo Republic",
         "Congo-Brazzaville",
         "Rep. Congo",
@@ -1582,6 +1987,7 @@
         "République du Congo"
       ],
       "capitals": ["Brazzaville"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1591,6 +1997,13 @@
       "name": "Romania",
       "altNames": ["România", "Roumania", "Rumania"],
       "capitals": ["Bucharest"],
+      "capitalAltNames": [
+        "Bucuresti",
+        "Bucureşti",
+        "București",
+        "Little Paris",
+        "Paris of the East"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1600,6 +2013,15 @@
       "name": "Russia",
       "altNames": ["Russian Federation"],
       "capitals": ["Moscow"],
+      "capitalAltNames": [
+        "City of Moscow",
+        "Moskovĭ",
+        "Moskva",
+        "Moskve",
+        "Moskvi",
+        "Moskvë",
+        "Mosky"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1609,6 +2031,7 @@
       "name": "Rwanda",
       "altNames": ["Republic of Rwanda", "The Land of a Thousand Hills"],
       "capitals": ["Kigali"],
+      "capitalAltNames": ["City of Kigali", "Kigali City"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1625,6 +2048,7 @@
         "St. Kitts and Nevis"
       ],
       "capitals": ["Basseterre"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1634,6 +2058,7 @@
       "name": "Saint Lucia",
       "altNames": ["Hewanorra", "Iyonola", "St Lucia", "St. Lucia"],
       "capitals": ["Castries"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1642,13 +2067,13 @@
       "wikidata": "Q757",
       "name": "Saint Vincent and the Grenadines",
       "altNames": [
-        "Saint Vincent",
         "St Vincent",
         "St Vincent and the Grenadines",
         "St. Vincent",
         "St. Vincent and the Grenadines"
       ],
       "capitals": ["Kingstown"],
+      "capitalAltNames": [],
       "region": "North America",
       "unStatus": "member"
     },
@@ -1658,6 +2083,7 @@
       "name": "Samoa",
       "altNames": ["Independent State of Samoa", "Western Samoa"],
       "capitals": ["Apia"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1667,6 +2093,7 @@
       "name": "San Marino",
       "altNames": ["Most Serene Republic of San Marino"],
       "capitals": ["San Marino"],
+      "capitalAltNames": ["City of San Marino"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1680,6 +2107,7 @@
         "São Tomé og Príncipe"
       ],
       "capitals": ["São Tomé"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1687,8 +2115,9 @@
       "iso2": "sa",
       "wikidata": "Q851",
       "name": "Saudi Arabia",
-      "altNames": ["Kingdom of Saudi Arabia", "Saudi"],
+      "altNames": ["Kingdom of Saudi Arabia"],
       "capitals": ["Riyadh"],
+      "capitalAltNames": ["Al Riyadh", "Al-Riyadh", "AlRiyadh", "Ar-Riyadh", "Reyadh"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1698,6 +2127,7 @@
       "name": "Senegal",
       "altNames": ["Republic of Senegal"],
       "capitals": ["Dakar"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1707,6 +2137,7 @@
       "name": "Serbia",
       "altNames": ["Republic of Serbia", "Republika Srbija"],
       "capitals": ["Belgrade"],
+      "capitalAltNames": ["Beograd", "City of Belgrade"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1716,6 +2147,7 @@
       "name": "Seychelles",
       "altNames": ["Republic of Seychelles"],
       "capitals": ["Victoria"],
+      "capitalAltNames": ["Port Victoria"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1725,6 +2157,7 @@
       "name": "Sierra Leone",
       "altNames": ["Republic of Sierra Leone"],
       "capitals": ["Freetown"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1734,6 +2167,7 @@
       "name": "Singapore",
       "altNames": ["Garden City", "Lion City", "Republic of Singapore", "S'pore", "Singapore City"],
       "capitals": ["Singapore"],
+      "capitalAltNames": ["Lion City", "Republic of Singapore", "S'pore", "Singapore City"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1743,6 +2177,7 @@
       "name": "Slovakia",
       "altNames": ["Slovak Republic"],
       "capitals": ["Bratislava"],
+      "capitalAltNames": ["Pozsony", "Pressburg", "Prešpurk"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1752,6 +2187,7 @@
       "name": "Slovenia",
       "altNames": ["Republic of Slovenia", "Republika Slovenija", "Slovenija"],
       "capitals": ["Ljubljana"],
+      "capitalAltNames": ["Aemona", "Labacum", "Laibach", "Lublana"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1761,6 +2197,7 @@
       "name": "Solomon Islands",
       "altNames": ["the Solomon Islands"],
       "capitals": ["Honiara"],
+      "capitalAltNames": [],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1770,6 +2207,7 @@
       "name": "Somalia",
       "altNames": ["Federal Republic of Somalia"],
       "capitals": ["Mogadishu"],
+      "capitalAltNames": ["Hamar", "Maqadīshū", "The Seat of the Shah", "Xamar"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1779,6 +2217,15 @@
       "name": "South Africa",
       "altNames": ["Republic of South Africa"],
       "capitals": ["Bloemfontein", "Cape Town", "Pretoria"],
+      "capitalAltNames": [
+        "Kaap",
+        "Kaapstad",
+        "Mother City",
+        "Tavern of the Seas",
+        "West side",
+        "ePitoli",
+        "iKapa"
+      ],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1791,7 +2238,6 @@
         "Daehan Minguk",
         "Daehanminguk",
         "Hanguk",
-        "Korea (South)",
         "Korea Republic",
         "Rep. Korea",
         "Republic of Korea",
@@ -1799,6 +2245,17 @@
         "Silla"
       ],
       "capitals": ["Seoul"],
+      "capitalAltNames": [
+        "Gyeongseong",
+        "Hanseong",
+        "Hanyang",
+        "Keijou",
+        "Keijō",
+        "Namgyeong",
+        "Seoul Special City",
+        "Sŏul T'ŭkpyŏlsi",
+        "Wiryeseong"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1808,6 +2265,7 @@
       "name": "South Sudan",
       "altNames": ["Republic of South Sudan", "Southern Sudan"],
       "capitals": ["Juba"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1817,6 +2275,7 @@
       "name": "Spain",
       "altNames": ["Kingdom of Spain"],
       "capitals": ["Madrid"],
+      "capitalAltNames": ["Villa de Madrid"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1828,12 +2287,17 @@
         "Ceylan",
         "Ceylon",
         "Democratic Socialist Republic of Sri Lanka",
-        "Lanka, Sri",
         "Serendib",
         "Srilanka",
         "Taprobane"
       ],
       "capitals": ["Colombo", "Sri Jayawardenepura Kotte"],
+      "capitalAltNames": [
+        "Kotte",
+        "Koḷam̆ba",
+        "Sri Jayawardenapura Kotte",
+        "Sri Jayawardenapura-Kotte"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1843,6 +2307,7 @@
       "name": "State of Palestine",
       "altNames": ["Palestine"],
       "capitals": ["East Jerusalem", "Ramallah"],
+      "capitalAltNames": ["Arab Jerusalem", "Eastern Jerusalem"],
       "region": "Asia",
       "unStatus": "observer"
     },
@@ -1861,6 +2326,7 @@
         "the Sudan"
       ],
       "capitals": ["Khartoum"],
+      "capitalAltNames": ["Khartum"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1876,6 +2342,7 @@
         "Surrinam"
       ],
       "capitals": ["Paramaribo"],
+      "capitalAltNames": ["Parbo"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -1885,6 +2352,7 @@
       "name": "Sweden",
       "altNames": ["Kingdom of Sweden", "Swedish Kingdom"],
       "capitals": ["Stockholm"],
+      "capitalAltNames": ["Sthlm"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1899,6 +2367,7 @@
         "Swiss Confederation"
       ],
       "capitals": ["Bern"],
+      "capitalAltNames": ["Berna", "Berne", "city of Bern"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1908,6 +2377,7 @@
       "name": "Syria",
       "altNames": ["Syrian Arab Republic", "Sūriyā"],
       "capitals": ["Damascus"],
+      "capitalAltNames": ["Jasmine city", "Mint of Damascus", "Sham city"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1917,6 +2387,7 @@
       "name": "Tajikistan",
       "altNames": ["Republic of Tajikistan"],
       "capitals": ["Dushanbe"],
+      "capitalAltNames": ["Dyushambe", "Stalinabad"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1924,12 +2395,9 @@
       "iso2": "tz",
       "wikidata": "Q924",
       "name": "Tanzania",
-      "altNames": [
-        "Tanzania, United Republic of",
-        "United Republic of Tanganyika and Zanzibar",
-        "United Republic of Tanzania"
-      ],
+      "altNames": ["United Republic of Tanganyika and Zanzibar", "United Republic of Tanzania"],
       "capitals": ["Dodoma"],
+      "capitalAltNames": ["Dodoma City"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1948,6 +2416,12 @@
         "The Kingdom of Thailand"
       ],
       "capitals": ["Bangkok"],
+      "capitalAltNames": [
+        "Krung Thep",
+        "Krung Thep Maha Nakhon",
+        "Krungthepmahanakhon Amonrattanakosin Mahintharayutthaya Mahadilokphop Noppharatratchathaniburirom Udomratchaniwetmahasathan Amonphimanawatansathit Sakkathattiyawitsanukamprasit",
+        "Sia-Yut'hia"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1957,6 +2431,7 @@
       "name": "Timor-Leste",
       "altNames": ["Democratic Republic of Timor-Leste", "East Timor", "Timor Leste"],
       "capitals": ["Dili"],
+      "capitalAltNames": ["City of Dili"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -1966,6 +2441,7 @@
       "name": "Togo",
       "altNames": ["Togolese Republic"],
       "capitals": ["Lomé"],
+      "capitalAltNames": ["Lome"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -1975,6 +2451,7 @@
       "name": "Tonga",
       "altNames": ["Friendly Islands", "Kingdom of Tonga", "Tonga Islands"],
       "capitals": ["Nukuʻalofa"],
+      "capitalAltNames": ["Nuku'alofa"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1984,6 +2461,7 @@
       "name": "Trinidad and Tobago",
       "altNames": ["Republic of Trinidad and Tobago"],
       "capitals": ["Port of Spain"],
+      "capitalAltNames": ["Cumucurapo", "Port-of-Spain", "Puerto España"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -1993,6 +2471,7 @@
       "name": "Tunisia",
       "altNames": ["Republic of Tunisia", "Tunisian Republic"],
       "capitals": ["Tunis"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -2002,6 +2481,7 @@
       "name": "Türkiye",
       "altNames": ["Republic of Turkey", "Republic of Türkiye", "Turkey"],
       "capitals": ["Ankara"],
+      "capitalAltNames": ["Ancyra", "Angora"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2011,6 +2491,25 @@
       "name": "Turkmenistan",
       "altNames": ["Turkmenia"],
       "capitals": ["Ashgabat"],
+      "capitalAltNames": [
+        "Ak-Gaudan",
+        "Aschchabad",
+        "Asgabat",
+        "Ashabad",
+        "Ashgabad",
+        "Ashkabad",
+        "Ashkabat",
+        "Ashkhabad",
+        "Ashqabad",
+        "Askabad",
+        "Askhabad",
+        "Aşgabat",
+        "Ašgabat",
+        "Ishqabad",
+        "Ishqabat",
+        "Konjikala",
+        "Poltoratsk"
+      ],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2020,6 +2519,7 @@
       "name": "Tuvalu",
       "altNames": ["Ellice Islands"],
       "capitals": ["Funafuti"],
+      "capitalAltNames": ["Funafuti Island"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -2035,6 +2535,7 @@
         "Ugandah"
       ],
       "capitals": ["Kampala"],
+      "capitalAltNames": ["uganda's Capital city"],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -2044,6 +2545,24 @@
       "name": "Ukraine",
       "altNames": ["Ukr.", "Ukraina", "Ukrainia", "Ukraïna"],
       "capitals": ["Kyiv"],
+      "capitalAltNames": [
+        "Kief",
+        "Kieff",
+        "Kiev",
+        "Kiew",
+        "Kiof",
+        "Kioff",
+        "Kiou",
+        "Kiovia",
+        "Kiow",
+        "Kiowia",
+        "Kiyev",
+        "Kyiw",
+        "Kyjiv",
+        "Kyjiw",
+        "Kyyiv",
+        "Kyïv"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -2053,6 +2572,7 @@
       "name": "United Arab Emirates",
       "altNames": ["Emirates", "the Emirates", "the U.A.E.", "the UAE", "the United Arab Emirates"],
       "capitals": ["Abu Dhabi"],
+      "capitalAltNames": ["Abudhabi", "Abū Dhabi"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2070,6 +2590,31 @@
         "the United Kingdom of Great Britain and Northern Ireland"
       ],
       "capitals": ["London"],
+      "capitalAltNames": [
+        "Augusta",
+        "Big Smoke",
+        "Kaerlud",
+        "Karelundein",
+        "Llan Dian",
+        "Llyn Dain",
+        "Lon.",
+        "Lond.",
+        "Londini",
+        "Londiniensium",
+        "Londinio",
+        "Londinion",
+        "Londinium",
+        "London U.K.",
+        "London UK",
+        "Loniniensi",
+        "Loñ.",
+        "Lunden",
+        "Lundenburgh",
+        "Lundenburh",
+        "Lundenwic",
+        "Trinovantum",
+        "the Big Smoke"
+      ],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -2083,7 +2628,6 @@
         "U.S. of America",
         "US of A",
         "US of America",
-        "United States",
         "the States",
         "the U.S.",
         "the U.S. of A",
@@ -2097,6 +2641,7 @@
         "the United States of America"
       ],
       "capitals": ["Washington, D.C."],
+      "capitalAltNames": ["D.C. Washington", "District of Columbia", "The District"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -2106,6 +2651,7 @@
       "name": "Uruguay",
       "altNames": ["Eastern Republic of Uruguay", "Oriental Republic of Uruguay"],
       "capitals": ["Montevideo"],
+      "capitalAltNames": [],
       "region": "South America",
       "unStatus": "member"
     },
@@ -2115,6 +2661,7 @@
       "name": "Uzbekistan",
       "altNames": ["Republic of Uzbekistan"],
       "capitals": ["Tashkent"],
+      "capitalAltNames": ["Binkath", "Chach", "Choch", "Shash", "Shosh", "Tashkand", "Toshkent"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2124,6 +2671,7 @@
       "name": "Vanuatu",
       "altNames": ["Republic of Vanuatu"],
       "capitals": ["Port Vila"],
+      "capitalAltNames": ["Vila"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -2138,6 +2686,7 @@
         "Vzla"
       ],
       "capitals": ["Caracas"],
+      "capitalAltNames": ["Carracas", "Santiago de León de Caracas"],
       "region": "South America",
       "unStatus": "member"
     },
@@ -2153,6 +2702,7 @@
         "Việt Nam"
       ],
       "capitals": ["Hanoi"],
+      "capitalAltNames": ["Dong Do", "Ha Noi", "Hà Nội", "Thang Long", "Tonkin", "Đại La"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2162,6 +2712,7 @@
       "name": "Yemen",
       "altNames": ["Rep. Yemen", "Republic of Yemen"],
       "capitals": ["Aden", "Sanaa"],
+      "capitalAltNames": ["San'a'", "Sana", "Sana'a"],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2171,6 +2722,7 @@
       "name": "Zambia",
       "altNames": ["Republic of Zambia"],
       "capitals": ["Lusaka"],
+      "capitalAltNames": [],
       "region": "Africa",
       "unStatus": "member"
     },
@@ -2180,6 +2732,7 @@
       "name": "Zimbabwe",
       "altNames": ["Republic of Zimbabwe", "Rhodesia", "Southern Rhodesia", "Zimbabwe Rhodesia"],
       "capitals": ["Harare"],
+      "capitalAltNames": ["Fort Salisbury"],
       "region": "Africa",
       "unStatus": "member"
     }

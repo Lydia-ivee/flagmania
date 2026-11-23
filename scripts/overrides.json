@@ -1,0 +1,12 @@
+[
+  {
+    "iso2": "gq",
+    "addCapitals": ["Malabo"],
+    "reason": "Wikidata lists only Ciudad de la Paz, the planned capital. The government still sits in Malabo and most references give Malabo, so both count."
+  },
+  {
+    "iso2": "in",
+    "addCapitalAltNames": ["Delhi"],
+    "reason": "New Delhi sits inside Delhi and most people call the capital Delhi. Wikidata does not list it as an alias, so typed answers would reject it."
+  }
+]

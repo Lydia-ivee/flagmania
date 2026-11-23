@@ -1,6 +1,6 @@
 import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 
-export type SwipeDirection = 'left' | 'right' | 'down'
+export type SwipeDirection = 'up' | 'left' | 'right' | 'down'
 
 /** A gesture is a real drag. A command is a button press or a key. */
 export type SwipeSource = 'gesture' | 'command'
@@ -20,6 +20,8 @@ export function directionFor(offset: Offset, width: number, height: number): Swi
     if (offset.x <= -width * horizontalShare) return 'left'
   } else if (offset.y >= height * verticalShare) {
     return 'down'
+  } else if (offset.y <= -height * verticalShare) {
+    return 'up'
   }
   return null
 }
@@ -32,6 +34,7 @@ const flyOut: Record<SwipeDirection, string> = {
   left: 'translate(-120vw, 0) rotate(-20deg)',
   right: 'translate(120vw, 0) rotate(20deg)',
   down: 'translate(0, 120vh)',
+  up: 'translate(0, -120vh)',
 }
 
 type Drag = { origin: Offset; offset: Offset; width: number; height: number }
@@ -43,7 +46,12 @@ type Drag = { origin: Offset; offset: Offset; width: number; height: number }
 export function useSwipe(
   onSwipe: (direction: SwipeDirection, source: SwipeSource) => void,
   enabled: boolean,
+  allowed: readonly SwipeDirection[] = ['left', 'right', 'down'],
 ) {
+  /** A swipe in a direction the card does not use springs back. */
+  const usable = (direction: SwipeDirection | null) =>
+    direction && allowed.includes(direction) ? direction : null
+
   const [drag, setDrag] = useState<Drag | null>(null)
   const [leaving, setLeaving] = useState<SwipeDirection | null>(null)
   // Set at once, unlike state, so two commits in the same moment cannot both get through.
@@ -89,7 +97,7 @@ export function useSwipe(
       // Measure from the release point itself. The last move may not have rendered yet.
       const offset = { x: event.clientX - drag.origin.x, y: event.clientY - drag.origin.y }
       setDrag(null)
-      const direction = directionFor(offset, drag.width, drag.height)
+      const direction = usable(directionFor(offset, drag.width, drag.height))
       if (direction) commit(direction, 'gesture')
     },
     onPointerCancel() {
@@ -101,13 +109,19 @@ export function useSwipe(
   const leaning =
     leaving ??
     (drag
-      ? directionFor({ x: offset.x / leanShare, y: offset.y / leanShare }, drag.width, drag.height)
+      ? usable(
+          directionFor(
+            { x: offset.x / leanShare, y: offset.y / leanShare },
+            drag.width,
+            drag.height,
+          ),
+        )
       : null)
 
   const style: CSSProperties = {
     transform: leaving
       ? flyOut[leaving]
-      : `translate(${offset.x}px, ${Math.max(0, offset.y)}px) rotate(${offset.x / 20}deg)`,
+      : `translate(${offset.x}px, ${allowed.includes('up') ? offset.y : Math.max(0, offset.y)}px) rotate(${offset.x / 20}deg)`,
     transition: drag ? 'none' : `transform ${flyOutMs}ms ease-out`,
   }
 

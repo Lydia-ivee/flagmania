@@ -5,7 +5,7 @@ Learn every country's flag and capital by swiping cards on your phone, with a sp
 [![CI](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml/badge.svg)](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
 
-> Status. Early development. You can swipe through true or false flag cards and your progress is saved on the device. Harder question formats and capitals come next. The plan is in [docs/PRD.md](docs/PRD.md).
+> Status. Early development. Flags and capitals both work, in every question format from true or false up to typing the answer. Progress is saved on the device. Offline install comes next. The plan is in [docs/PRD.md](docs/PRD.md).
 
 <!-- Only add a badge for a result the repository can back up. -->
 
@@ -35,14 +35,16 @@ Two things adapt as you go.
 
 **How you are asked.** A miss makes the next question about that item easier. A correct answer makes it harder.
 
-| Tier | Format          | Swipe             |
-| ---- | --------------- | ----------------- |
-| T0   | True or false   | Left or right     |
-| T1   | Two options     | Left or right     |
-| T2   | Four options    | Any direction     |
-| T3   | Type the answer | Enter or swipe up |
+| Tier | Format          | Swipe            |
+| ---- | --------------- | ---------------- |
+| T0   | True or false   | Left or right    |
+| T1   | Two options     | Left or right    |
+| T2   | Four options    | Any direction    |
+| T3   | Type the answer | Type, then Enter |
 
 An easy guess can only take an item so far. Box 3 and above need a correct answer from four options or a typed one.
+
+Typed answers forgive accents and small typos. They never accept a different country, so Australia is never taken as a typo of Austria. The checker is in [src/core/matching.ts](src/core/matching.ts).
 
 ### A worked example
 
@@ -101,6 +103,10 @@ Decisions are recorded in [docs/adr](docs/adr).
 - Flags from [flag-icons](https://github.com/lipis/flag-icons), MIT.
 
 The default deck is the 193 UN member states plus the 2 UN observer states. Disputed and dependent territories will live in an optional deck.
+
+Where a capital is contested or moving, every capital Wikidata lists counts as right. Changes to the data live in [scripts/overrides.json](scripts/overrides.json), each with a written reason. Equatorial Guinea accepts Malabo as well as Ciudad de la Paz.
+
+Four-option flag questions include one lookalike where there is one, such as Chad with Romania. The groups are in [src/data/lookalikes.json](src/data/lookalikes.json).
 
 ## Privacy
 
