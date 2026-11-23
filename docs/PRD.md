@@ -89,6 +89,7 @@ Priorities use MoSCoW (Must, Should, Could, Won't).
 
 - Facets are scheduled independently. Knowing the flag of Chad says nothing about knowing its capital.
 - The flags deck holds the first two facets and the capitals deck holds the last two. The learner turns each deck on or off.
+- Capital-to-country is skipped where the capital names the country, such as Kuwait City or Vatican City, because the prompt would give the answer away. This drops 13 items, so the two decks hold 767 items between them.
 
 ### 6.2 The swipe mechanic
 
@@ -148,8 +149,9 @@ Rules, applied per item after each answer.
 #### Typed answer matching
 
 - Normalise both strings by lowercasing, stripping diacritics, punctuation and a leading "the".
-- Accept any listed alternative name, such as "Ivory Coast" for Côte d'Ivoire or "Czechia" and "Czech Republic".
+- Accept any listed alternative name, such as "Ivory Coast" for Côte d'Ivoire or "Czechia" and "Czech Republic". Alternative names must be typed exactly. Only the main name allows typos.
 - Allow an edit distance of 1 for answers up to 6 letters and 2 for longer ones. A near miss counts as correct and shows the proper spelling.
+- Never accept another item's answer. A typo that sits as close to another country as to the right one does not count, and the feedback says the answer could mean more than one. An alias shared by two countries, such as "Congo", is dropped from both.
 - Countries with more than one capital accept any of them. South Africa and Bolivia accept any of their capitals. The feedback state lists all of them.
 
 ### 6.4 Progress and settings
