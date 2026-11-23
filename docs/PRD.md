@@ -101,9 +101,9 @@ Every question is a card. The answer options sit at the card's edges and the lea
 | T2   | Four options                                                        | Up, down, left or right                                    | Three distractors                                    |
 | T3   | Typed answer                                                        | Type, then press Enter or swipe up                         | Not available for country-to-flag, which stays at T2 |
 
-- A swipe commits once the card passes 35% of the screen width (or height for vertical swipes). Below that it springs back.
+- A sideways swipe commits once the card passes 35% of its own width, and a downward swipe at 25% of its height. Below that it springs back. Measuring against the card keeps the distance the same on a phone and a wide laptop screen.
 - The card tilts and the chosen option highlights during the drag, so the learner sees what they are about to pick before letting go.
-- After every answer a short feedback state shows right or wrong and, on a miss, the correct answer. A tap or swipe moves on.
+- After every answer a short feedback state shows right or wrong and, on a miss, the correct answer. A tap anywhere on the panel or the Enter key moves on. A right answer given by swiping moves on by itself after a moment. Answers given with a button or key always wait, so nobody is rushed.
 - **Accessibility fallback.** Every swipe has a matching on-screen button and a keyboard shortcut (arrow keys, plus D for "don't know"). This meets WCAG 2.2 success criterion 2.5.1, which requires a single-pointer alternative to path-based gestures.
 
 ### 6.3 Adaptive difficulty
@@ -309,14 +309,14 @@ The answers log feeds the progress screen and any future charts. It is capped at
 
 ## 11. Release plan
 
-| Milestone              | Contents                                                                        | Exit check                                                |
-| ---------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| M0 Foundations         | Repository, CI, Pages deploy, data script, ADR 0001                             | Empty app live on Pages with green CI                     |
-| M1 Walking skeleton    | Flags deck, T0 swipe, Leitner boxes, local storage                              | A full session on the phone, progress kept after a reload |
-| M2 Adaptive formats    | T1 to T3, lookalike distractors, typed matching, capitals deck                  | All scheduler property tests pass                         |
-| M3 Offline and install | Service worker, install prompt, export and import, region filter                | Offline Playwright test passes, session done on the Tube  |
-| M4 Presentation        | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI                 | README checklist in appendix A complete                   |
-| M5 Landmarks pack      | Commons pipeline, credits screen, landmark facet, human-made and natural filter | Every image has an author and licence in CREDITS          |
+| Milestone              | Contents                                                                              | Exit check                                                |
+| ---------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| M0 Foundations         | Repository, CI, Pages deploy, data script, ADR 0001                                   | Empty app live on Pages with green CI                     |
+| M1 Walking skeleton    | Flag-to-country facet, T0 swipe, Leitner boxes, local storage                         | A full session on the phone, progress kept after a reload |
+| M2 Adaptive formats    | T1 to T3, country-to-flag facet, lookalike distractors, typed matching, capitals deck | All scheduler property tests pass                         |
+| M3 Offline and install | Service worker, install prompt, export and import, region filter                      | Offline Playwright test passes, session done on the Tube  |
+| M4 Presentation        | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI                       | README checklist in appendix A complete                   |
+| M5 Landmarks pack      | Commons pipeline, credits screen, landmark facet, human-made and natural filter       | Every image has an author and licence in CREDITS          |
 
 M0 to M4 is version 1.0. M5 is optional and starts only once 1.0 is in daily use.
 
