@@ -1,20 +1,24 @@
 import { useEffect, useState } from 'react'
-import { catalogue as buildCatalogue } from './core/items.ts'
-import { applyAnswer, newItemState } from './core/scheduler.ts'
+import { parseItemId } from './core/items.ts'
+import { applyAnswer, askTier, newItemState } from './core/scheduler.ts'
 import { buildSession, defaultSessionOptions } from './core/session.ts'
-import type { Facet, ItemState, Random } from './core/types.ts'
+import type { ItemState, Random, Tier } from './core/types.ts'
 import { countries } from './data/countries.ts'
-import { loadStates, openDb, saveState, type FlagmaniaDb } from './storage/db.ts'
+import { catalogueFor } from './decks.ts'
+import {
+  loadSettings,
+  loadStates,
+  openDb,
+  saveSettings,
+  saveState,
+  type DeckId,
+  type FlagmaniaDb,
+  type Settings,
+  defaultSettings,
+} from './storage/db.ts'
 import { HomeScreen } from './ui/HomeScreen.tsx'
 import { SessionScreen, type SessionSummary } from './ui/SessionScreen.tsx'
 import { SummaryScreen } from './ui/SummaryScreen.tsx'
-
-/** M1 teaches flag to country only. The other facets arrive with the harder formats in M2. */
-const facetsInPlay: Facet[] = ['flag-to-country']
-const catalogue = buildCatalogue(
-  countries.map((c) => c.iso2),
-  facetsInPlay,
-)
 
 const regionByIso = new Map(countries.map((c) => [c.iso2, c.region]))
 const regionOf = (id: string) => regionByIso.get(id.slice(0, 2)) ?? ''
@@ -24,11 +28,13 @@ type Screen =
   | { kind: 'session'; queue: string[]; key: number }
   | { kind: 'summary'; summary: SessionSummary }
 
+type Loaded = { states: Map<string, ItemState>; settings: Settings }
+
 type Props = { db?: FlagmaniaDb; random?: Random }
 
 export function App({ db: givenDb, random = Math.random }: Props) {
   const [db] = useState(() => givenDb ?? openDb())
-  const [states, setStates] = useState<Map<string, ItemState> | null>(null)
+  const [loaded, setLoaded] = useState<Loaded | null>(null)
   const [storageWarning, setStorageWarning] = useState(false)
   // Off when saved progress could not be read, so a fresh record never overwrites a real one.
   const [canSave, setCanSave] = useState(true)
@@ -36,12 +42,15 @@ export function App({ db: givenDb, random = Math.random }: Props) {
   const [now, setNow] = useState(() => Date.now())
 
   useEffect(() => {
-    loadStates(db)
-      .then(setStates)
-      .catch(() => {
+    Promise.all([loadStates(db), loadSettings(db)])
+      .then(([states, settings]) => setLoaded({ states, settings }))
+      .catch(async () => {
         setStorageWarning(true)
         setCanSave(false)
-        setStates(new Map())
+        setLoaded({
+          states: new Map(),
+          settings: await loadSettings(db).catch(() => defaultSettings),
+        })
       })
   }, [db])
 
@@ -54,13 +63,16 @@ export function App({ db: givenDb, random = Math.random }: Props) {
     return () => document.removeEventListener('visibilitychange', refresh)
   }, [])
 
-  if (!states) {
+  if (!loaded) {
     return (
       <main className="app">
         <p className="loading">Loading your progress</p>
       </main>
     )
   }
+
+  const { states, settings } = loaded
+  const catalogue = catalogueFor(settings)
 
   const start = () => {
     const at = Date.now()
@@ -77,14 +89,24 @@ export function App({ db: givenDb, random = Math.random }: Props) {
     setScreen({ kind: 'home' })
   }
 
-  const recordAnswer = (itemId: string, correct: boolean) => {
+  const tierFor = (itemId: string): Tier => askTier(states.get(itemId), parseItemId(itemId).facet)
+
+  const recordAnswer = (itemId: string, correct: boolean, tier: Tier) => {
     const at = Date.now()
-    const facet = itemId.slice(3) as Facet
+    const { facet } = parseItemId(itemId)
     const current = states.get(itemId) ?? newItemState(itemId, at)
-    // Every card is true or false (T0) until the other formats arrive in M2.
-    const next = applyAnswer(current, { correct, tier: 0, at }, facet)
-    setStates(new Map(states).set(itemId, next))
+    const next = applyAnswer(current, { correct, tier, at }, facet)
+    setLoaded({ settings, states: new Map(states).set(itemId, next) })
     if (canSave) saveState(db, next).catch(() => setStorageWarning(true))
+  }
+
+  const toggleDeck = (deck: DeckId) => {
+    const decks = { ...settings.decks, [deck]: !settings.decks[deck] }
+    // Keep at least one deck on, or there is nothing to study.
+    if (!Object.values(decks).some(Boolean)) return
+    const nextSettings = { ...settings, decks }
+    setLoaded({ states, settings: nextSettings })
+    if (canSave) saveSettings(db, nextSettings).catch(() => setStorageWarning(true))
   }
 
   return (
@@ -97,6 +119,8 @@ export function App({ db: givenDb, random = Math.random }: Props) {
           catalogue={catalogue}
           states={states}
           now={now}
+          settings={settings}
+          onToggleDeck={toggleDeck}
           onStart={start}
           storageWarning={storageWarning}
         />
@@ -107,6 +131,7 @@ export function App({ db: givenDb, random = Math.random }: Props) {
           queue={screen.queue}
           countries={countries}
           random={random}
+          tierFor={tierFor}
           onAnswer={recordAnswer}
           onFinish={(summary) => setScreen({ kind: 'summary', summary })}
         />

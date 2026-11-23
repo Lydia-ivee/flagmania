@@ -248,9 +248,9 @@ button:focus-visible {
   outline: none;
 }
 
+/* The card takes focus only so screen readers read it. It is not a control, so no ring. */
 .swipe-card:focus-visible {
-  outline: 3px solid var(--ink);
-  outline-offset: 3px;
+  outline: none;
 }
 
 .swipe-card[data-leaning='right'] {
@@ -331,9 +331,6 @@ button:focus-visible {
 }
 
 .answer-buttons .unknown {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
   padding-inline: 1rem;
 }
 
@@ -352,10 +349,6 @@ button:focus-visible {
   transform: scale(1.08);
   outline: 3px solid var(--ink);
   outline-offset: 2px;
-}
-
-.answer-buttons .unknown.on {
-  border-color: var(--wrong);
 }
 
 .keys {
@@ -474,6 +467,212 @@ button:focus-visible {
   .progress span,
   .hint,
   .answer-buttons button {
+    transition: none;
+  }
+}
+
+/* Decks */
+
+.decks {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.decks legend {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+.deck-toggle {
+  min-width: 7rem;
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--line);
+}
+
+.deck-toggle.on {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.deck-toggle:disabled {
+  cursor: not-allowed;
+}
+
+/* Prompts */
+
+.prompt-title {
+  margin: 0;
+  padding-block: 1.5rem 0.5rem;
+  font-size: clamp(1.75rem, 8vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.swipe-card .prompt-title + .claim {
+  padding-bottom: 1rem;
+  color: var(--muted);
+}
+
+.swipe-card .prompt-title + .claim strong {
+  color: var(--ink);
+}
+
+/* Choice pad. Each option sits at the edge it maps to. */
+
+.choice-pad {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.choice-pad.count-2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'left right';
+}
+
+.choice-pad.count-4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'up up'
+    'left right'
+    'down down';
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 1rem;
+  background: var(--surface);
+  color: var(--ink);
+  border: 2px solid var(--line);
+  font-weight: 600;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  transition: transform 120ms ease-out;
+}
+
+.option.up {
+  grid-area: up;
+}
+
+.option.left {
+  grid-area: left;
+}
+
+.option.right {
+  grid-area: right;
+}
+
+.option.down {
+  grid-area: down;
+}
+
+.option.on {
+  transform: scale(1.04);
+  border-color: var(--accent);
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.option .arrow {
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+.option .flag.small {
+  width: 6rem;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.skip {
+  align-self: center;
+  min-width: 10rem;
+}
+
+.unknown {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.unknown.on {
+  border-color: var(--wrong);
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Typed answers */
+
+.typed {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.typed input {
+  font: inherit;
+  font-size: 1.25rem;
+  min-height: 3.25rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.typed input:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+.typed-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.typed-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Feedback extras */
+
+.feedback .note,
+.compare-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.missed li span {
+  display: flex;
+  flex-direction: column;
+}
+
+.missed small {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option {
     transition: none;
   }
 }
