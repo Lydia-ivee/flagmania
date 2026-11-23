@@ -5,7 +5,7 @@ Learn every country's flag and capital by swiping cards on your phone, with a sp
 [![CI](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml/badge.svg)](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
 
-> Status. Early development. The live app shows the data and flags loading, and swiping arrives in the next milestone. The plan is in [docs/PRD.md](docs/PRD.md).
+> Status. Early development. You can swipe through true or false flag cards and your progress is saved on the device. Harder question formats and capitals come next. The plan is in [docs/PRD.md](docs/PRD.md).
 
 <!-- Only add a badge for a result the repository can back up. -->
 
@@ -52,7 +52,7 @@ An easy guess can only take an item so far. Box 3 and above need a correct answe
 4. Day 3. Chad or Mali. Correct. Still box 2, since a two-option guess cannot lift it higher. Tier T2.
 5. Day 4. Chad, Romania, Andorra or Moldova. Correct. Box 3, and it comes back in 3 days.
 
-The scheduler will be a set of pure functions in `src/core` with property-based tests.
+The scheduler is a set of pure functions in [src/core](src/core). It never reads the clock or the database itself, so property-based tests can replay thousands of random answer histories and check the rules above always hold.
 
 ## Run it locally
 

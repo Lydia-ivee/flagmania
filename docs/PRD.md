@@ -309,14 +309,14 @@ The answers log feeds the progress screen and any future charts. It is capped at
 
 ## 11. Release plan
 
-| Milestone              | Contents                                                                        | Exit check                                                |
-| ---------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| M0 Foundations         | Repository, CI, Pages deploy, data script, ADR 0001                             | Empty app live on Pages with green CI                     |
-| M1 Walking skeleton    | Flags deck, T0 swipe, Leitner boxes, local storage                              | A full session on the phone, progress kept after a reload |
-| M2 Adaptive formats    | T1 to T3, lookalike distractors, typed matching, capitals deck                  | All scheduler property tests pass                         |
-| M3 Offline and install | Service worker, install prompt, export and import, region filter                | Offline Playwright test passes, session done on the Tube  |
-| M4 Presentation        | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI                 | README checklist in appendix A complete                   |
-| M5 Landmarks pack      | Commons pipeline, credits screen, landmark facet, human-made and natural filter | Every image has an author and licence in CREDITS          |
+| Milestone              | Contents                                                                              | Exit check                                                |
+| ---------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| M0 Foundations         | Repository, CI, Pages deploy, data script, ADR 0001                                   | Empty app live on Pages with green CI                     |
+| M1 Walking skeleton    | Flag-to-country facet, T0 swipe, Leitner boxes, local storage                         | A full session on the phone, progress kept after a reload |
+| M2 Adaptive formats    | T1 to T3, country-to-flag facet, lookalike distractors, typed matching, capitals deck | All scheduler property tests pass                         |
+| M3 Offline and install | Service worker, install prompt, export and import, region filter                      | Offline Playwright test passes, session done on the Tube  |
+| M4 Presentation        | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI                       | README checklist in appendix A complete                   |
+| M5 Landmarks pack      | Commons pipeline, credits screen, landmark facet, human-made and natural filter       | Every image has an author and licence in CREDITS          |
 
 M0 to M4 is version 1.0. M5 is optional and starts only once 1.0 is in daily use.
 
