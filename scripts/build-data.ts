@@ -2,6 +2,7 @@
 // Run with `npm run data`. The output is committed so normal builds need no network.
 
 import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises'
+import { normalise } from '../src/core/matching.ts'
 
 type UnState = { iso2: string; unStatus: 'member' | 'observer' }
 
@@ -13,7 +14,12 @@ type FlagIconsEntry = {
   iso: boolean
 }
 
-type Override = { iso2: string; addCapitals?: string[]; reason: string }
+type Override = {
+  iso2: string
+  addCapitals?: string[]
+  addCapitalAltNames?: string[]
+  reason: string
+}
 
 type Country = {
   iso2: string
@@ -85,10 +91,16 @@ const split = (value: string) => (value ? value.split('|').filter(Boolean) : [])
 
 // Aliases on Wikidata include codes, emoji, abbreviations and other scripts. Keep plain
 // Latin-script names only. These are used to accept typed answers and are never shown.
+// Commas and brackets mark inverted or qualified forms such as "Lanka, Sri" or
+// "Korea (South)", which would let a bare "Korea" through, so those go too.
 const isUsefulAlias = (alias: string) =>
   alias.length >= 4 &&
-  /^\p{Script=Latin}[\p{Script=Latin}\p{M} '’.,()-]*$/u.test(alias) &&
+  /^\p{Script=Latin}[\p{Script=Latin}\p{M} '’.-]*$/u.test(alias) &&
   alias !== alias.toUpperCase()
+
+/** "Cape" is the start of "Cape Town", not another name for it. */
+const isWordPrefixOf = (alias: string, names: readonly string[]) =>
+  names.some((n) => n.toLowerCase().startsWith(`${alias.toLowerCase()} `))
 
 const problems: string[] = []
 const warnings: string[] = []
@@ -124,12 +136,16 @@ for (const state of states) {
   const name = icons.name
   const seen = new Set([name.toLowerCase()])
   const altNames = [row.label.value, ...split(row.aliases.value).filter(isUsefulAlias)]
+    .filter((alt) => !isWordPrefixOf(alt, [name]))
     .filter((alt) => !seen.has(alt.toLowerCase()) && seen.add(alt.toLowerCase()))
     .sort()
 
   const capitalSeen = new Set(capitals.map((c) => c.toLowerCase()))
-  const capitalAltNames = split(row.capitalAliases.value)
-    .filter(isUsefulAlias)
+  const capitalAltNames = [
+    ...split(row.capitalAliases.value).filter(isUsefulAlias),
+    ...(override?.addCapitalAltNames ?? []),
+  ]
+    .filter((alt) => !isWordPrefixOf(alt, capitals))
     .filter((alt) => !capitalSeen.has(alt.toLowerCase()) && capitalSeen.add(alt.toLowerCase()))
     .sort()
 
@@ -155,6 +171,35 @@ for (const override of overrides) {
 if (problems.length > 0) {
   console.error(problems.join('\n'))
   process.exit(1)
+}
+
+// An alias shared by two countries, or equal to another country's main answer, would make a
+// typed answer ambiguous. "Congo" is an alias of both Congos, so neither keeps it.
+const dropShared = (pick: (c: Country) => string[], main: (c: Country) => string[]) => {
+  const owners = new Map<string, Set<string>>()
+  for (const country of countries) {
+    for (const value of [...pick(country), ...main(country)]) {
+      // Compare the way typed answers are compared, so "The Garden City" meets "Garden City".
+      const key = normalise(value)
+      owners.set(key, (owners.get(key) ?? new Set()).add(country.iso2))
+    }
+  }
+  return (country: Country) =>
+    pick(country).filter((alt) => (owners.get(normalise(alt))?.size ?? 0) === 1)
+}
+const keepCountryAlts = dropShared(
+  (c) => c.altNames,
+  (c) => [c.name],
+)
+const keepCapitalAlts = dropShared(
+  (c) => c.capitalAltNames,
+  (c) => c.capitals,
+)
+for (const country of countries) {
+  const altNames = keepCountryAlts(country)
+  const capitalAltNames = keepCapitalAlts(country)
+  country.altNames = altNames
+  country.capitalAltNames = capitalAltNames
 }
 
 countries.sort((a, b) => a.name.localeCompare(b.name, 'en'))
