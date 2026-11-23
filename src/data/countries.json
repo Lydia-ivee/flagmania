@@ -338,7 +338,7 @@
       "iso2": "bn",
       "wikidata": "Q921",
       "name": "Brunei Darussalam",
-      "altNames": ["Negara Brunei Darussalam"],
+      "altNames": ["Brunei", "Negara Brunei Darussalam"],
       "capitals": ["Bandar Seri Begawan"],
       "capitalAltNames": ["Bandar Brunei", "Brunei Town", "Seri Begawan"],
       "region": "Asia",
@@ -657,7 +657,7 @@
       "name": "Denmark",
       "altNames": ["Danemark", "Dania", "Danmark", "Denmark proper", "metropolitan Denmark"],
       "capitals": ["Copenhagen"],
-      "capitalAltNames": ["Hafn", "Kbh.", "Kobenhavn", "Kopenhagen", "Köbenhavn", "København"],
+      "capitalAltNames": ["Hafn", "Kobenhavn", "Kopenhagen", "Köbenhavn", "København"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -990,17 +990,7 @@
         "Vatican City State"
       ],
       "capitals": ["Vatican City"],
-      "capitalAltNames": [
-        "Città del Vaticano",
-        "Civitas Vaticana",
-        "Holy See",
-        "Papal State",
-        "State of Vatican City",
-        "Stato della Città del Vaticano",
-        "Status Civitatis Vaticanae",
-        "The Vatican",
-        "Vatican City State"
-      ],
+      "capitalAltNames": [],
       "region": "Europe",
       "unStatus": "observer"
     },
@@ -1044,7 +1034,7 @@
       "iso2": "is",
       "wikidata": "Q189",
       "name": "Iceland",
-      "altNames": ["Icelandic republic", "Isl.", "Republic of Iceland", "Ysland"],
+      "altNames": ["Icelandic republic", "Republic of Iceland", "Ysland"],
       "capitals": ["Reykjavík"],
       "capitalAltNames": ["Reykjavik", "Reykjavikurborg", "Reykjavíkurborg"],
       "region": "Europe",
@@ -1258,7 +1248,7 @@
       "name": "Kiribati",
       "altNames": ["Republic of Kiribati"],
       "capitals": ["South Tarawa"],
-      "capitalAltNames": [],
+      "capitalAltNames": ["Tarawa"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1402,7 +1392,7 @@
       "name": "Luxembourg",
       "altNames": ["Grand Duchy of Luxembourg", "Luxemburg"],
       "capitals": ["Luxembourg"],
-      "capitalAltNames": ["City of Luxembourg", "Luxembourg City", "Luxemburg"],
+      "capitalAltNames": ["City of Luxembourg", "Luxembourg City"],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1579,16 +1569,7 @@
         "Prinçipatu de Mùnegu"
       ],
       "capitals": ["Monaco"],
-      "capitalAltNames": [
-        "Fort-Hercule",
-        "Mùnegu",
-        "Principality and Diocese of Monaco",
-        "Principality of Monaco",
-        "Principato di Monaco",
-        "Principatu de Mu̍negu",
-        "Principauté de Monaco",
-        "Prinçipatu de Mùnegu"
-      ],
+      "capitalAltNames": [],
       "region": "Europe",
       "unStatus": "member"
     },
@@ -1687,7 +1668,7 @@
       "name": "Nauru",
       "altNames": ["Naoero", "Pleasant Island", "Republic of Naoero", "Republic of Nauru"],
       "capitals": ["Yaren District"],
-      "capitalAltNames": ["Makwa", "Moqua"],
+      "capitalAltNames": ["Makwa", "Moqua", "Yaren"],
       "region": "Oceania",
       "unStatus": "member"
     },
@@ -1896,7 +1877,7 @@
       "name": "Panama",
       "altNames": ["Republic of Panama"],
       "capitals": ["Panama City"],
-      "capitalAltNames": ["Ciudad de Panama", "Ciudad de Panamá", "Panamá"],
+      "capitalAltNames": ["Ciudad de Panama", "Ciudad de Panamá"],
       "region": "North America",
       "unStatus": "member"
     },
@@ -2067,6 +2048,7 @@
       "wikidata": "Q757",
       "name": "Saint Vincent and the Grenadines",
       "altNames": [
+        "Saint Vincent",
         "St Vincent",
         "St Vincent and the Grenadines",
         "St. Vincent",
@@ -2115,7 +2097,7 @@
       "iso2": "sa",
       "wikidata": "Q851",
       "name": "Saudi Arabia",
-      "altNames": ["Kingdom of Saudi Arabia"],
+      "altNames": ["Kingdom of Saudi Arabia", "Saudi"],
       "capitals": ["Riyadh"],
       "capitalAltNames": ["Al Riyadh", "Al-Riyadh", "AlRiyadh", "Ar-Riyadh", "Reyadh"],
       "region": "Asia",
@@ -2167,7 +2149,7 @@
       "name": "Singapore",
       "altNames": ["Garden City", "Lion City", "Republic of Singapore", "S'pore", "Singapore City"],
       "capitals": ["Singapore"],
-      "capitalAltNames": ["Lion City", "Republic of Singapore", "S'pore", "Singapore City"],
+      "capitalAltNames": [],
       "region": "Asia",
       "unStatus": "member"
     },
@@ -2543,7 +2525,7 @@
       "iso2": "ua",
       "wikidata": "Q212",
       "name": "Ukraine",
-      "altNames": ["Ukr.", "Ukraina", "Ukrainia", "Ukraïna"],
+      "altNames": ["Ukraina", "Ukrainia", "Ukraïna"],
       "capitals": ["Kyiv"],
       "capitalAltNames": [
         "Kief",
@@ -2597,7 +2579,6 @@
         "Karelundein",
         "Llan Dian",
         "Llyn Dain",
-        "Lon.",
         "Lond.",
         "Londini",
         "Londiniensium",
@@ -2607,7 +2588,6 @@
         "London U.K.",
         "London UK",
         "Loniniensi",
-        "Loñ.",
         "Lunden",
         "Lundenburgh",
         "Lundenburh",
@@ -2628,6 +2608,7 @@
         "U.S. of America",
         "US of A",
         "US of America",
+        "United States",
         "the States",
         "the U.S.",
         "the U.S. of A",

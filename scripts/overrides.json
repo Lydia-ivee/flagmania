@@ -8,5 +8,15 @@
     "iso2": "in",
     "addCapitalAltNames": ["Delhi"],
     "reason": "New Delhi sits inside Delhi and most people call the capital Delhi. Wikidata does not list it as an alias, so typed answers would reject it."
+  },
+  {
+    "iso2": "ki",
+    "addCapitalAltNames": ["Tarawa"],
+    "reason": "Wikidata gives South Tarawa. Most references and most people just say Tarawa, the atoll it sits on."
+  },
+  {
+    "iso2": "nr",
+    "addCapitalAltNames": ["Yaren"],
+    "reason": "Wikidata gives Yaren District. Nauru has no official capital and Yaren is the usual short answer."
   }
 ]

@@ -3,12 +3,17 @@
  * strict about naming a different country.
  */
 
-/** Lowercase, no accents, no leading "the", letters and digits only. */
+/**
+ * Lowercase, no accents, no leading "the", letters and digits only. "&" reads as "and" and a
+ * whole-word "St" or "St." as "Saint", so "St Kitts & Nevis" meets "Saint Kitts and Nevis".
+ */
 export function normalise(text: string): string {
   return text
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
     .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/(^|[^\p{L}])st\.?(?=\s)/gu, '$1saint')
     .trim()
     .replace(/^the\s+/, '')
     .replace(/[^\p{L}\p{N}]/gu, '')

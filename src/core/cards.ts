@@ -132,8 +132,11 @@ export function makeCard<C extends CountryLike>(
   const byCapital = answersWithCapital(facet)
   const accepted = byCapital ? [...country.capitals] : [country.name]
   const aliases = byCapital ? [...country.capitalAltNames] : [...country.altNames]
+  // For capitals, other countries' names are rivals too. "Panama" is never Manama.
   const rivals = others.flatMap((c) =>
-    byCapital ? [...c.capitals, ...c.capitalAltNames] : [c.name, ...c.altNames],
+    byCapital
+      ? [...c.capitals, ...c.capitalAltNames, c.name, ...c.altNames]
+      : [c.name, ...c.altNames],
   )
   return { ...base, kind: 'typed', accepted, aliases, rivals }
 }
@@ -159,9 +162,10 @@ export function capitalGivesAway(country: CountryLike): boolean {
   const aliases = country.altNames.map(normalise)
   return country.capitals.some((capital) => {
     const c = normalise(capital)
-    // The main name shares a start with the capital, or an alias is the capital itself.
-    // Aliases only count when equal, so "Brasil" does not rule out Brasília.
-    return c.startsWith(name) || name.startsWith(c) || aliases.includes(c)
+    // The main name shares a start or an end with the capital (Kuwait City, Guinea-Bissau),
+    // or an alias is the capital itself. Aliases only count when equal, so "Brasil" does not
+    // rule out Brasília.
+    return c.startsWith(name) || name.startsWith(c) || name.endsWith(c) || aliases.includes(c)
   })
 }
 

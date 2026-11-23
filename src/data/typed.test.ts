@@ -46,6 +46,19 @@ const cases: [itemId: string, text: string, right: boolean][] = [
   ['gq-country-to-capital', 'Malabo', true],
   ['sd-flag-to-country', 'South Sudan', false],
   ['gn-flag-to-country', 'Guinea-Bissau', false],
+  // Second review.
+  ['bn-flag-to-country', 'Brunei', true],
+  ['tt-flag-to-country', 'Trinidad & Tobago', true],
+  ['kn-flag-to-country', 'St Kitts & Nevis', true],
+  ['kn-flag-to-country', 'Saint Kitts & Nevis', true],
+  ['st-flag-to-country', 'Sao Tome & Principe', true],
+  ['vc-flag-to-country', 'St Vincent & the Grenadines', true],
+  ['vc-flag-to-country', 'Saint Vincent', true],
+  ['ag-country-to-capital', "St John's", true],
+  ['ki-country-to-capital', 'Tarawa', true],
+  ['nr-country-to-capital', 'Yaren', true],
+  ['va-country-to-capital', 'Holy See', false],
+  ['gb-country-to-capital', 'Lon', false],
 ]
 
 describe('typed answers against the real data', () => {
