@@ -2,15 +2,20 @@
 
 Learn every country's flag and capital by swiping cards on your phone, with a spaced repetition scheduler deciding what comes next. Works offline.
 
-> Status. Planning. The requirements are in [docs/PRD.md](docs/PRD.md). Nothing below is built yet, and this README will change as it is.
+[![CI](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml/badge.svg)](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml)
+[![Licence MIT](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
 
-<!-- Badges go here once CI exists. Only add a badge for a result the repository can back up. -->
+> Status. Early development. The live app shows the data and flags loading, and swiping arrives in the next milestone. The plan is in [docs/PRD.md](docs/PRD.md).
+
+<!-- Only add a badge for a result the repository can back up. -->
 
 <!-- Demo gif goes here, recorded on a phone, under 3 MB. -->
 
 ## Try it
 
-Live app and QR code to follow once the first version is on GitHub Pages.
+[lydia-ivee.github.io/flagmania](https://lydia-ivee.github.io/flagmania/)
+
+A QR code for phones will follow.
 
 ## How it works
 
@@ -20,22 +25,22 @@ Two things adapt as you go.
 
 **What you are asked.** Every item sits in one of five Leitner boxes. Get it right and it moves up a box, so you see it less often. Get it wrong and it drops to box 1 and comes back a few cards later.
 
-| Box | Next review |
-| --- | --- |
-| 1 | Later this session |
-| 2 | 1 day |
-| 3 | 3 days |
-| 4 | 7 days |
-| 5 | 21 days |
+| Box | Next review        |
+| --- | ------------------ |
+| 1   | Later this session |
+| 2   | 1 day              |
+| 3   | 3 days             |
+| 4   | 7 days             |
+| 5   | 21 days            |
 
 **How you are asked.** A miss makes the next question about that item easier. A correct answer makes it harder.
 
-| Tier | Format | Swipe |
-| --- | --- | --- |
-| T0 | True or false | Left or right |
-| T1 | Two options | Left or right |
-| T2 | Four options | Any direction |
-| T3 | Type the answer | Enter or swipe up |
+| Tier | Format          | Swipe             |
+| ---- | --------------- | ----------------- |
+| T0   | True or false   | Left or right     |
+| T1   | Two options     | Left or right     |
+| T2   | Four options    | Any direction     |
+| T3   | Type the answer | Enter or swipe up |
 
 An easy guess can only take an item so far. Box 3 and above need a correct answer from four options or a typed one.
 
@@ -47,11 +52,28 @@ An easy guess can only take an item so far. Box 3 and above need a correct answe
 4. Day 3. Chad or Mali. Correct. Still box 2, since a two-option guess cannot lift it higher. Tier T2.
 5. Day 4. Chad, Romania, Andorra or Moldova. Correct. Box 3, and it comes back in 3 days.
 
-The scheduler is a set of pure functions in [src/core](src/core) with property-based tests.
+The scheduler will be a set of pure functions in `src/core` with property-based tests.
 
 ## Run it locally
 
-Commands to follow.
+You need Node 22.18 or later.
+
+```sh
+npm install
+npm run dev
+```
+
+Then open the address Vite prints. The other scripts are below.
+
+| Command             | What it does                                                     |
+| ------------------- | ---------------------------------------------------------------- |
+| `npm test`          | Runs the unit tests                                              |
+| `npm run lint`      | Checks the code with ESLint                                      |
+| `npm run typecheck` | Checks types with TypeScript                                     |
+| `npm run build`     | Builds the app into `dist`                                       |
+| `npm run data`      | Rebuilds the country data and flags from Wikidata and flag-icons |
+
+The country data is committed, so you only need `npm run data` to refresh it. It checks every country has a capital and a flag, and lists any capital where the two sources disagree.
 
 ## Install on Android
 

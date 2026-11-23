@@ -1,0 +1,2187 @@
+{
+  "generatedAt": "2026-11-23",
+  "sources": [
+    {
+      "name": "Wikidata",
+      "licence": "CC0 1.0",
+      "url": "https://www.wikidata.org"
+    },
+    {
+      "name": "flag-icons",
+      "licence": "MIT",
+      "url": "https://github.com/lipis/flag-icons"
+    }
+  ],
+  "countries": [
+    {
+      "iso2": "af",
+      "wikidata": "Q889",
+      "name": "Afghanistan",
+      "altNames": [
+        "Affghanistan",
+        "Affghanisthan",
+        "Affghaunistan",
+        "Afghania",
+        "Afghanisthan",
+        "Afghaunistan",
+        "Afghaunistaun"
+      ],
+      "capitals": ["Kabul"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "al",
+      "wikidata": "Q222",
+      "name": "Albania",
+      "altNames": [
+        "People's Republic of Albania",
+        "People's Socialist Republic of Albania",
+        "Republic of Albania",
+        "Republika Popullore Socialiste e Shqiperise",
+        "Republika Popullore e Shqiperise",
+        "Republika e Shqipërisë",
+        "Shqipërisë"
+      ],
+      "capitals": ["Tirana"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "dz",
+      "wikidata": "Q262",
+      "name": "Algeria",
+      "altNames": ["Djazaïr", "Dzayer", "People's Democratic Republic of Algeria"],
+      "capitals": ["Algiers"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ad",
+      "wikidata": "Q228",
+      "name": "Andorra",
+      "altNames": ["Principality of Andorra", "Principality of the Valleys of Andorra"],
+      "capitals": ["Andorra la Vella"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ao",
+      "wikidata": "Q916",
+      "name": "Angola",
+      "altNames": ["Ngola", "Republic of Angola"],
+      "capitals": ["Luanda"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ag",
+      "wikidata": "Q781",
+      "name": "Antigua and Barbuda",
+      "altNames": ["Antigua-Barbuda"],
+      "capitals": ["St. John's"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ar",
+      "wikidata": "Q414",
+      "name": "Argentina",
+      "altNames": ["Argentine Republic", "Republic of Argentina", "Republica Argentina"],
+      "capitals": ["Buenos Aires"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "am",
+      "wikidata": "Q399",
+      "name": "Armenia",
+      "altNames": ["Hayastan", "Hayastani Hanrapetut’yun", "Republic of Armenia"],
+      "capitals": ["Yerevan"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "au",
+      "wikidata": "Q408",
+      "name": "Australia",
+      "altNames": [
+        "Aussieland",
+        "Commonwealth of Australia",
+        "Down Under",
+        "New Holland",
+        "New Hollandia",
+        "Nova Hollandia",
+        "Stralia",
+        "Straya",
+        "Stria",
+        "The Commonwealth of Australia"
+      ],
+      "capitals": ["Canberra"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "at",
+      "wikidata": "Q40",
+      "name": "Austria",
+      "altNames": ["Republic of Austria"],
+      "capitals": ["Vienna"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "az",
+      "wikidata": "Q227",
+      "name": "Azerbaijan",
+      "altNames": ["Azərbaycan", "Azərbaycan Respublikası", "Republic of Azerbaijan"],
+      "capitals": ["Baku"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bs",
+      "wikidata": "Q778",
+      "name": "Bahamas",
+      "altNames": ["Bahama Islands", "Bahamas, The", "Commonwealth of The Bahamas", "The Bahamas"],
+      "capitals": ["Nassau"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bh",
+      "wikidata": "Q398",
+      "name": "Bahrain",
+      "altNames": [
+        "Bahrein",
+        "Bahrein Islands",
+        "Dawlat al-Bahrain",
+        "Kingdom of Bahrain",
+        "Mamlakat al-Baḥrayn"
+      ],
+      "capitals": ["Manama"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bd",
+      "wikidata": "Q902",
+      "name": "Bangladesh",
+      "altNames": [
+        "Bangla Desh",
+        "Country of Bengal",
+        "Land of Bengal",
+        "People's Republic of Bangladesh"
+      ],
+      "capitals": ["Dhaka"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bb",
+      "wikidata": "Q244",
+      "name": "Barbados",
+      "altNames": ["Barbadoes"],
+      "capitals": ["Bridgetown"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "by",
+      "wikidata": "Q184",
+      "name": "Belarus",
+      "altNames": [
+        "Belorussia",
+        "Bielaruś",
+        "Bielorussia",
+        "Byeloruss",
+        "Byelorussia",
+        "Republic of Belarus",
+        "Respublika Belarus'",
+        "Respublika Bielaruś",
+        "White Russia",
+        "White Ruthenia"
+      ],
+      "capitals": ["Minsk"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "be",
+      "wikidata": "Q31",
+      "name": "Belgium",
+      "altNames": ["Kingdom of Belgium"],
+      "capitals": ["Brussels"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bz",
+      "wikidata": "Q242",
+      "name": "Belize",
+      "altNames": [],
+      "capitals": ["Belmopan"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bj",
+      "wikidata": "Q962",
+      "name": "Benin",
+      "altNames": ["Dahomey", "Republic of Benin"],
+      "capitals": ["Cotonou", "Porto-Novo"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bt",
+      "wikidata": "Q917",
+      "name": "Bhutan",
+      "altNames": ["Kingdom of Bhutan"],
+      "capitals": ["Thimphu"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bo",
+      "wikidata": "Q750",
+      "name": "Bolivia",
+      "altNames": [
+        "Bolivia (Plurinational State of)",
+        "Plurinational State of Bolivia",
+        "Republic of Bolivia"
+      ],
+      "capitals": ["La Paz", "Sucre"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ba",
+      "wikidata": "Q225",
+      "name": "Bosnia and Herzegovina",
+      "altNames": ["Bosnia and Hercegovina", "Bosnia-Herzegovina"],
+      "capitals": ["Sarajevo"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bw",
+      "wikidata": "Q963",
+      "name": "Botswana",
+      "altNames": ["Lefatshe la Botswana", "Republic of Botswana"],
+      "capitals": ["Gaborone"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "br",
+      "wikidata": "Q155",
+      "name": "Brazil",
+      "altNames": ["Brasil", "Federative Republic of Brazil"],
+      "capitals": ["Brasília"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bn",
+      "wikidata": "Q921",
+      "name": "Brunei Darussalam",
+      "altNames": ["Brunei", "Nation of Brunei, the Abode of Peace", "Negara Brunei Darussalam"],
+      "capitals": ["Bandar Seri Begawan"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bg",
+      "wikidata": "Q219",
+      "name": "Bulgaria",
+      "altNames": ["Bulgarian Republic", "Republic of Bulgaria"],
+      "capitals": ["Sofia"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bf",
+      "wikidata": "Q965",
+      "name": "Burkina Faso",
+      "altNames": ["Republic of Burkina Faso"],
+      "capitals": ["Ouagadougou"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "bi",
+      "wikidata": "Q967",
+      "name": "Burundi",
+      "altNames": ["Gouvernement du Burundi", "Republic of Burundi", "Republika y'Uburundi"],
+      "capitals": ["Gitega"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cv",
+      "wikidata": "Q1011",
+      "name": "Cabo Verde",
+      "altNames": [
+        "Cape Verde",
+        "Cape Verde Islands",
+        "Republic of Cabo Verde",
+        "Republic of Cape Verde"
+      ],
+      "capitals": ["Praia"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kh",
+      "wikidata": "Q424",
+      "name": "Cambodia",
+      "altNames": [
+        "Camboya",
+        "Campuchia",
+        "Kambodzha",
+        "Kamboja",
+        "Kampuchea",
+        "Kingdom of Cambodia"
+      ],
+      "capitals": ["Phnom Penh"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cm",
+      "wikidata": "Q1009",
+      "name": "Cameroon",
+      "altNames": ["Republic of Cameroon"],
+      "capitals": ["Yaoundé"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ca",
+      "wikidata": "Q16",
+      "name": "Canada",
+      "altNames": [],
+      "capitals": ["Ottawa"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cf",
+      "wikidata": "Q929",
+      "name": "Central African Republic",
+      "altNames": ["Central Africa"],
+      "capitals": ["Bangui"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "td",
+      "wikidata": "Q657",
+      "name": "Chad",
+      "altNames": ["Republic of Chad"],
+      "capitals": ["N'Djamena"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cl",
+      "wikidata": "Q298",
+      "name": "Chile",
+      "altNames": ["Republic of Chile", "República de Chile"],
+      "capitals": ["Santiago"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cn",
+      "wikidata": "Q148",
+      "name": "China",
+      "altNames": [
+        "China PR",
+        "Communist China",
+        "PR China",
+        "People's Republic of China",
+        "Red China",
+        "The PRC",
+        "Zhongguo",
+        "the People's Republic of China"
+      ],
+      "capitals": ["Beijing"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "co",
+      "wikidata": "Q739",
+      "name": "Colombia",
+      "altNames": ["Colombiá", "Republic of Colombia", "The Republic of Colombia"],
+      "capitals": ["Bogotá"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "km",
+      "wikidata": "Q970",
+      "name": "Comoros",
+      "altNames": [
+        "Juzur al-Qamar",
+        "Juzur al-Qumur",
+        "Massiwa ya komori",
+        "Udzima wa Komori",
+        "Union des Comores",
+        "Union of the Comoros",
+        "al-Ittiḥād al-Qumurī",
+        "ouvoimoja wakomori",
+        "the Comoros"
+      ],
+      "capitals": ["Moroni"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cr",
+      "wikidata": "Q800",
+      "name": "Costa Rica",
+      "altNames": ["Republic of Costa Rica"],
+      "capitals": ["San José"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ci",
+      "wikidata": "Q1008",
+      "name": "Côte d'Ivoire",
+      "altNames": [
+        "Cote Ivoire",
+        "Cote d'Ivoire",
+        "Cote d'lvoire",
+        "Cote-d'Ivoire",
+        "Côte d’Ivoire",
+        "Côte-d'Ivoire",
+        "Ivory Coast",
+        "Republic of Cote d'Ivoire",
+        "Republic of Côte d'Ivoire",
+        "Republic of Ivory Coast",
+        "Republic of the Ivory Coast",
+        "The Ivory Coast"
+      ],
+      "capitals": ["Yamoussoukro"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "hr",
+      "wikidata": "Q224",
+      "name": "Croatia",
+      "altNames": ["Republic of Croatia"],
+      "capitals": ["Zagreb"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cu",
+      "wikidata": "Q241",
+      "name": "Cuba",
+      "altNames": ["Republic of Cuba"],
+      "capitals": ["Havana"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cy",
+      "wikidata": "Q229",
+      "name": "Cyprus",
+      "altNames": [
+        "Greek Administration of Southern Cyprus",
+        "Greek Cypriot State",
+        "Republic of Cyprus"
+      ],
+      "capitals": ["Nicosia"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cz",
+      "wikidata": "Q213",
+      "name": "Czech Republic",
+      "altNames": ["Czechia", "the Czech Republic", "Česká republika"],
+      "capitals": ["Prague"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cd",
+      "wikidata": "Q974",
+      "name": "Democratic Republic of the Congo",
+      "altNames": [
+        "Congo",
+        "Congo (Kinshasa)",
+        "Congo-Kinshasa",
+        "DR Congo",
+        "DR Kongo",
+        "Dem. Rep. Congo",
+        "Dem. Republic of Congo",
+        "Dem. Republic of the Congo",
+        "Democratic Republic of Congo",
+        "Kongo-Kinshasa",
+        "Zaire"
+      ],
+      "capitals": ["Kinshasa"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "dk",
+      "wikidata": "Q35",
+      "name": "Denmark",
+      "altNames": ["Danemark", "Dania", "Danmark", "Denmark proper", "metropolitan Denmark"],
+      "capitals": ["Copenhagen"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "dj",
+      "wikidata": "Q977",
+      "name": "Djibouti",
+      "altNames": ["Gabuuti", "Jabuuti", "Jībūtī", "Republic of Djibouti"],
+      "capitals": ["Djibouti"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "dm",
+      "wikidata": "Q784",
+      "name": "Dominica",
+      "altNames": [
+        "Commonwealth of Dominica",
+        "Island of Dominica",
+        "The Commonwealth of Dominica",
+        "Wai'tu kubuli"
+      ],
+      "capitals": ["Roseau"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "do",
+      "wikidata": "Q786",
+      "name": "Dominican Republic",
+      "altNames": ["DomRep", "Dominicana", "Republica Dominicana", "República Dominicana"],
+      "capitals": ["Santo Domingo"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ec",
+      "wikidata": "Q736",
+      "name": "Ecuador",
+      "altNames": [
+        "Republic of Ecuador",
+        "Republic of Equator",
+        "Republic of the Equator",
+        "República del Ecuador",
+        "The Ecuadorian State"
+      ],
+      "capitals": ["Quito"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "eg",
+      "wikidata": "Q79",
+      "name": "Egypt",
+      "altNames": [
+        "Arab Rep. Egypt",
+        "Arab Republic of Egypt",
+        "Misr",
+        "Rep. Egypt",
+        "Republic of Egypt"
+      ],
+      "capitals": ["Cairo"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sv",
+      "wikidata": "Q792",
+      "name": "El Salvador",
+      "altNames": ["Republic of El Salvador", "Salvador"],
+      "capitals": ["San Salvador"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gq",
+      "wikidata": "Q983",
+      "name": "Equatorial Guinea",
+      "altNames": ["Republic of Equatorial Guinea"],
+      "capitals": ["Ciudad de la Paz"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "er",
+      "wikidata": "Q986",
+      "name": "Eritrea",
+      "altNames": ["Ertrā", "Iritriyā", "State of Eritrea"],
+      "capitals": ["Asmara"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ee",
+      "wikidata": "Q191",
+      "name": "Estonia",
+      "altNames": ["Eesti", "Eesti Vabariik", "Estland", "Republic of Estonia"],
+      "capitals": ["Tallinn"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sz",
+      "wikidata": "Q1050",
+      "name": "Eswatini",
+      "altNames": ["Kingdom of Eswatini", "Kingdom of Swaziland", "Swaziland", "Umbuso weSwatini"],
+      "capitals": ["Lobamba", "Mbabane"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "et",
+      "wikidata": "Q115",
+      "name": "Ethiopia",
+      "altNames": ["Federal Democratic Republic of Ethiopia"],
+      "capitals": ["Addis Ababa"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "fm",
+      "wikidata": "Q702",
+      "name": "Federated States of Micronesia",
+      "altNames": [
+        "Fed. Sts. Micronesia",
+        "Fed. Sts. of Micronesia",
+        "Federated States of Micronesia, FSM",
+        "Micronesia"
+      ],
+      "capitals": ["Palikir"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "fj",
+      "wikidata": "Q712",
+      "name": "Fiji",
+      "altNames": [
+        "Fijī",
+        "Fijī Gaṇarājya",
+        "Matanitu Tugalala o Viti",
+        "Republic of Fiji",
+        "Republic of the Fiji Islands",
+        "Viti"
+      ],
+      "capitals": ["Suva"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "fi",
+      "wikidata": "Q33",
+      "name": "Finland",
+      "altNames": [
+        "Finnia",
+        "Land of Thousand Lakes",
+        "Republic of Finland",
+        "Republiken Finland",
+        "Suomen tasavalta",
+        "Suomi"
+      ],
+      "capitals": ["Helsinki"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "fr",
+      "wikidata": "Q142",
+      "name": "France",
+      "altNames": ["Francia", "French Republic", "République française"],
+      "capitals": ["Paris"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ga",
+      "wikidata": "Q1000",
+      "name": "Gabon",
+      "altNames": ["Gabonese Republic", "Republique Gabonaise", "République Gabonaise"],
+      "capitals": ["Libreville"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gm",
+      "wikidata": "Q1005",
+      "name": "Gambia",
+      "altNames": ["Islamic Republic of the Gambia", "Republic of the Gambia", "The Gambia"],
+      "capitals": ["Banjul"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ge",
+      "wikidata": "Q230",
+      "name": "Georgia",
+      "altNames": [
+        "Georgia (Sakartvelo)",
+        "Georgia (country)",
+        "Republic of Georgia",
+        "Sakartvelo"
+      ],
+      "capitals": ["Tbilisi"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "de",
+      "wikidata": "Q183",
+      "name": "Germany",
+      "altNames": ["Federal Republic of Germany"],
+      "capitals": ["Berlin"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gh",
+      "wikidata": "Q117",
+      "name": "Ghana",
+      "altNames": ["Republic of Ghana"],
+      "capitals": ["Accra"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gr",
+      "wikidata": "Q41",
+      "name": "Greece",
+      "altNames": ["Ellada", "Greek Republic", "Hellas", "Hellas, Greece", "Hellenic Republic"],
+      "capitals": ["Athens"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gd",
+      "wikidata": "Q769",
+      "name": "Grenada",
+      "altNames": [],
+      "capitals": ["St. George's"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gt",
+      "wikidata": "Q774",
+      "name": "Guatemala",
+      "altNames": ["Republic of Guatemala", "República de Guatemala"],
+      "capitals": ["Guatemala City"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gn",
+      "wikidata": "Q1006",
+      "name": "Guinea",
+      "altNames": ["Guinea-Conakry", "Republic of Guinea"],
+      "capitals": ["Conakry"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gw",
+      "wikidata": "Q1007",
+      "name": "Guinea-Bissau",
+      "altNames": ["Republic of Guinea-Bissau"],
+      "capitals": ["Bissau"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gy",
+      "wikidata": "Q734",
+      "name": "Guyana",
+      "altNames": ["Co-operative Republic of Guyana", "Republic of Guyana"],
+      "capitals": ["Georgetown"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ht",
+      "wikidata": "Q790",
+      "name": "Haiti",
+      "altNames": ["Ayiti", "Haitian Republic", "Hayti", "Republic of Haiti"],
+      "capitals": ["Port-au-Prince"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "va",
+      "wikidata": "Q237",
+      "name": "Holy See",
+      "altNames": [
+        "Città del Vaticano",
+        "Civitas Vaticana",
+        "Papal State",
+        "State of Vatican City",
+        "Stato della Città del Vaticano",
+        "Status Civitatis Vaticanae",
+        "The Vatican",
+        "Vatican",
+        "Vatican City",
+        "Vatican City State"
+      ],
+      "capitals": ["Vatican City"],
+      "region": "Europe",
+      "unStatus": "observer"
+    },
+    {
+      "iso2": "hn",
+      "wikidata": "Q783",
+      "name": "Honduras",
+      "altNames": ["Honduran Republic", "Republic of Honduras"],
+      "capitals": ["Tegucigalpa"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "hu",
+      "wikidata": "Q28",
+      "name": "Hungary",
+      "altNames": [],
+      "capitals": ["Budapest"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "is",
+      "wikidata": "Q189",
+      "name": "Iceland",
+      "altNames": ["Icelandic republic", "Isl.", "Republic of Iceland", "Ysland"],
+      "capitals": ["Reykjavík"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "in",
+      "wikidata": "Q668",
+      "name": "India",
+      "altNames": [
+        "Al Hind",
+        "Bharat",
+        "Bharat Ganarajya",
+        "Bharata",
+        "Bharatvarsh",
+        "Hindoostan",
+        "Hindustan",
+        "Indostan",
+        "Republic of India",
+        "Tenjiku",
+        "Tianzhu"
+      ],
+      "capitals": ["New Delhi"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "id",
+      "wikidata": "Q252",
+      "name": "Indonesia",
+      "altNames": ["Republic of Indonesia", "Republik Indonesia"],
+      "capitals": ["Jakarta"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ir",
+      "wikidata": "Q794",
+      "name": "Iran",
+      "altNames": ["Islamic Rep. Iran", "Islamic Republic of Iran"],
+      "capitals": ["Tehran"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "iq",
+      "wikidata": "Q796",
+      "name": "Iraq",
+      "altNames": ["Republic of Iraq"],
+      "capitals": ["Baghdad"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ie",
+      "wikidata": "Q27",
+      "name": "Ireland",
+      "altNames": [
+        "Hibernia",
+        "Irish Republic",
+        "Irlanda",
+        "Irlandia",
+        "Republic of Ireland",
+        "Southern Ireland",
+        "Éire"
+      ],
+      "capitals": ["Dublin"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "il",
+      "wikidata": "Q801",
+      "name": "Israel",
+      "altNames": ["State of Israel", "Yisrael"],
+      "capitals": ["Jerusalem"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "it",
+      "wikidata": "Q38",
+      "name": "Italy",
+      "altNames": ["Italia", "Italian Republic", "Republic of Italy"],
+      "capitals": ["Rome"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "jm",
+      "wikidata": "Q766",
+      "name": "Jamaica",
+      "altNames": ["Commonwealth of Jamaica"],
+      "capitals": ["Kingston"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "jp",
+      "wikidata": "Q17",
+      "name": "Japan",
+      "altNames": [
+        "Iapan",
+        "Iapon",
+        "Land of Rising Sun",
+        "Land of the Rising Sun",
+        "Nihon",
+        "Nihon-koku",
+        "Nippon",
+        "Nippon-koku",
+        "State of Japan"
+      ],
+      "capitals": ["Tokyo"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "jo",
+      "wikidata": "Q810",
+      "name": "Jordan",
+      "altNames": [
+        "Giordania",
+        "Hashemite Kingdom of Jordan",
+        "Kingdom of Jordan",
+        "State of Jordan",
+        "Yarden"
+      ],
+      "capitals": ["Amman"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kz",
+      "wikidata": "Q232",
+      "name": "Kazakhstan",
+      "altNames": ["Qazaqstan", "Republic of Kazakhstan", "Republic of Qazaqstan"],
+      "capitals": ["Astana"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ke",
+      "wikidata": "Q114",
+      "name": "Kenya",
+      "altNames": ["Republic of Kenya"],
+      "capitals": ["Nairobi"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ki",
+      "wikidata": "Q710",
+      "name": "Kiribati",
+      "altNames": ["Republic of Kiribati"],
+      "capitals": ["South Tarawa"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kw",
+      "wikidata": "Q817",
+      "name": "Kuwait",
+      "altNames": ["State of Kuwait"],
+      "capitals": ["Kuwait City"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kg",
+      "wikidata": "Q813",
+      "name": "Kyrgyzstan",
+      "altNames": ["Kyrgyz Republic"],
+      "capitals": ["Bishkek"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "la",
+      "wikidata": "Q819",
+      "name": "Laos",
+      "altNames": ["Lao PDR", "Lao People's Democratic Republic"],
+      "capitals": ["Vientiane"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lv",
+      "wikidata": "Q211",
+      "name": "Latvia",
+      "altNames": [
+        "Latveja",
+        "Latvejas Republika",
+        "Latvian Republic",
+        "Latvija",
+        "Latvijas Republika",
+        "Republic of Latvia"
+      ],
+      "capitals": ["Riga"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lb",
+      "wikidata": "Q822",
+      "name": "Lebanon",
+      "altNames": ["Lebanese Republic", "Lubnan", "Republic of Lebanon", "State of Lebanon"],
+      "capitals": ["Beirut"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ls",
+      "wikidata": "Q1013",
+      "name": "Lesotho",
+      "altNames": ["Kingdom of Lesotho", "The Mountain Kingdom"],
+      "capitals": ["Maseru"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lr",
+      "wikidata": "Q1014",
+      "name": "Liberia",
+      "altNames": ["Liber", "Republic of Liberia"],
+      "capitals": ["Monrovia"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ly",
+      "wikidata": "Q1016",
+      "name": "Libya",
+      "altNames": ["State of Libya"],
+      "capitals": ["Tripoli"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "li",
+      "wikidata": "Q347",
+      "name": "Liechtenstein",
+      "altNames": ["Principality of Liechtenstein"],
+      "capitals": ["Vaduz"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lt",
+      "wikidata": "Q37",
+      "name": "Lithuania",
+      "altNames": ["Lietuvos Respublika", "Republic of Lithuania"],
+      "capitals": ["Vilnius"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lu",
+      "wikidata": "Q32",
+      "name": "Luxembourg",
+      "altNames": ["Grand Duchy of Luxembourg", "Luxemburg"],
+      "capitals": ["Luxembourg"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mg",
+      "wikidata": "Q1019",
+      "name": "Madagascar",
+      "altNames": ["Malagascar", "Malagaskar", "Republic of Madagascar"],
+      "capitals": ["Antananarivo"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mw",
+      "wikidata": "Q1020",
+      "name": "Malawi",
+      "altNames": ["Republic of Malawi"],
+      "capitals": ["Lilongwe"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "my",
+      "wikidata": "Q833",
+      "name": "Malaysia",
+      "altNames": ["Federation of Malaysia", "Malaysia Federation"],
+      "capitals": ["Kuala Lumpur", "Putrajaya"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mv",
+      "wikidata": "Q826",
+      "name": "Maldives",
+      "altNames": ["Republic of Maldives"],
+      "capitals": ["Malé"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ml",
+      "wikidata": "Q912",
+      "name": "Mali",
+      "altNames": ["Republic of Mali"],
+      "capitals": ["Bamako"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mt",
+      "wikidata": "Q233",
+      "name": "Malta",
+      "altNames": ["Republic of Malta"],
+      "capitals": ["Valletta"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mh",
+      "wikidata": "Q709",
+      "name": "Marshall Islands",
+      "altNames": ["Republic of the Marshall Islands"],
+      "capitals": ["Majuro"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mr",
+      "wikidata": "Q1025",
+      "name": "Mauritania",
+      "altNames": [
+        "Agawej",
+        "Gannaar",
+        "Gànnaar",
+        "Islamic Republic of Mauritania",
+        "Mauretania",
+        "Moritani",
+        "Muritanya",
+        "Murutaane"
+      ],
+      "capitals": ["Nouakchott"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mu",
+      "wikidata": "Q1027",
+      "name": "Mauritius",
+      "altNames": ["Maurice", "Moris", "Republic of Mauritius"],
+      "capitals": ["Port Louis"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mx",
+      "wikidata": "Q96",
+      "name": "Mexico",
+      "altNames": [
+        "Mexican Republic",
+        "Mexican United States",
+        "US of M",
+        "United Mexican States",
+        "United States of Mexico"
+      ],
+      "capitals": ["Mexico City"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "md",
+      "wikidata": "Q217",
+      "name": "Moldova",
+      "altNames": ["Moldavia", "Republic of Moldova", "Republica Moldova"],
+      "capitals": ["Chișinău"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mc",
+      "wikidata": "Q235",
+      "name": "Monaco",
+      "altNames": [
+        "Fort-Hercule",
+        "Mùnegu",
+        "Principality and Diocese of Monaco",
+        "Principality of Monaco",
+        "Principato di Monaco",
+        "Principatu de Mu̍negu",
+        "Principauté de Monaco",
+        "Prinçipatu de Mùnegu"
+      ],
+      "capitals": ["Monaco"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mn",
+      "wikidata": "Q711",
+      "name": "Mongolia",
+      "altNames": ["Mongol State", "State of Mongolia"],
+      "capitals": ["Ulaanbaatar"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "me",
+      "wikidata": "Q236",
+      "name": "Montenegro",
+      "altNames": ["Republic of Montenegro"],
+      "capitals": ["Podgorica"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ma",
+      "wikidata": "Q1028",
+      "name": "Morocco",
+      "altNames": ["Kingdom of Morocco", "Lmaġrib", "Maroc", "Marocco", "al-Maġrib"],
+      "capitals": ["Rabat"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mz",
+      "wikidata": "Q1029",
+      "name": "Mozambique",
+      "altNames": ["Moçambique", "Republic of Mozambique", "República de Moçambique"],
+      "capitals": ["Maputo"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mm",
+      "wikidata": "Q836",
+      "name": "Myanmar",
+      "altNames": [
+        "Birma",
+        "Birmania",
+        "Burma",
+        "Republic of the Union of Myanmar",
+        "Union of Burma"
+      ],
+      "capitals": ["Naypyidaw"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "na",
+      "wikidata": "Q1030",
+      "name": "Namibia",
+      "altNames": ["Republic of Namibia"],
+      "capitals": ["Windhoek"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "nr",
+      "wikidata": "Q697",
+      "name": "Nauru",
+      "altNames": ["Naoero", "Pleasant Island", "Republic of Naoero", "Republic of Nauru"],
+      "capitals": ["Yaren District"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "np",
+      "wikidata": "Q837",
+      "name": "Nepal",
+      "altNames": [
+        "Bal-bo",
+        "Bal-po'i yul",
+        "Bal-yul",
+        "Balbo",
+        "Balpo",
+        "Balpo-yul",
+        "Federal Democratic Republic of Nepal",
+        "Naipala",
+        "Naipál",
+        "Naipála",
+        "Ne-pel",
+        "Necbal",
+        "Nehpal",
+        "Nei-pal",
+        "Nekbal",
+        "Nekpal",
+        "Nepall",
+        "Nepaul",
+        "Nepál",
+        "Nercerri",
+        "Ni-po-lo",
+        "Ni-po-louo",
+        "Niepal",
+        "Nipal",
+        "Népaal",
+        "Népál",
+        "Pa-eul-pou",
+        "Pa-le-pou",
+        "Pa-lo-pou",
+        "Pai-pou",
+        "Palpa",
+        "Palpou",
+        "Paï-pou"
+      ],
+      "capitals": ["Kathmandu"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "nl",
+      "wikidata": "Q29999",
+      "name": "Netherlands",
+      "altNames": [
+        "Kingdom of Netherlands",
+        "Kingdom of the Netherlands",
+        "Koninkrijk der Nederlanden",
+        "Nederlanden",
+        "Reino Hulandes",
+        "the Netherlands"
+      ],
+      "capitals": ["Amsterdam"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "nz",
+      "wikidata": "Q664",
+      "name": "New Zealand",
+      "altNames": ["Aotearoa", "Aotearoa New Zealand", "Dominion of New Zealand", "Niu Tīreni"],
+      "capitals": ["Wellington"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ni",
+      "wikidata": "Q811",
+      "name": "Nicaragua",
+      "altNames": ["Republic of Nicaragua"],
+      "capitals": ["Managua"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ne",
+      "wikidata": "Q1032",
+      "name": "Niger",
+      "altNames": ["Republic Niger", "Republic of Niger", "Republic of the Niger", "The Niger"],
+      "capitals": ["Niamey"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ng",
+      "wikidata": "Q1033",
+      "name": "Nigeria",
+      "altNames": ["Federal Republic of Nigeria", "Naija"],
+      "capitals": ["Abuja"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kp",
+      "wikidata": "Q423",
+      "name": "North Korea",
+      "altNames": ["DPR Korea", "Democratic People's Republic of Korea", "N. Korea"],
+      "capitals": ["Pyongyang"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "mk",
+      "wikidata": "Q221",
+      "name": "North Macedonia",
+      "altNames": [
+        "FYR Macedonia",
+        "Former Yugoslav Republic of Macedonia",
+        "Macedonia",
+        "Makedonia",
+        "Republic of Macedonia",
+        "Republic of North Macedonia"
+      ],
+      "capitals": ["Skopje"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "no",
+      "wikidata": "Q20",
+      "name": "Norway",
+      "altNames": ["Kingdom of Norway"],
+      "capitals": ["Oslo"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "om",
+      "wikidata": "Q842",
+      "name": "Oman",
+      "altNames": ["Sultanate of Oman", "Uman"],
+      "capitals": ["Muscat"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pk",
+      "wikidata": "Q843",
+      "name": "Pakistan",
+      "altNames": ["Hồi Quốc", "Islamic Republic of Pakistan", "Republic of Pakistan", "Tây Hồi"],
+      "capitals": ["Islamabad"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pw",
+      "wikidata": "Q695",
+      "name": "Palau",
+      "altNames": [
+        "Belau",
+        "Peeloo",
+        "Pelew",
+        "Pelew islands",
+        "Pellew",
+        "Republic of Belau",
+        "Republic of Palau"
+      ],
+      "capitals": ["Ngerulmud"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pa",
+      "wikidata": "Q804",
+      "name": "Panama",
+      "altNames": ["Republic of Panama"],
+      "capitals": ["Panama City"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pg",
+      "wikidata": "Q691",
+      "name": "Papua New Guinea",
+      "altNames": ["Independent State of Papua New Guinea"],
+      "capitals": ["Port Moresby"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "py",
+      "wikidata": "Q733",
+      "name": "Paraguay",
+      "altNames": ["Heart of South America", "Republic of Paraguay"],
+      "capitals": ["Asunción"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pe",
+      "wikidata": "Q419",
+      "name": "Peru",
+      "altNames": ["Republic of Peru", "Republica del Peru", "República del Perú"],
+      "capitals": ["Lima"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ph",
+      "wikidata": "Q928",
+      "name": "Philippines",
+      "altNames": ["Philippine Islands", "Republic of the Philippines", "The Philippines"],
+      "capitals": ["Manila"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pl",
+      "wikidata": "Q36",
+      "name": "Poland",
+      "altNames": ["Polonia", "Republic of Poland"],
+      "capitals": ["Warsaw"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "pt",
+      "wikidata": "Q45",
+      "name": "Portugal",
+      "altNames": ["Portuguese Republic", "República Portuguesa"],
+      "capitals": ["Lisbon"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "qa",
+      "wikidata": "Q846",
+      "name": "Qatar",
+      "altNames": ["State of Qatar"],
+      "capitals": ["Doha"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "cg",
+      "wikidata": "Q971",
+      "name": "Republic of the Congo",
+      "altNames": [
+        "Congo",
+        "Congo (Brazzaville)",
+        "Congo Republic",
+        "Congo-Brazzaville",
+        "Rep. Congo",
+        "Republic of Congo",
+        "Republique du Congo",
+        "République du Congo"
+      ],
+      "capitals": ["Brazzaville"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ro",
+      "wikidata": "Q218",
+      "name": "Romania",
+      "altNames": ["România", "Roumania", "Rumania"],
+      "capitals": ["Bucharest"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ru",
+      "wikidata": "Q159",
+      "name": "Russia",
+      "altNames": ["Russian Federation"],
+      "capitals": ["Moscow"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "rw",
+      "wikidata": "Q1037",
+      "name": "Rwanda",
+      "altNames": ["Republic of Rwanda", "The Land of a Thousand Hills"],
+      "capitals": ["Kigali"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kn",
+      "wikidata": "Q763",
+      "name": "Saint Kitts and Nevis",
+      "altNames": [
+        "Federation of Saint Christopher and Nevis",
+        "Federation of Saint Kitts and Nevis",
+        "Kitts and Nevis",
+        "Saint Christopher and Nevis",
+        "St Kitts and Nevis",
+        "St. Kitts and Nevis"
+      ],
+      "capitals": ["Basseterre"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lc",
+      "wikidata": "Q760",
+      "name": "Saint Lucia",
+      "altNames": ["Hewanorra", "Iyonola", "St Lucia", "St. Lucia"],
+      "capitals": ["Castries"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "vc",
+      "wikidata": "Q757",
+      "name": "Saint Vincent and the Grenadines",
+      "altNames": [
+        "Saint Vincent",
+        "St Vincent",
+        "St Vincent and the Grenadines",
+        "St. Vincent",
+        "St. Vincent and the Grenadines"
+      ],
+      "capitals": ["Kingstown"],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ws",
+      "wikidata": "Q683",
+      "name": "Samoa",
+      "altNames": ["Independent State of Samoa", "Western Samoa"],
+      "capitals": ["Apia"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sm",
+      "wikidata": "Q238",
+      "name": "San Marino",
+      "altNames": ["Most Serene Republic of San Marino"],
+      "capitals": ["San Marino"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "st",
+      "wikidata": "Q1039",
+      "name": "Sao Tome and Principe",
+      "altNames": [
+        "Democratic Republic of São Tomé and Príncipe",
+        "São Tomé and Príncipe",
+        "São Tomé og Príncipe"
+      ],
+      "capitals": ["São Tomé"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sa",
+      "wikidata": "Q851",
+      "name": "Saudi Arabia",
+      "altNames": ["Kingdom of Saudi Arabia", "Saudi"],
+      "capitals": ["Riyadh"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sn",
+      "wikidata": "Q1041",
+      "name": "Senegal",
+      "altNames": ["Republic of Senegal"],
+      "capitals": ["Dakar"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "rs",
+      "wikidata": "Q403",
+      "name": "Serbia",
+      "altNames": ["Republic of Serbia", "Republika Srbija"],
+      "capitals": ["Belgrade"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sc",
+      "wikidata": "Q1042",
+      "name": "Seychelles",
+      "altNames": ["Republic of Seychelles"],
+      "capitals": ["Victoria"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sl",
+      "wikidata": "Q1044",
+      "name": "Sierra Leone",
+      "altNames": ["Republic of Sierra Leone"],
+      "capitals": ["Freetown"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sg",
+      "wikidata": "Q334",
+      "name": "Singapore",
+      "altNames": ["Garden City", "Lion City", "Republic of Singapore", "S'pore", "Singapore City"],
+      "capitals": ["Singapore"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sk",
+      "wikidata": "Q214",
+      "name": "Slovakia",
+      "altNames": ["Slovak Republic"],
+      "capitals": ["Bratislava"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "si",
+      "wikidata": "Q215",
+      "name": "Slovenia",
+      "altNames": ["Republic of Slovenia", "Republika Slovenija", "Slovenija"],
+      "capitals": ["Ljubljana"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sb",
+      "wikidata": "Q685",
+      "name": "Solomon Islands",
+      "altNames": ["the Solomon Islands"],
+      "capitals": ["Honiara"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "so",
+      "wikidata": "Q1045",
+      "name": "Somalia",
+      "altNames": ["Federal Republic of Somalia"],
+      "capitals": ["Mogadishu"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "za",
+      "wikidata": "Q258",
+      "name": "South Africa",
+      "altNames": ["Republic of South Africa"],
+      "capitals": ["Bloemfontein", "Cape Town", "Pretoria"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "kr",
+      "wikidata": "Q884",
+      "name": "South Korea",
+      "altNames": [
+        "Choson",
+        "Daehan Minguk",
+        "Daehanminguk",
+        "Hanguk",
+        "Korea (South)",
+        "Korea Republic",
+        "Rep. Korea",
+        "Republic of Korea",
+        "S. Korea",
+        "Silla"
+      ],
+      "capitals": ["Seoul"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ss",
+      "wikidata": "Q958",
+      "name": "South Sudan",
+      "altNames": ["Republic of South Sudan", "Southern Sudan"],
+      "capitals": ["Juba"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "es",
+      "wikidata": "Q29",
+      "name": "Spain",
+      "altNames": ["Kingdom of Spain"],
+      "capitals": ["Madrid"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "lk",
+      "wikidata": "Q854",
+      "name": "Sri Lanka",
+      "altNames": [
+        "Ceylan",
+        "Ceylon",
+        "Democratic Socialist Republic of Sri Lanka",
+        "Lanka, Sri",
+        "Serendib",
+        "Srilanka",
+        "Taprobane"
+      ],
+      "capitals": ["Colombo", "Sri Jayawardenepura Kotte"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ps",
+      "wikidata": "Q219060",
+      "name": "State of Palestine",
+      "altNames": ["Palestine"],
+      "capitals": ["East Jerusalem", "Ramallah"],
+      "region": "Asia",
+      "unStatus": "observer"
+    },
+    {
+      "iso2": "sd",
+      "wikidata": "Q1049",
+      "name": "Sudan",
+      "altNames": [
+        "North Sudan",
+        "Republic of Sudan",
+        "Republic of the Sudan",
+        "Soudan",
+        "al-Sudan",
+        "as-Sudan",
+        "as-Sūdān",
+        "the Sudan"
+      ],
+      "capitals": ["Khartoum"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sr",
+      "wikidata": "Q730",
+      "name": "Suriname",
+      "altNames": [
+        "Dutch Guiana",
+        "Republic of Surinam",
+        "Republic of Suriname",
+        "Surinam",
+        "Surrinam"
+      ],
+      "capitals": ["Paramaribo"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "se",
+      "wikidata": "Q34",
+      "name": "Sweden",
+      "altNames": ["Kingdom of Sweden", "Swedish Kingdom"],
+      "capitals": ["Stockholm"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ch",
+      "wikidata": "Q39",
+      "name": "Switzerland",
+      "altNames": [
+        "Confoederatio Helvetica",
+        "Schweizerische Eidgenossenschaft",
+        "Swiss",
+        "Swiss Confederation"
+      ],
+      "capitals": ["Bern"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "sy",
+      "wikidata": "Q858",
+      "name": "Syria",
+      "altNames": ["Syrian Arab Republic", "Sūriyā"],
+      "capitals": ["Damascus"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tj",
+      "wikidata": "Q863",
+      "name": "Tajikistan",
+      "altNames": ["Republic of Tajikistan"],
+      "capitals": ["Dushanbe"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tz",
+      "wikidata": "Q924",
+      "name": "Tanzania",
+      "altNames": [
+        "Tanzania, United Republic of",
+        "United Republic of Tanganyika and Zanzibar",
+        "United Republic of Tanzania"
+      ],
+      "capitals": ["Dodoma"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "th",
+      "wikidata": "Q869",
+      "name": "Thailand",
+      "altNames": [
+        "Kingdom of Siam",
+        "Kingdom of Thailand",
+        "Prathet Thai",
+        "Ratcha-anachak Thai",
+        "Siam",
+        "Thai",
+        "The Kingdom of Siam",
+        "The Kingdom of Thailand"
+      ],
+      "capitals": ["Bangkok"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tl",
+      "wikidata": "Q574",
+      "name": "Timor-Leste",
+      "altNames": ["Democratic Republic of Timor-Leste", "East Timor", "Timor Leste"],
+      "capitals": ["Dili"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tg",
+      "wikidata": "Q945",
+      "name": "Togo",
+      "altNames": ["Togolese Republic"],
+      "capitals": ["Lomé"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "to",
+      "wikidata": "Q678",
+      "name": "Tonga",
+      "altNames": ["Friendly Islands", "Kingdom of Tonga", "Tonga Islands"],
+      "capitals": ["Nukuʻalofa"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tt",
+      "wikidata": "Q754",
+      "name": "Trinidad and Tobago",
+      "altNames": ["Republic of Trinidad and Tobago"],
+      "capitals": ["Port of Spain"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tn",
+      "wikidata": "Q948",
+      "name": "Tunisia",
+      "altNames": ["Republic of Tunisia", "Tunisian Republic"],
+      "capitals": ["Tunis"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tr",
+      "wikidata": "Q43",
+      "name": "Türkiye",
+      "altNames": ["Republic of Turkey", "Republic of Türkiye", "Turkey"],
+      "capitals": ["Ankara"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tm",
+      "wikidata": "Q874",
+      "name": "Turkmenistan",
+      "altNames": ["Turkmenia"],
+      "capitals": ["Ashgabat"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "tv",
+      "wikidata": "Q672",
+      "name": "Tuvalu",
+      "altNames": ["Ellice Islands"],
+      "capitals": ["Funafuti"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ug",
+      "wikidata": "Q1036",
+      "name": "Uganda",
+      "altNames": [
+        "Ouganda",
+        "Pearl of Africa",
+        "Republic of Uganda",
+        "The Republic of Uganda",
+        "Ugandah"
+      ],
+      "capitals": ["Kampala"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ua",
+      "wikidata": "Q212",
+      "name": "Ukraine",
+      "altNames": ["Ukr.", "Ukraina", "Ukrainia", "Ukraïna"],
+      "capitals": ["Kyiv"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ae",
+      "wikidata": "Q878",
+      "name": "United Arab Emirates",
+      "altNames": ["Emirates", "the Emirates", "the U.A.E.", "the UAE", "the United Arab Emirates"],
+      "capitals": ["Abu Dhabi"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "gb",
+      "wikidata": "Q145",
+      "name": "United Kingdom",
+      "altNames": [
+        "Britain",
+        "Great Britain",
+        "Great Britain and Northern Ireland",
+        "United Kingdom of Great Britain and Northern Ireland",
+        "the UK",
+        "the United Kingdom",
+        "the United Kingdom of Great Britain and Northern Ireland"
+      ],
+      "capitals": ["London"],
+      "region": "Europe",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "us",
+      "wikidata": "Q30",
+      "name": "United States of America",
+      "altNames": [
+        "Merica",
+        "Murica",
+        "U.S. of America",
+        "US of A",
+        "US of America",
+        "United States",
+        "the States",
+        "the U.S.",
+        "the U.S. of A",
+        "the U.S. of America",
+        "the U.S.A.",
+        "the US",
+        "the US of A",
+        "the US of America",
+        "the USA",
+        "the United States",
+        "the United States of America"
+      ],
+      "capitals": ["Washington, D.C."],
+      "region": "North America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "uy",
+      "wikidata": "Q77",
+      "name": "Uruguay",
+      "altNames": ["Eastern Republic of Uruguay", "Oriental Republic of Uruguay"],
+      "capitals": ["Montevideo"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "uz",
+      "wikidata": "Q265",
+      "name": "Uzbekistan",
+      "altNames": ["Republic of Uzbekistan"],
+      "capitals": ["Tashkent"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "vu",
+      "wikidata": "Q686",
+      "name": "Vanuatu",
+      "altNames": ["Republic of Vanuatu"],
+      "capitals": ["Port Vila"],
+      "region": "Oceania",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ve",
+      "wikidata": "Q717",
+      "name": "Venezuela",
+      "altNames": [
+        "BR Venezuela",
+        "Bolivarian Republic of Venezuela",
+        "Republic of Venezuela",
+        "Vzla"
+      ],
+      "capitals": ["Caracas"],
+      "region": "South America",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "vn",
+      "wikidata": "Q881",
+      "name": "Vietnam",
+      "altNames": [
+        "Cộng hòa Xã hội chủ nghĩa Việt Nam",
+        "Socialist Republic of Viet Nam",
+        "Socialist Republic of Vietnam",
+        "Viet Nam",
+        "Việt Nam"
+      ],
+      "capitals": ["Hanoi"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "ye",
+      "wikidata": "Q805",
+      "name": "Yemen",
+      "altNames": ["Rep. Yemen", "Republic of Yemen"],
+      "capitals": ["Aden", "Sanaa"],
+      "region": "Asia",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "zm",
+      "wikidata": "Q953",
+      "name": "Zambia",
+      "altNames": ["Republic of Zambia"],
+      "capitals": ["Lusaka"],
+      "region": "Africa",
+      "unStatus": "member"
+    },
+    {
+      "iso2": "zw",
+      "wikidata": "Q954",
+      "name": "Zimbabwe",
+      "altNames": ["Republic of Zimbabwe", "Rhodesia", "Southern Rhodesia", "Zimbabwe Rhodesia"],
+      "capitals": ["Harare"],
+      "region": "Africa",
+      "unStatus": "member"
+    }
+  ]
+}
