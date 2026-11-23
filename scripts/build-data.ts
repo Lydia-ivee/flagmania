@@ -13,12 +13,15 @@ type FlagIconsEntry = {
   iso: boolean
 }
 
+type Override = { iso2: string; addCapitals?: string[]; reason: string }
+
 type Country = {
   iso2: string
   wikidata: string
   name: string
   altNames: string[]
   capitals: string[]
+  capitalAltNames: string[]
   region: string
   unStatus: UnState['unStatus']
 }
@@ -34,6 +37,8 @@ const flagIcons: FlagIconsEntry[] = JSON.parse(
   await readFile(at('node_modules/flag-icons/country.json'), 'utf8'),
 )
 const flagIconsByCode = new Map(flagIcons.map((entry) => [entry.code, entry]))
+// Editorial changes to Wikidata, each with a written reason. See docs/PRD.md, OQ-6.
+const overrides: Override[] = JSON.parse(await readFile(at('scripts/overrides.json'), 'utf8'))
 
 // One row per Wikidata item carrying each ISO code. Capitals with an end date or a
 // deprecated rank are left out, so former capitals such as Almaty do not appear.
@@ -43,6 +48,7 @@ const query = `
 SELECT ?item ?iso ?label ?sovereign
   (GROUP_CONCAT(DISTINCT ?alias; separator="|") AS ?aliases)
   (GROUP_CONCAT(DISTINCT ?capitalLabel; separator="|") AS ?capitals)
+  (GROUP_CONCAT(DISTINCT ?capitalAlias; separator="|") AS ?capitalAliases)
 WHERE {
   VALUES ?iso { ${states.map((s) => `"${s.iso2.toUpperCase()}"`).join(' ')} }
   ?item wdt:P297 ?iso .
@@ -59,12 +65,13 @@ WHERE {
     OPTIONAL { ?capital rdfs:label ?capitalEn FILTER(LANG(?capitalEn) = "en") }
     OPTIONAL { ?capital rdfs:label ?capitalMul FILTER(LANG(?capitalMul) = "mul") }
     BIND(COALESCE(?capitalEn, ?capitalMul) AS ?capitalLabel)
+    OPTIONAL { ?capital skos:altLabel ?capitalAlias FILTER(LANG(?capitalAlias) IN ("en", "mul")) }
   }
 }
 GROUP BY ?item ?iso ?label ?sovereign`
 
 type Row = Record<
-  'item' | 'iso' | 'label' | 'sovereign' | 'aliases' | 'capitals',
+  'item' | 'iso' | 'label' | 'sovereign' | 'aliases' | 'capitals' | 'capitalAliases',
   { value: string }
 >
 
@@ -103,7 +110,10 @@ for (const state of states) {
     continue
   }
 
-  const capitals = split(row.capitals.value).sort()
+  const override = overrides.find((o) => o.iso2 === state.iso2)
+  const capitals = [
+    ...new Set([...split(row.capitals.value), ...(override?.addCapitals ?? [])]),
+  ].sort()
   if (capitals.length === 0) problems.push(`${iso} has no current capital on Wikidata`)
   if (icons.capital && !capitals.includes(icons.capital)) {
     warnings.push(
@@ -117,15 +127,29 @@ for (const state of states) {
     .filter((alt) => !seen.has(alt.toLowerCase()) && seen.add(alt.toLowerCase()))
     .sort()
 
+  const capitalSeen = new Set(capitals.map((c) => c.toLowerCase()))
+  const capitalAltNames = split(row.capitalAliases.value)
+    .filter(isUsefulAlias)
+    .filter((alt) => !capitalSeen.has(alt.toLowerCase()) && capitalSeen.add(alt.toLowerCase()))
+    .sort()
+
   countries.push({
     iso2: state.iso2,
     wikidata: row.item.value.split('/').pop() ?? '',
     name,
     altNames,
     capitals,
+    capitalAltNames,
     region: icons.continent,
     unStatus: state.unStatus,
   })
+}
+
+for (const override of overrides) {
+  if (!states.some((s) => s.iso2 === override.iso2)) {
+    problems.push(`Override for unknown code ${override.iso2}`)
+  }
+  if (!override.reason.trim()) problems.push(`Override for ${override.iso2} has no reason`)
 }
 
 if (problems.length > 0) {

@@ -1,6 +1,8 @@
 import { existsSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
+import overrides from '../../scripts/overrides.json'
 import { countries } from './countries.ts'
+import { lookalikeGroups } from './lookalikes.ts'
 
 const regions = ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
 
@@ -38,6 +40,31 @@ describe('country data', () => {
     for (const country of countries) {
       const lower = country.altNames.map((n) => n.toLowerCase())
       expect(lower, country.iso2).not.toContain(country.name.toLowerCase())
+    }
+  })
+
+  it('applies every override, each with a reason', () => {
+    for (const override of overrides) {
+      expect(override.reason.length).toBeGreaterThan(20)
+      const country = countries.find((c) => c.iso2 === override.iso2)
+      for (const capital of override.addCapitals ?? []) {
+        expect(country?.capitals).toContain(capital)
+      }
+    }
+  })
+
+  it('keeps capital alternatives apart from the capitals themselves', () => {
+    for (const country of countries) {
+      const lower = country.capitals.map((c) => c.toLowerCase())
+      for (const alt of country.capitalAltNames) expect(lower).not.toContain(alt.toLowerCase())
+    }
+  })
+
+  it('only lists real countries in the lookalike groups', () => {
+    const codes = new Set(countries.map((c) => c.iso2))
+    for (const group of lookalikeGroups) {
+      expect(group.length).toBeGreaterThanOrEqual(2)
+      for (const code of group) expect(codes.has(code), code).toBe(true)
     }
   })
 })

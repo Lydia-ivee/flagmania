@@ -1,0 +1,25 @@
+{
+  "about": "Groups of flags that are easy to confuse. Used to pick one hard distractor for four-option flag questions. A country can sit in more than one group. Contributions welcome.",
+  "groups": [
+    ["td", "ro", "ad", "md"],
+    ["id", "mc", "pl"],
+    ["ie", "ci", "it"],
+    ["it", "mx"],
+    ["au", "nz"],
+    ["no", "is", "dk", "se", "fi"],
+    ["sn", "ml", "gn", "cm"],
+    ["si", "sk", "ru", "rs"],
+    ["lu", "nl"],
+    ["co", "ec", "ve"],
+    ["hn", "ni", "sv"],
+    ["qa", "bh"],
+    ["jo", "ps", "sd", "kw", "ae"],
+    ["eg", "sy", "iq", "ye"],
+    ["at", "lv"],
+    ["bo", "gh", "lt"],
+    ["be", "de"],
+    ["ht", "li"],
+    ["my", "us", "lr"],
+    ["tr", "tn"]
+  ]
+}
