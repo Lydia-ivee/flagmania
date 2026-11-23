@@ -1,0 +1,782 @@
+[
+  {
+    "iso2": "ad",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ae",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "af",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ag",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "al",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "am",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ao",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ar",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "at",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "au",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "az",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ba",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bb",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bd",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "be",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bf",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bh",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bi",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bj",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bo",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "br",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bs",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "by",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "bz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ca",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cd",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cf",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ch",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ci",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cl",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "co",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cu",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cv",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cy",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "cz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "de",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "dj",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "dk",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "dm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "do",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "dz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ec",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ee",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "eg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "er",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "es",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "et",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "fi",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "fj",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "fm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "fr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ga",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gb",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gd",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ge",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gh",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gq",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "gy",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "hn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "hr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ht",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "hu",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "id",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ie",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "il",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "in",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "iq",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ir",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "is",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "it",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "jm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "jo",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "jp",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ke",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kh",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ki",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "km",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kp",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "kz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "la",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lb",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lc",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "li",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lk",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ls",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lu",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "lv",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ly",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ma",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mc",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "md",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "me",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mh",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mk",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ml",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mu",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mv",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mx",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "my",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "mz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "na",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ne",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ng",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ni",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "nl",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "no",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "np",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "nr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "nz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "om",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pa",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pe",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ph",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pk",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pl",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ps",
+    "unStatus": "observer"
+  },
+  {
+    "iso2": "pt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "pw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "py",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "qa",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ro",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "rs",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ru",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "rw",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sa",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sb",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sc",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sd",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "se",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "si",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sk",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sl",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "so",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ss",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "st",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sv",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sy",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "sz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "td",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tg",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "th",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tj",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tl",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "to",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tr",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tt",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tv",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "tz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ua",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ug",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "us",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "uy",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "uz",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "va",
+    "unStatus": "observer"
+  },
+  {
+    "iso2": "vc",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ve",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "vn",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "vu",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ws",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "ye",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "za",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "zm",
+    "unStatus": "member"
+  },
+  {
+    "iso2": "zw",
+    "unStatus": "member"
+  }
+]
