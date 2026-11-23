@@ -31,6 +31,9 @@ export type Answer = {
 export type CountryLike = {
   iso2: string
   name: string
+  altNames: readonly string[]
+  capitals: readonly string[]
+  capitalAltNames: readonly string[]
   region: string
 }
 

@@ -1,6 +1,6 @@
 import fc from 'fast-check'
 import { describe, expect, it } from 'vitest'
-import { applyAnswer, maxTier, newItemState, startOfDayPlus } from './scheduler.ts'
+import { applyAnswer, askTier, maxTier, newItemState, startOfDayPlus } from './scheduler.ts'
 import type { Answer, Facet, ItemState, Tier } from './types.ts'
 
 const facetArb = fc.constantFrom<Facet>(
@@ -152,5 +152,20 @@ describe('applyAnswer', () => {
     const atTwo: ItemState = { ...fresh, box: 3, tier: 2 }
     const next = applyAnswer(atTwo, { correct: true, tier: 2, at: start }, 'country-to-flag')
     expect(next.tier).toBe(2)
+  })
+})
+
+describe('askTier', () => {
+  const base = newItemState('fr-flag-to-country', start)
+
+  it('starts new items at T0', () => {
+    expect(askTier(undefined, 'flag-to-country')).toBe(0)
+  })
+
+  it('asks at the stored tier but never above what the box allows', () => {
+    expect(askTier({ ...base, box: 2, tier: 2 }, 'flag-to-country')).toBe(2)
+    expect(askTier({ ...base, box: 2, tier: 3 }, 'flag-to-country')).toBe(2)
+    expect(askTier({ ...base, box: 3, tier: 3 }, 'flag-to-country')).toBe(3)
+    expect(askTier({ ...base, box: 5, tier: 3 }, 'country-to-flag')).toBe(2)
   })
 })
