@@ -1,11 +1,11 @@
 # Flagmania product requirements document
 
-| Field | Value |
-| --- | --- |
-| Name | Flagmania |
-| Version | 0.1 |
-| Status | Draft for review |
-| Owner | Lydia Miller |
+| Field        | Value            |
+| ------------ | ---------------- |
+| Name         | Flagmania        |
+| Version      | 0.1              |
+| Status       | Draft for review |
+| Owner        | Lydia Miller     |
 | Last updated | 23 November 2026 |
 
 ## 1. Summary
@@ -55,23 +55,23 @@ A hiring manager or engineer looking at the GitHub profile. Spends under two min
 
 Priorities use MoSCoW (Must, Should, Could, Won't).
 
-| ID | As a | I want to | So that | Priority |
-| --- | --- | --- | --- | --- |
-| US-01 | learner | start a session with one tap from the home screen | I can use dead time on a train | Must |
-| US-02 | learner | swipe to answer | I can play one-handed | Must |
-| US-03 | learner | see the correct answer straight after a miss | I learn from the mistake at once | Must |
-| US-04 | learner | have missed cards return later in the same session | I get a second go while it is fresh | Must |
-| US-05 | learner | have known cards stop appearing for a while | sessions focus on what I do not know | Must |
-| US-06 | learner | use the app with no signal | it works underground | Must |
-| US-07 | learner | pick which decks to study, flags or capitals | I can focus on one skill | Must |
-| US-08 | learner | answer with buttons or arrow keys instead of swiping | I can use it at a desk or with assistive tech | Must |
-| US-09 | learner | filter by region | I can learn Europe before Oceania | Should |
-| US-10 | learner | export and import my progress as a file | I do not lose it when I change phone | Should |
-| US-11 | learner | see my progress by region | I know where my gaps are | Should |
-| US-12 | learner | see a world map shaded by how well I know each country | I get a quick visual of progress | Could |
-| US-13 | learner | turn on a landmarks pack | I can learn famous places too | Could |
-| US-14 | learner | include territories such as Greenland and Puerto Rico | I can go beyond sovereign states | Could |
-| US-15 | learner | sync progress across devices | I can switch between phone and laptop | Won't (v1) |
+| ID    | As a    | I want to                                              | So that                                       | Priority   |
+| ----- | ------- | ------------------------------------------------------ | --------------------------------------------- | ---------- |
+| US-01 | learner | start a session with one tap from the home screen      | I can use dead time on a train                | Must       |
+| US-02 | learner | swipe to answer                                        | I can play one-handed                         | Must       |
+| US-03 | learner | see the correct answer straight after a miss           | I learn from the mistake at once              | Must       |
+| US-04 | learner | have missed cards return later in the same session     | I get a second go while it is fresh           | Must       |
+| US-05 | learner | have known cards stop appearing for a while            | sessions focus on what I do not know          | Must       |
+| US-06 | learner | use the app with no signal                             | it works underground                          | Must       |
+| US-07 | learner | pick which decks to study, flags or capitals           | I can focus on one skill                      | Must       |
+| US-08 | learner | answer with buttons or arrow keys instead of swiping   | I can use it at a desk or with assistive tech | Must       |
+| US-09 | learner | filter by region                                       | I can learn Europe before Oceania             | Should     |
+| US-10 | learner | export and import my progress as a file                | I do not lose it when I change phone          | Should     |
+| US-11 | learner | see my progress by region                              | I know where my gaps are                      | Should     |
+| US-12 | learner | see a world map shaded by how well I know each country | I get a quick visual of progress              | Could      |
+| US-13 | learner | turn on a landmarks pack                               | I can learn famous places too                 | Could      |
+| US-14 | learner | include territories such as Greenland and Puerto Rico  | I can go beyond sovereign states              | Could      |
+| US-15 | learner | sync progress across devices                           | I can switch between phone and laptop         | Won't (v1) |
 
 ## 6. Functional requirements
 
@@ -80,12 +80,12 @@ Priorities use MoSCoW (Must, Should, Could, Won't).
 - A **country** is the unit of content. The default set is the 193 UN member states plus the 2 UN observer states (Holy See and Palestine), giving 195.
 - Each country produces **items**, one per facet. Version 1 has four facets.
 
-| Facet | Prompt | Answer |
-| --- | --- | --- |
-| flag-to-country | A flag | Country name |
-| country-to-flag | Country name | A flag |
-| country-to-capital | Country name | Capital |
-| capital-to-country | Capital | Country name |
+| Facet              | Prompt       | Answer       |
+| ------------------ | ------------ | ------------ |
+| flag-to-country    | A flag       | Country name |
+| country-to-flag    | Country name | A flag       |
+| country-to-capital | Country name | Capital      |
+| capital-to-country | Capital      | Country name |
 
 - Facets are scheduled independently. Knowing the flag of Chad says nothing about knowing its capital.
 - The flags deck holds the first two facets and the capitals deck holds the last two. The learner turns each deck on or off.
@@ -94,12 +94,12 @@ Priorities use MoSCoW (Must, Should, Could, Won't).
 
 Every question is a card. The answer options sit at the card's edges and the learner swipes toward their choice. This keeps one gesture across every question format.
 
-| Tier | Format | Gesture | Notes |
-| --- | --- | --- | --- |
-| T0 | True or false claim, such as "Canberra is the capital of Australia" | Right for true and left for false. Down means "don't know" | Claims are true half the time |
-| T1 | Two options | Left or right | One distractor |
-| T2 | Four options | Up, down, left or right | Three distractors |
-| T3 | Typed answer | Type, then press Enter or swipe up | Not available for country-to-flag, which stays at T2 |
+| Tier | Format                                                              | Gesture                                                    | Notes                                                |
+| ---- | ------------------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------- |
+| T0   | True or false claim, such as "Canberra is the capital of Australia" | Right for true and left for false. Down means "don't know" | Claims are true half the time                        |
+| T1   | Two options                                                         | Left or right                                              | One distractor                                       |
+| T2   | Four options                                                        | Up, down, left or right                                    | Three distractors                                    |
+| T3   | Typed answer                                                        | Type, then press Enter or swipe up                         | Not available for country-to-flag, which stays at T2 |
 
 - A swipe commits once the card passes 35% of the screen width (or height for vertical swipes). Below that it springs back.
 - The card tilts and the chosen option highlights during the drag, so the learner sees what they are about to pick before letting go.
@@ -115,13 +115,13 @@ The original idea was "get it wrong and it gets easier, get it right and it gets
 
 #### Leitner boxes
 
-| Box | Next review |
-| --- | --- |
-| 1 | Later in the same session, 3 to 5 cards on |
-| 2 | 1 day |
-| 3 | 3 days |
-| 4 | 7 days |
-| 5 | 21 days |
+| Box | Next review                                |
+| --- | ------------------------------------------ |
+| 1   | Later in the same session, 3 to 5 cards on |
+| 2   | 1 day                                      |
+| 3   | 3 days                                     |
+| 4   | 7 days                                     |
+| 5   | 21 days                                    |
 
 Rules, applied per item after each answer.
 
@@ -168,31 +168,31 @@ Rules, applied per item after each answer.
 
 ## 7. Non-functional requirements
 
-| Area | Requirement |
-| --- | --- |
-| Offline | After the first load, every core feature works with the network switched off. Tested in CI with Playwright in offline mode. |
-| Install | Meets Chrome's installability criteria on Android, with an app icon and standalone display. |
-| Performance | JavaScript under 150 KB gzipped. Core precache under 5 MB. Card drag holds 60 frames per second on a mid-range Android phone (Pixel 6a class). Offline cold start under 1.5 seconds on the same phone. |
-| Accessibility | WCAG 2.2 AA. Every gesture has a button and keyboard alternative. Respects prefers-reduced-motion. Visible focus states. Contrast checked in both light and dark themes. |
-| Privacy | No analytics, cookies, trackers or third-party requests after install. No personal data leaves the device, so UK GDPR obligations for the developer do not arise. A short privacy note in the README says so. |
-| Browser support | Latest two versions of Chrome on Android. Latest Chrome, Edge, Firefox and Safari on desktop. iOS Safari should work but is not a target. |
-| Reliability | Progress writes are transactional. A crash mid-answer never corrupts saved state. |
-| Maintainability | Strict TypeScript. The core module has no imports from the UI or storage layers. |
+| Area            | Requirement                                                                                                                                                                                                   |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Offline         | After the first load, every core feature works with the network switched off. Tested in CI with Playwright in offline mode.                                                                                   |
+| Install         | Meets Chrome's installability criteria on Android, with an app icon and standalone display.                                                                                                                   |
+| Performance     | JavaScript under 150 KB gzipped. Core precache under 5 MB. Card drag holds 60 frames per second on a mid-range Android phone (Pixel 6a class). Offline cold start under 1.5 seconds on the same phone.        |
+| Accessibility   | WCAG 2.2 AA. Every gesture has a button and keyboard alternative. Respects prefers-reduced-motion. Visible focus states. Contrast checked in both light and dark themes.                                      |
+| Privacy         | No analytics, cookies, trackers or third-party requests after install. No personal data leaves the device, so UK GDPR obligations for the developer do not arise. A short privacy note in the README says so. |
+| Browser support | Latest two versions of Chrome on Android. Latest Chrome, Edge, Firefox and Safari on desktop. iOS Safari should work but is not a target.                                                                     |
+| Reliability     | Progress writes are transactional. A crash mid-answer never corrupts saved state.                                                                                                                             |
+| Maintainability | Strict TypeScript. The core module has no imports from the UI or storage layers.                                                                                                                              |
 
 ## 8. Technical approach
 
 ### 8.1 Stack
 
-| Layer | Choice | Reason |
-| --- | --- | --- |
-| Language | TypeScript (strict) | Types make the scheduler rules explicit and readable |
-| UI | React with Vite | Widely recognised by reviewers, fast dev server, small production build |
-| Gestures | A small custom Pointer Events hook | Roughly 100 lines, no dependency, and a readable piece of the codebase in its own right |
-| Storage | IndexedDB through Dexie | Survives restarts and handles transactions |
-| Offline | vite-plugin-pwa (Workbox) | Generates the service worker and precache manifest from the build |
-| Unit tests | Vitest with fast-check | Property-based tests suit a scheduler with invariants |
-| End-to-end tests | Playwright | Covers swipe, keyboard and offline flows |
-| CI and hosting | GitHub Actions and GitHub Pages | Free, and gives a live demo link |
+| Layer            | Choice                             | Reason                                                                                  |
+| ---------------- | ---------------------------------- | --------------------------------------------------------------------------------------- |
+| Language         | TypeScript (strict)                | Types make the scheduler rules explicit and readable                                    |
+| UI               | React with Vite                    | Widely recognised by reviewers, fast dev server, small production build                 |
+| Gestures         | A small custom Pointer Events hook | Roughly 100 lines, no dependency, and a readable piece of the codebase in its own right |
+| Storage          | IndexedDB through Dexie            | Survives restarts and handles transactions                                              |
+| Offline          | vite-plugin-pwa (Workbox)          | Generates the service worker and precache manifest from the build                       |
+| Unit tests       | Vitest with fast-check             | Property-based tests suit a scheduler with invariants                                   |
+| End-to-end tests | Playwright                         | Covers swipe, keyboard and offline flows                                                |
+| CI and hosting   | GitHub Actions and GitHub Pages    | Free, and gives a live demo link                                                        |
 
 Svelte is a reasonable swap for React if a lighter framework is preferred. The decision is recorded in an ADR either way.
 
@@ -245,11 +245,11 @@ flagmania/
 
 ### 8.5 Data model
 
-| Store | Key | Fields |
-| --- | --- | --- |
-| items | `${iso2}-${facet}` | box, tier, dueAt, lastSeenAt, correctCount, wrongCount |
-| answers | auto | itemId, answeredAt, tier, correct, responseMs |
-| settings | single row | sessionLength, newPerSession, decks, regions, packs, reducedMotion |
+| Store    | Key                | Fields                                                             |
+| -------- | ------------------ | ------------------------------------------------------------------ |
+| items    | `${iso2}-${facet}` | box, tier, dueAt, lastSeenAt, correctCount, wrongCount             |
+| answers  | auto               | itemId, answeredAt, tier, correct, responseMs                      |
+| settings | single row         | sessionLength, newPerSession, decks, regions, packs, reducedMotion |
 
 The answers log feeds the progress screen and any future charts. It is capped at the most recent 10,000 rows.
 
@@ -266,13 +266,13 @@ The answers log feeds the progress screen and any future charts. It is capped at
 
 ## 9. Data sources and licensing
 
-| Content | Source | Licence | Notes |
-| --- | --- | --- | --- |
-| Country names, capitals, regions, alternative names | Wikidata | CC0 | No attribution required, credited anyway. Pulled by a build script and committed so builds are reproducible offline. |
-| Flags | flag-icons | MIT | SVG, 4x3 ratio. Flags themselves are generally free of copyright. |
-| Landmark list and category | Wikidata (UNESCO World Heritage items) | CC0 | The UNESCO category gives the human-made or natural tag |
-| Landmark photos | Wikimedia Commons | Per image, mostly CC BY-SA or CC BY | Attribution required for each image. Needs research, see below. |
-| World map (Could) | Natural Earth | Public domain | Only if the map view is built |
+| Content                                             | Source                                 | Licence                             | Notes                                                                                                                |
+| --------------------------------------------------- | -------------------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Country names, capitals, regions, alternative names | Wikidata                               | CC0                                 | No attribution required, credited anyway. Pulled by a build script and committed so builds are reproducible offline. |
+| Flags                                               | flag-icons                             | MIT                                 | SVG, 4x3 ratio. Flags themselves are generally free of copyright.                                                    |
+| Landmark list and category                          | Wikidata (UNESCO World Heritage items) | CC0                                 | The UNESCO category gives the human-made or natural tag                                                              |
+| Landmark photos                                     | Wikimedia Commons                      | Per image, mostly CC BY-SA or CC BY | Attribution required for each image. Needs research, see below.                                                      |
+| World map (Could)                                   | Natural Earth                          | Public domain                       | Only if the map view is built                                                                                        |
 
 ### Areas needing research
 
@@ -309,28 +309,28 @@ The answers log feeds the progress screen and any future charts. It is capped at
 
 ## 11. Release plan
 
-| Milestone | Contents | Exit check |
-| --- | --- | --- |
-| M0 Foundations | Repository, CI, Pages deploy, data script, ADR 0001 | Empty app live on Pages with green CI |
-| M1 Walking skeleton | Flags deck, T0 swipe, Leitner boxes, local storage | A full session on the phone, progress kept after a reload |
-| M2 Adaptive formats | T1 to T3, lookalike distractors, typed matching, capitals deck | All scheduler property tests pass |
-| M3 Offline and install | Service worker, install prompt, export and import, region filter | Offline Playwright test passes, session done on the Tube |
-| M4 Presentation | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI | README checklist in appendix A complete |
-| M5 Landmarks pack | Commons pipeline, credits screen, landmark facet, human-made and natural filter | Every image has an author and licence in CREDITS |
+| Milestone              | Contents                                                                        | Exit check                                                |
+| ---------------------- | ------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| M0 Foundations         | Repository, CI, Pages deploy, data script, ADR 0001                             | Empty app live on Pages with green CI                     |
+| M1 Walking skeleton    | Flags deck, T0 swipe, Leitner boxes, local storage                              | A full session on the phone, progress kept after a reload |
+| M2 Adaptive formats    | T1 to T3, lookalike distractors, typed matching, capitals deck                  | All scheduler property tests pass                         |
+| M3 Offline and install | Service worker, install prompt, export and import, region filter                | Offline Playwright test passes, session done on the Tube  |
+| M4 Presentation        | README, demo gif, screenshots, remaining ADRs, Lighthouse in CI                 | README checklist in appendix A complete                   |
+| M5 Landmarks pack      | Commons pipeline, credits screen, landmark facet, human-made and natural filter | Every image has an author and licence in CREDITS          |
 
 M0 to M4 is version 1.0. M5 is optional and starts only once 1.0 is in daily use.
 
 ## 12. Risks
 
-| Risk | Likelihood | Impact | Mitigation |
-| --- | --- | --- | --- |
-| Solo scope creep, landmarks pulling effort before the core works | High | High | Landmarks are Could and sit behind M4. No new facets until 1.0. |
-| Swipe feels laggy on a cheaper phone | Medium | High | Test on a real device from M1. Animate transform and opacity only. |
-| Four-direction swipe confuses new learners | Medium | Medium | Options always drawn at the edge they map to. Buttons always visible. |
-| Landmark images break licence terms | Medium | Medium | Automated credits from the Commons API. Manual check of any image without clear licence data. |
-| Disputed territory choices draw criticism | Low | Medium | Documented UN-based rule. Territories in an optional deck. |
-| Lost progress on phone change or cleared site data | Medium | Medium | Export and import in M3. Request persistent storage from the browser. |
-| The idea reads as "another flag quiz" on GitHub | Medium | Medium | README leads with the scheduler and offline play, with a worked example. |
+| Risk                                                             | Likelihood | Impact | Mitigation                                                                                    |
+| ---------------------------------------------------------------- | ---------- | ------ | --------------------------------------------------------------------------------------------- |
+| Solo scope creep, landmarks pulling effort before the core works | High       | High   | Landmarks are Could and sit behind M4. No new facets until 1.0.                               |
+| Swipe feels laggy on a cheaper phone                             | Medium     | High   | Test on a real device from M1. Animate transform and opacity only.                            |
+| Four-direction swipe confuses new learners                       | Medium     | Medium | Options always drawn at the edge they map to. Buttons always visible.                         |
+| Landmark images break licence terms                              | Medium     | Medium | Automated credits from the Commons API. Manual check of any image without clear licence data. |
+| Disputed territory choices draw criticism                        | Low        | Medium | Documented UN-based rule. Territories in an optional deck.                                    |
+| Lost progress on phone change or cleared site data               | Medium     | Medium | Export and import in M3. Request persistent storage from the browser.                         |
+| The idea reads as "another flag quiz" on GitHub                  | Medium     | Medium | README leads with the scheduler and offline play, with a worked example.                      |
 
 ## 13. Assumptions
 
@@ -342,25 +342,26 @@ M0 to M4 is version 1.0. M5 is optional and starts only once 1.0 is in daily use
 
 ## 14. Open questions
 
-| ID | Question | Leaning |
-| --- | --- | --- |
-| OQ-1 | React or Svelte | React, for recognition on a profile |
-| OQ-2 | How flag questions work for screen reader users, since alt text would give the answer away | Offer a text description of the flag as an opt-in mode, or exclude flag-to-country for screen readers and say so |
-| OQ-3 | Whether the territories deck is in 1.0 | Leave it for after 1.0 |
-| OQ-4 | Whether landmark photos are worth the licence work, or names with a map pin are enough | Decide at M5 after a trial with ten countries |
-| OQ-5 | Whether cross-device sync is ever wanted | Not in scope. Export and import covers the need for now. |
+| ID   | Question                                                                                                                                                                                                        | Leaning                                                                                                                                                                |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| OQ-1 | React or Svelte                                                                                                                                                                                                 | React, for recognition on a profile                                                                                                                                    |
+| OQ-2 | How flag questions work for screen reader users, since alt text would give the answer away                                                                                                                      | Offer a text description of the flag as an opt-in mode, or exclude flag-to-country for screen readers and say so                                                       |
+| OQ-3 | Whether the territories deck is in 1.0                                                                                                                                                                          | Leave it for after 1.0                                                                                                                                                 |
+| OQ-4 | Whether landmark photos are worth the licence work, or names with a map pin are enough                                                                                                                          | Decide at M5 after a trial with ten countries                                                                                                                          |
+| OQ-5 | Whether cross-device sync is ever wanted                                                                                                                                                                        | Not in scope. Export and import covers the need for now.                                                                                                               |
+| OQ-6 | Which capital to teach where it is contested or moving. Wikidata currently gives Israel as Jerusalem, Palestine as East Jerusalem or Ramallah, Equatorial Guinea as Ciudad de la Paz and Yemen as Aden or Sanaa | Accept every listed capital in typed answers. Add a small overrides file with a reason for each change, such as adding Malabo for Equatorial Guinea. Decide before M2. |
 
 ## 15. Glossary
 
-| Term | Meaning |
-| --- | --- |
-| Item | One country and one facet, such as "France, flag-to-country" |
-| Facet | A direction of question, such as country to capital |
-| Box | The Leitner box an item sits in, from 1 (new or missed) to 5 (well known) |
-| Tier | The format an item is asked in, from T0 (true or false) to T3 (typed) |
-| Distractor | A wrong option shown alongside the right one |
-| ADR | Architecture decision record, a short note explaining one technical choice |
-| PWA | Progressive web app, a website that installs and runs offline like an app |
+| Term       | Meaning                                                                    |
+| ---------- | -------------------------------------------------------------------------- |
+| Item       | One country and one facet, such as "France, flag-to-country"               |
+| Facet      | A direction of question, such as country to capital                        |
+| Box        | The Leitner box an item sits in, from 1 (new or missed) to 5 (well known)  |
+| Tier       | The format an item is asked in, from T0 (true or false) to T3 (typed)      |
+| Distractor | A wrong option shown alongside the right one                               |
+| ADR        | Architecture decision record, a short note explaining one technical choice |
+| PWA        | Progressive web app, a website that installs and runs offline like an app  |
 
 ## Appendix A. README checklist
 
@@ -388,10 +389,10 @@ The README follows common open-source conventions, in this order.
 
 ## Appendix B. Planned ADRs
 
-| Number | Decision |
-| --- | --- |
-| 0001 | A PWA instead of React Native or Flutter |
-| 0002 | Leitner boxes instead of SM-2 |
-| 0003 | Wikidata instead of REST Countries or mledoze/countries |
-| 0004 | No backend, local-only storage |
-| 0005 | A custom swipe hook instead of a gesture library |
+| Number | Decision                                                |
+| ------ | ------------------------------------------------------- |
+| 0001   | A PWA instead of React Native or Flutter                |
+| 0002   | Leitner boxes instead of SM-2                           |
+| 0003   | Wikidata instead of REST Countries or mledoze/countries |
+| 0004   | No backend, local-only storage                          |
+| 0005   | A custom swipe hook instead of a gesture library        |
