@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import {
   checkTypedCard,
   isChoiceCorrect,
@@ -8,18 +8,11 @@ import {
 } from '../core/cards.ts'
 import { isFinished, recordAnswer, startSession, type SessionState } from '../core/session.ts'
 import type { Random, Tier } from '../core/types.ts'
-import type { Country } from '../data/countries.ts'
+import { flagUrl, type Country } from '../data/countries.ts'
 import { lookalikesOf } from '../data/lookalikes.ts'
-import {
-  announcement,
-  ChoicePad,
-  Feedback,
-  optionDirections,
-  Prompt,
-  TypedAnswer,
-  type Given,
-} from './CardViews.tsx'
-import { useSwipe, type SwipeDirection, type SwipeSource } from './useSwipe.ts'
+import { announcement, Feedback, type Given } from './CardViews.tsx'
+import { QuestionView } from './QuestionView.tsx'
+import type { SwipeSource } from './useSwipe.ts'
 
 export type SessionSummary = {
   answered: number
@@ -59,33 +52,19 @@ const autoAdvanceMs = 900
 /** Keys with a modifier belong to the browser, such as Cmd+D to bookmark. */
 const hasModifier = (event: KeyboardEvent) => event.metaKey || event.ctrlKey || event.altKey
 
-const keyDirections: Record<string, SwipeDirection> = {
-  ArrowUp: 'up',
-  ArrowLeft: 'left',
-  ArrowRight: 'right',
-  ArrowDown: 'down',
+/** Starts downloading flags so they are ready when a card shows them. */
+function preloadFlags(countries: readonly Country[]) {
+  for (const country of countries) {
+    const image = new Image()
+    image.src = flagUrl(country)
+  }
 }
 
-/** Directions a card can be swiped in. Claims and two options use down for "don't know". */
-function swipeDirections(card: Card): SwipeDirection[] {
-  if (card.kind === 'claim') return ['left', 'right', 'down']
-  if (card.kind === 'choice') {
-    return card.options.length === 2 ? ['left', 'right', 'down'] : optionDirections(4)
-  }
-  return []
-}
-
-/** Turns a swipe into an answer for this card. */
-function givenFor(card: Card, direction: SwipeDirection): Given | null {
-  if (card.kind === 'claim') {
-    const value = direction === 'right' ? 'true' : direction === 'left' ? 'false' : 'unknown'
-    return { kind: 'claim', value }
-  }
-  if (card.kind === 'choice') {
-    const index = optionDirections(card.options.length).indexOf(direction)
-    return { kind: 'choice', index: index === -1 ? null : index }
-  }
-  return null
+/** Every flag a card can show, on the question or the feedback screen. */
+function flagsOn(card: Card<Country>): Country[] {
+  if (card.kind === 'claim') return [card.country, card.claimed.country]
+  if (card.kind === 'choice') return card.options.map((o) => o.country)
+  return [card.country]
 }
 
 type Mark = { correct: boolean; exact: boolean; ambiguous: boolean }
@@ -119,13 +98,6 @@ function summarise(session: SessionState, countries: readonly Country[]): Sessio
   }
 }
 
-const keyHints: Record<string, string> = {
-  claim: 'Keys. Left for false, right for true, down or D for don’t know.',
-  choice2: 'Keys. Left or right to pick, down or D for don’t know.',
-  choice4: 'Keys. Arrows to pick, D for don’t know.',
-  typed: 'Type the answer and press Enter.',
-}
-
 export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onFinish }: Props) {
   const build = useCallback(
     (itemId: string) => makeCard(itemId, tierFor(itemId), countries, random, { lookalikesOf }),
@@ -136,16 +108,19 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     kind: 'question',
     card: build(queue[0] ?? ''),
   }))
-  const cardRef = useRef<HTMLDivElement>(null)
-  const titleId = useId()
-  const claimId = useId()
-  // The card last answered. A swipe still flying out and a "don't know" press can both
-  // arrive for one card, so only the first one counts.
-  const answeredCard = useRef<Card<Country> | null>(null)
+
+  // Load every flag the session will ask about, so no card shows an empty frame on a slow
+  // connection. Option flags for each next card are loaded while its feedback is on screen.
+  useEffect(() => {
+    preloadFlags(
+      queue
+        .map((id) => countries.find((c) => c.iso2 === id.slice(0, 2)))
+        .filter((c): c is Country => c !== undefined),
+    )
+  }, [queue, countries])
 
   const answer = (given: Given, source: SwipeSource) => {
-    if (phase.kind !== 'question' || answeredCard.current === phase.card) return
-    answeredCard.current = phase.card
+    if (phase.kind !== 'question') return
     const { correct, exact, ambiguous } = mark(phase.card, given)
     onAnswer(phase.card.itemId, correct, phase.card.tier)
     setSession((current) => recordAnswer(current, correct, random))
@@ -160,28 +135,21 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     })
   }
 
-  const onSwipe = (direction: SwipeDirection, source: SwipeSource) => {
-    if (phase.kind !== 'question') return
-    const given = givenFor(phase.card, direction)
-    if (given) answer(given, source)
-  }
-
-  const directions = phase.kind === 'question' ? swipeDirections(phase.card) : []
-  const swipe = useSwipe(onSwipe, phase.kind === 'question' && directions.length > 0, directions)
-  const { commit } = swipe
-
-  /** "Don't know" without a swipe, for four-option and typed cards. */
-  const dontKnow = () => {
-    if (phase.kind !== 'question') return
-    const { card } = phase
-    if (card.kind === 'choice' && card.options.length === 4) {
-      answer({ kind: 'choice', index: null }, 'command')
-    } else if (card.kind === 'typed') {
-      answer({ kind: 'typed', text: null }, 'command')
-    } else {
-      commit('down')
-    }
-  }
+  // The next card is built as soon as the feedback shows, from progress that already includes
+  // this answer, so its flags can load while the learner reads.
+  const buildRef = useRef(build)
+  const prepared = useRef<Card<Country> | null>(null)
+  useEffect(() => {
+    buildRef.current = build
+  })
+  useEffect(() => {
+    prepared.current = null
+    const nextId = session.queue[0]
+    if (phase.kind !== 'feedback' || nextId === undefined) return
+    const card = buildRef.current(nextId)
+    prepared.current = card
+    preloadFlags(flagsOn(card))
+  }, [phase, session.queue])
 
   const next = useCallback(() => {
     if (phase.kind !== 'feedback') return
@@ -190,7 +158,8 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
       onFinish(summarise(session, countries))
       return
     }
-    setPhase({ kind: 'question', card: build(nextId) })
+    const ready = prepared.current?.itemId === nextId ? prepared.current : null
+    setPhase({ kind: 'question', card: ready ?? build(nextId) })
   }, [phase.kind, session, countries, build, onFinish])
 
   // The timer reads the latest `next` through a ref, so a re-render does not restart it.
@@ -204,25 +173,12 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     return () => window.clearTimeout(timer)
   }, [phase])
 
-  useEffect(() => {
+  // Keys on the feedback screen. Question keys live in QuestionView. A layout effect, so the
+  // listener is in place before the screen paints and no key press falls in a gap.
+  useLayoutEffect(() => {
+    if (phase.kind !== 'feedback') return
     const onKey = (event: KeyboardEvent) => {
-      // A held key repeats. Without this it would answer cards nobody has looked at.
       if (event.repeat || hasModifier(event)) return
-      // Typing an answer must never trigger a shortcut.
-      if (event.target instanceof HTMLInputElement) return
-
-      if (phase.kind === 'question') {
-        const direction = keyDirections[event.key]
-        if (direction && directions.includes(direction)) {
-          event.preventDefault()
-          commit(direction)
-        } else if (event.key.toLowerCase() === 'd') {
-          dontKnow()
-        } else if (event.key.startsWith('Arrow')) {
-          event.preventDefault()
-        }
-        return
-      }
       // Enter or Space on a focused button already clicks it, so leave those to the button.
       const onButton = event.target instanceof HTMLButtonElement
       if (onButton && (event.key === 'Enter' || event.key === ' ')) return
@@ -235,26 +191,11 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  })
-
-  // Each new card takes focus, so screen readers read it and Tab starts from the card.
-  // Typed cards focus their input instead.
-  useEffect(() => {
-    if (phase.kind === 'question' && phase.card.kind !== 'typed') {
-      cardRef.current?.focus({ preventScroll: true })
-    }
-  }, [phase])
+  }, [phase.kind, next])
 
   const total = session.answered + session.queue.length
   const done = session.answered
   const { card } = phase
-  const hintKey =
-    card.kind === 'choice'
-      ? `choice${card.options.length}`
-      : card.kind === 'claim'
-        ? 'claim'
-        : 'typed'
-  const swipeable = card.kind !== 'typed'
 
   return (
     <section className="session" aria-label="Study session">
@@ -275,90 +216,8 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
       </p>
 
       {phase.kind === 'question' ? (
-        <>
-          <div className="deck">
-            {card.kind === 'claim' && (
-              <>
-                <span
-                  className={`hint hint-left${swipe.leaning === 'left' ? ' on' : ''}`}
-                  aria-hidden="true"
-                >
-                  False
-                </span>
-                <span
-                  className={`hint hint-right${swipe.leaning === 'right' ? ' on' : ''}`}
-                  aria-hidden="true"
-                >
-                  True
-                </span>
-              </>
-            )}
-            <div
-              ref={cardRef}
-              tabIndex={-1}
-              role="group"
-              aria-labelledby={`${titleId} ${claimId}`}
-              className={`swipe-card kind-${card.kind}`}
-              style={swipeable ? swipe.style : undefined}
-              data-leaning={swipe.leaning ?? undefined}
-              {...(swipeable ? swipe.handlers : {})}
-            >
-              <Prompt card={card} titleId={titleId} claimId={claimId} />
-            </div>
-          </div>
-
-          {card.kind === 'claim' && (
-            <div className="answer-buttons">
-              <button
-                type="button"
-                className={`false${swipe.leaning === 'left' ? ' on' : ''}`}
-                onClick={() => commit('left')}
-              >
-                False
-              </button>
-              <button
-                type="button"
-                className={`unknown${swipe.leaning === 'down' ? ' on' : ''}`}
-                onClick={() => commit('down')}
-              >
-                Don&rsquo;t know
-              </button>
-              <button
-                type="button"
-                className={`true${swipe.leaning === 'right' ? ' on' : ''}`}
-                onClick={() => commit('right')}
-              >
-                True
-              </button>
-            </div>
-          )}
-
-          {card.kind === 'choice' && (
-            <>
-              <ChoicePad card={card} leaning={swipe.leaning} onPick={commit} />
-              <button
-                type="button"
-                className={`unknown skip${
-                  card.options.length === 2 && swipe.leaning === 'down' ? ' on' : ''
-                }`}
-                onClick={dontKnow}
-              >
-                Don&rsquo;t know
-              </button>
-            </>
-          )}
-
-          {card.kind === 'typed' && (
-            <TypedAnswer
-              key={`${card.itemId}-${session.answered}`}
-              label={card.facet === 'country-to-capital' ? 'Capital' : 'Country'}
-              onSubmit={(text) => answer({ kind: 'typed', text }, 'command')}
-              onSkip={dontKnow}
-            />
-          )}
-
-          <p className="keys">{keyHints[hintKey]}</p>
-        </>
+        // Keyed per appearance, so each card starts with fresh swipe state.
+        <QuestionView key={session.answered} card={card} onAnswer={answer} />
       ) : (
         <Feedback
           card={card}
