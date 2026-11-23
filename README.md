@@ -1,11 +1,13 @@
 # Flagmania
 
-Learn every country's flag and capital by swiping cards on your phone, with a spaced repetition scheduler deciding what comes next. Works offline.
+Learn every country's flag and capital by swiping cards on your phone, with a spaced repetition scheduler deciding what comes next.
 
 [![CI](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml/badge.svg)](https://github.com/Lydia-ivee/flagmania/actions/workflows/ci.yml)
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue)](LICENSE)
 
-> Status. Early development. Flags and capitals both work, in every question format from true or false up to typing the answer. Progress is saved on the device. Offline install comes next. The plan is in [docs/PRD.md](docs/PRD.md).
+> **Work in progress.** Milestones M0 to M2 are done. Flags and capitals both work, in every question format from true or false up to typing the answer, and progress is saved on the device.
+>
+> Still to come are offline use with export and import of progress (M3), then a demo gif and the rest of the presentation work (M4). Landmarks (M5) stay optional. The plan and the release table are in [docs/PRD.md](docs/PRD.md), section 11. Pick up from M3.
 
 <!-- Only add a badge for a result the repository can back up. -->
 
@@ -81,8 +83,8 @@ The country data is committed, so you only need `npm run data` to refresh it. It
 
 1. Open the live app in Chrome.
 2. Tap the menu, then "Add to home screen".
-3. Open it once with signal so it can save everything it needs.
-4. From then on it works with no signal.
+
+For now the app still needs a signal to open. Offline use arrives with M3.
 
 ## Architecture
 
@@ -92,7 +94,7 @@ flowchart LR
   CORE --> UI
   UI --> ST[IndexedDB via Dexie]
   ST --> UI
-  SW[service worker] -.precaches.-> UI
+  SW[service worker, planned for M3] -.precaches.-> UI
 ```
 
 Decisions are recorded in [docs/adr](docs/adr).
@@ -110,7 +112,7 @@ Four-option flag questions include one lookalike where there is one, such as Cha
 
 ## Privacy
 
-No accounts or analytics. Your progress stays on your device. You can export it as a file.
+No accounts or analytics. Your progress stays on your device. Exporting it to a file is planned for M3.
 
 ## Licence
 
