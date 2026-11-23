@@ -46,34 +46,47 @@ export type TypedResult = {
   correct: boolean
   /** True when the answer matched without any typo. */
   exact: boolean
+  /** True when the answer fits this item and another one equally well. */
+  ambiguous: boolean
 }
 
+const wrong: TypedResult = { correct: false, exact: false, ambiguous: false }
+
 /**
- * @param accepted Every answer that counts, such as a name and its alternatives.
+ * @param primary The main answers, such as a country's name or its capitals. These allow typos.
  * @param rivals Answers for other items. Typing one of these is always wrong, so "Australia"
  *   never passes as a typo of "Austria".
+ * @param aliases Other accepted names, such as "Ivory Coast". These must match exactly, because
+ *   alias lists hold odd entries that would let near misses through.
  */
 export function checkTyped(
   input: string,
-  accepted: readonly string[],
+  primary: readonly string[],
   rivals: readonly string[],
+  aliases: readonly string[] = [],
 ): TypedResult {
   const typed = normalise(input)
-  if (!typed) return { correct: false, exact: false }
+  if (!typed) return wrong
 
-  const targets = accepted.flatMap(variants)
-  if (targets.includes(typed)) return { correct: true, exact: true }
-
+  const targets = primary.flatMap(variants)
   const rivalTargets = new Set(rivals.flatMap(variants))
-  if (rivalTargets.has(typed)) return { correct: false, exact: false }
+  const exactHit = targets.includes(typed) || aliases.map(normalise).includes(typed)
+
+  if (exactHit) {
+    // "Congo" names two countries, so it cannot count for either.
+    return rivalTargets.has(typed)
+      ? { correct: false, exact: false, ambiguous: true }
+      : { correct: true, exact: true, ambiguous: false }
+  }
+  if (rivalTargets.has(typed)) return wrong
 
   const closest = Math.min(...targets.map((t) => editDistance(typed, t)))
   const closeEnough = targets.some((t) => editDistance(typed, t) <= allowedTypos(t.length))
-  if (!closeEnough) return { correct: false, exact: false }
+  if (!closeEnough) return wrong
 
-  // A typo that sits closer to another answer is more likely that answer.
+  // A typo as close to another answer as to this one could be either, so it does not count.
   for (const rival of rivalTargets) {
-    if (editDistance(typed, rival) < closest) return { correct: false, exact: false }
+    if (editDistance(typed, rival) <= closest) return { ...wrong, ambiguous: true }
   }
-  return { correct: true, exact: false }
+  return { correct: true, exact: false, ambiguous: false }
 }

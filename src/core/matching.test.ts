@@ -1,9 +1,10 @@
 import { describe, expect, it } from 'vitest'
 import { checkTyped, editDistance, normalise } from './matching.ts'
 
-const ok = { correct: true, exact: true }
-const typo = { correct: true, exact: false }
-const wrong = { correct: false, exact: false }
+const ok = { correct: true, exact: true, ambiguous: false }
+const typo = { correct: true, exact: false, ambiguous: false }
+const wrong = { correct: false, exact: false, ambiguous: false }
+const unclear = { correct: false, exact: false, ambiguous: true }
 
 describe('normalise', () => {
   it('drops case, accents, punctuation, spaces and a leading "the"', () => {
@@ -27,8 +28,8 @@ describe('checkTyped', () => {
 
   it('accepts exact answers in any case, with or without accents', () => {
     expect(checkTyped('france', ['France'], rivals)).toEqual(ok)
-    expect(checkTyped('cote divoire', ["Côte d'Ivoire", 'Ivory Coast'], rivals)).toEqual(ok)
-    expect(checkTyped('Ivory Coast', ["Côte d'Ivoire", 'Ivory Coast'], rivals)).toEqual(ok)
+    expect(checkTyped('cote divoire', ["Côte d'Ivoire"], rivals, ['Ivory Coast'])).toEqual(ok)
+    expect(checkTyped('Ivory Coast', ["Côte d'Ivoire"], rivals, ['Ivory Coast'])).toEqual(ok)
   })
 
   it('accepts the part before a comma or bracket', () => {
@@ -43,9 +44,14 @@ describe('checkTyped', () => {
     expect(checkTyped('Agrentnia', ['Argentina'], rivals)).toEqual(typo)
   })
 
-  it('allows no typos in very short answers', () => {
+  it('allows one typo in a four-letter answer and none in three letters', () => {
     expect(checkTyped('Pero', ['Peru'], [])).toEqual(typo)
-    expect(checkTyped('Lme', ['Lima'], [])).toEqual(wrong)
+    expect(checkTyped('Abd', ['Abc'], [])).toEqual(wrong)
+  })
+
+  it('needs aliases to be typed exactly', () => {
+    expect(checkTyped('Ivory Coast', ["Côte d'Ivoire"], [], ['Ivory Coast'])).toEqual(ok)
+    expect(checkTyped('Ivory Cost', ["Côte d'Ivoire"], [], ['Ivory Coast'])).toEqual(wrong)
   })
 
   it('rejects another country even when it is within the typo allowance', () => {
@@ -57,6 +63,15 @@ describe('checkTyped', () => {
 
   it('rejects a typo that sits closer to another answer', () => {
     expect(checkTyped('Malawe', ['Mali'], rivals)).toEqual(wrong)
+  })
+
+  it('rejects a typo that is as close to another answer, and says it is unclear', () => {
+    expect(checkTyped('Nigera', ['Niger'], rivals)).toEqual(unclear)
+    expect(checkTyped('Nigera', ['Nigeria'], ['Niger'])).toEqual(unclear)
+  })
+
+  it('rejects a name that belongs to this answer and another one too', () => {
+    expect(checkTyped('Congo', ['Republic of the Congo'], ['Congo'], ['Congo'])).toEqual(unclear)
   })
 
   it('rejects blank input', () => {

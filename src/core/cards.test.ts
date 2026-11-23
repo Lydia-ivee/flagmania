@@ -1,6 +1,7 @@
 import fc from 'fast-check'
 import { describe, expect, it } from 'vitest'
 import {
+  capitalGivesAway,
   checkTypedCard,
   isChoiceCorrect,
   isClaimCorrect,
@@ -32,6 +33,8 @@ const countries = [
   country('au', 'Australia', 'Oceania', ['Canberra']),
   country('fj', 'Fiji', 'Oceania', ['Suva']),
   country('ua', 'Ukraine', 'Europe', ['Kyiv'], { capitalAltNames: ['Kiev'] }),
+  country('ee', 'Estonia', 'Europe', ['Tallinn'], { capitalAltNames: ['Reval'] }),
+  country('ci', "Côte d'Ivoire", 'Africa', ['Yamoussoukro'], { altNames: ['Ivory Coast'] }),
 ]
 
 const facets: Facet[] = [
@@ -73,6 +76,14 @@ describe('makeCard', () => {
             expect(tier).toBe(3)
             expect(facet).not.toBe('country-to-flag')
             expect(card.rivals).not.toContain(c.name)
+            // Every other country's answers, aliases included, count as rivals.
+            for (const other of countries.filter((o) => o.iso2 !== c.iso2)) {
+              const theirs =
+                facet === 'country-to-capital'
+                  ? [...other.capitals, ...other.capitalAltNames]
+                  : [other.name, ...other.altNames]
+              for (const answer of theirs) expect(card.rivals).toContain(answer)
+            }
           }
         },
       ),
@@ -107,6 +118,18 @@ describe('makeCard', () => {
     const card = makeCard('td-country-to-capital', 1, countries, seeded(3))
     if (card.kind !== 'choice') throw new Error('expected a choice')
     expect(card.options[card.correctIndex]?.text).toBe("N'Djamena")
+  })
+})
+
+describe('capitalGivesAway', () => {
+  it('spots capitals that name their country, and only those', () => {
+    const named = (name: string, capitals: string[], altNames: string[] = []) =>
+      capitalGivesAway(country('xx', name, 'Asia', capitals, { altNames }))
+    expect(named('Kuwait', ['Kuwait City'])).toBe(true)
+    expect(named('Holy See', ['Vatican City'], ['Vatican City'])).toBe(true)
+    expect(named('Tunisia', ['Tunis'])).toBe(true)
+    expect(named('Brazil', ['Brasília'], ['Brasil'])).toBe(false)
+    expect(named('France', ['Paris'])).toBe(false)
   })
 })
 
@@ -149,6 +172,12 @@ describe('marking', () => {
     const ua = makeCard('ua-country-to-capital', 3, countries, seeded(6))
     if (ua.kind !== 'typed') throw new Error('expected typed')
     expect(checkTypedCard(ua, 'Kiev').correct).toBe(true)
+  })
+
+  it("rejects another country's old capital name", () => {
+    const card = makeCard('ua-country-to-capital', 3, countries, seeded(8))
+    if (card.kind !== 'typed') throw new Error('expected typed')
+    expect(checkTypedCard(card, 'Reval').correct).toBe(false)
   })
 
   it('rejects a neighbouring country typed for a country', () => {

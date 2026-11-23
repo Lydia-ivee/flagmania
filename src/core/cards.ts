@@ -1,5 +1,5 @@
 import { parseItemId } from './items.ts'
-import { checkTyped } from './matching.ts'
+import { checkTyped, normalise } from './matching.ts'
 import { pickOne, shuffle } from './random.ts'
 import type { CountryLike, Facet, Random, Tier } from './types.ts'
 
@@ -33,7 +33,11 @@ export type ChoiceCard<C extends CountryLike = CountryLike> = Base<C> & {
 /** T3. The learner types the answer. */
 export type TypedCard<C extends CountryLike = CountryLike> = Base<C> & {
   kind: 'typed'
+  /** Main answers. Small typos are forgiven. */
   accepted: string[]
+  /** Other names that count only when typed exactly. */
+  aliases: string[]
+  /** Every other item's answers, main and alternative. */
   rivals: string[]
 }
 
@@ -125,13 +129,13 @@ export function makeCard<C extends CountryLike>(
   }
 
   const others = countries.filter((c) => c.iso2 !== iso2)
-  const accepted = answersWithCapital(facet)
-    ? [...country.capitals, ...country.capitalAltNames]
-    : [country.name, ...country.altNames]
-  const rivals = answersWithCapital(facet)
-    ? others.flatMap((c) => c.capitals)
-    : others.flatMap((c) => [c.name, ...c.altNames])
-  return { ...base, kind: 'typed', accepted, rivals }
+  const byCapital = answersWithCapital(facet)
+  const accepted = byCapital ? [...country.capitals] : [country.name]
+  const aliases = byCapital ? [...country.capitalAltNames] : [...country.altNames]
+  const rivals = others.flatMap((c) =>
+    byCapital ? [...c.capitals, ...c.capitalAltNames] : [c.name, ...c.altNames],
+  )
+  return { ...base, kind: 'typed', accepted, aliases, rivals }
 }
 
 export type ClaimResponse = 'true' | 'false' | 'unknown'
@@ -144,7 +148,22 @@ export const isChoiceCorrect = (card: ChoiceCard, index: number | null) =>
   index === card.correctIndex
 
 export const checkTypedCard = (card: TypedCard, text: string) =>
-  checkTyped(text, card.accepted, card.rivals)
+  checkTyped(text, card.accepted, card.rivals, card.aliases)
+
+/**
+ * True when a country's capital gives its name away, such as Kuwait City or Vatican City.
+ * Asking for the country from such a capital would be no question at all.
+ */
+export function capitalGivesAway(country: CountryLike): boolean {
+  const name = normalise(country.name)
+  const aliases = country.altNames.map(normalise)
+  return country.capitals.some((capital) => {
+    const c = normalise(capital)
+    // The main name shares a start with the capital, or an alias is the capital itself.
+    // Aliases only count when equal, so "Brasil" does not rule out Brasília.
+    return c.startsWith(name) || name.startsWith(c) || aliases.includes(c)
+  })
+}
 
 /** Every right answer, for the feedback screen. Several capitals are all shown. */
 export const rightAnswers = (card: Card): string[] =>
