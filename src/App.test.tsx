@@ -4,6 +4,7 @@ import { act, cleanup, fireEvent, render, screen, within } from '@testing-librar
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { App } from './App.tsx'
 import { countries } from './data/countries.ts'
+import { catalogueFor } from './decks.ts'
 import { seeded } from './core/random.ts'
 import { newItemState } from './core/scheduler.ts'
 import type { ItemState } from './core/types.ts'
@@ -16,6 +17,8 @@ afterEach(() => {
 
 let dbCount = 0
 const freshDb = () => openDb(`flagmania-app-test-${dbCount++}`)
+const allCards = catalogueFor({ decks: { flags: true, capitals: true } }).length
+const flagCards = catalogueFor({ decks: { flags: true, capitals: false } }).length
 
 /** Answers every card with "True" until the summary appears. Returns how many cards it saw. */
 async function playSession() {
@@ -57,7 +60,8 @@ describe('a first session', () => {
   it('plays through, then keeps progress after a reload', async () => {
     const db = freshDb()
     render(<App db={db} random={seeded(42)} />)
-    expect(await screen.findByText('0 of 780')).toBeTruthy()
+    expect(allCards).toBe(780 - 13)
+    expect(await screen.findByText(`0 of ${allCards}`)).toBeTruthy()
 
     const cards = await playSession()
     expect(screen.getByText(/right first time/).textContent).toMatch(/^\d+ of 8 right first time$/)
@@ -72,7 +76,7 @@ describe('a first session', () => {
     // Close the page and open it again with the same database.
     cleanup()
     render(<App db={db} random={seeded(43)} />)
-    expect(await screen.findByText('8 of 780')).toBeTruthy()
+    expect(await screen.findByText(`8 of ${allCards}`)).toBeTruthy()
     const boxes = screen.getByRole('figure', { name: 'Cards in each box' })
     expect(within(boxes).getByText('Box 2')).toBeTruthy()
   })
@@ -262,16 +266,40 @@ describe('formats', () => {
   })
 })
 
+describe('one answer per card', () => {
+  it('counts one answer when "don\'t know" lands while a swipe is still flying out', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 2)
+    await screen.findByText('Pick the country')
+    // ArrowUp starts the fly-out. D arrives before it finishes.
+    fireEvent.keyDown(window, { key: 'ArrowUp' })
+    fireEvent.keyDown(window, { key: 'd' })
+    await screen.findByRole('button', { name: 'Next' })
+    await act(() => new Promise((resolve) => setTimeout(resolve, 400)))
+    const item = await stored(db, 'fr-flag-to-country')
+    // The item started with no answers, so exactly one must be recorded.
+    expect((item?.correctCount ?? 0) + (item?.wrongCount ?? 0)).toBe(1)
+    expect(item).toMatchObject({ box: 1, wrongCount: 1 })
+  })
+})
+
+describe('screen readers', () => {
+  it('names the country on a card, not just the instruction', async () => {
+    await openWithDueItem('fr-country-to-capital', 2, 1)
+    const card = await screen.findByRole('group', { name: 'France Pick its capital' })
+    expect(card).toBeTruthy()
+  })
+})
+
 describe('decks', () => {
   it('switches the capitals deck off, keeps one deck on and remembers it', async () => {
     const db = freshDb()
     render(<App db={db} random={seeded(30)} />)
     fireEvent.click(await screen.findByRole('button', { name: 'Capitals' }))
-    expect(await screen.findByText('0 of 390')).toBeTruthy()
+    expect(await screen.findByText(`0 of ${flagCards}`)).toBeTruthy()
     expect(screen.getByRole('button', { name: 'Flags' }).hasAttribute('disabled')).toBe(true)
 
     cleanup()
     render(<App db={db} random={seeded(31)} />)
-    expect(await screen.findByText('0 of 390')).toBeTruthy()
+    expect(await screen.findByText(`0 of ${flagCards}`)).toBeTruthy()
   })
 })

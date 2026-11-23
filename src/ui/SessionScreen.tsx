@@ -46,6 +46,7 @@ type Phase =
       given: Given
       correct: boolean
       exact: boolean
+      ambiguous: boolean
       autoAdvance: boolean
     }
 
@@ -87,19 +88,21 @@ function givenFor(card: Card, direction: SwipeDirection): Given | null {
   return null
 }
 
-function mark(card: Card, given: Given): { correct: boolean; exact: boolean } {
+type Mark = { correct: boolean; exact: boolean; ambiguous: boolean }
+
+function mark(card: Card, given: Given): Mark {
   if (card.kind === 'claim' && given.kind === 'claim') {
     const correct = isClaimCorrect(card, given.value)
-    return { correct, exact: correct }
+    return { correct, exact: correct, ambiguous: false }
   }
   if (card.kind === 'choice' && given.kind === 'choice') {
     const correct = isChoiceCorrect(card, given.index)
-    return { correct, exact: correct }
+    return { correct, exact: correct, ambiguous: false }
   }
   if (card.kind === 'typed' && given.kind === 'typed' && given.text !== null) {
     return checkTypedCard(card, given.text)
   }
-  return { correct: false, exact: false }
+  return { correct: false, exact: false, ambiguous: false }
 }
 
 function summarise(session: SessionState, countries: readonly Country[]): SessionSummary {
@@ -134,11 +137,16 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     card: build(queue[0] ?? ''),
   }))
   const cardRef = useRef<HTMLDivElement>(null)
+  const titleId = useId()
   const claimId = useId()
+  // The card last answered. A swipe still flying out and a "don't know" press can both
+  // arrive for one card, so only the first one counts.
+  const answeredCard = useRef<Card<Country> | null>(null)
 
   const answer = (given: Given, source: SwipeSource) => {
-    if (phase.kind !== 'question') return
-    const { correct, exact } = mark(phase.card, given)
+    if (phase.kind !== 'question' || answeredCard.current === phase.card) return
+    answeredCard.current = phase.card
+    const { correct, exact, ambiguous } = mark(phase.card, given)
     onAnswer(phase.card.itemId, correct, phase.card.tier)
     setSession((current) => recordAnswer(current, correct, random))
     setPhase({
@@ -147,6 +155,7 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
       given,
       correct,
       exact,
+      ambiguous,
       autoAdvance: correct && source === 'gesture',
     })
   }
@@ -184,11 +193,16 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
     setPhase({ kind: 'question', card: build(nextId) })
   }, [phase.kind, session, countries, build, onFinish])
 
+  // The timer reads the latest `next` through a ref, so a re-render does not restart it.
+  const nextRef = useRef(next)
+  useEffect(() => {
+    nextRef.current = next
+  })
   useEffect(() => {
     if (phase.kind !== 'feedback' || !phase.autoAdvance) return
-    const timer = window.setTimeout(next, autoAdvanceMs)
+    const timer = window.setTimeout(() => nextRef.current(), autoAdvanceMs)
     return () => window.clearTimeout(timer)
-  }, [phase, next])
+  }, [phase])
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -283,13 +297,13 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
               ref={cardRef}
               tabIndex={-1}
               role="group"
-              aria-labelledby={claimId}
+              aria-labelledby={`${titleId} ${claimId}`}
               className={`swipe-card kind-${card.kind}`}
               style={swipeable ? swipe.style : undefined}
               data-leaning={swipe.leaning ?? undefined}
               {...(swipeable ? swipe.handlers : {})}
             >
-              <Prompt card={card} claimId={claimId} />
+              <Prompt card={card} titleId={titleId} claimId={claimId} />
             </div>
           </div>
 
@@ -351,6 +365,7 @@ export function SessionScreen({ queue, countries, random, tierFor, onAnswer, onF
           given={phase.given}
           correct={phase.correct}
           exact={phase.exact}
+          ambiguous={phase.ambiguous}
           onNext={next}
         />
       )}

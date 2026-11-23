@@ -21,7 +21,9 @@ const Flag = ({ country, alt, small }: { country: Country; alt: string; small?: 
 )
 
 /** The top of the card. What is being asked about, plus the instruction or claim. */
-export function Prompt({ card, claimId }: { card: Card<Country>; claimId: string }) {
+type PromptProps = { card: Card<Country>; titleId: string; claimId: string }
+
+export function Prompt({ card, titleId, claimId }: PromptProps) {
   const { facet, country } = card
   let picture: ReactNode = null
   let title: ReactNode = null
@@ -80,7 +82,11 @@ export function Prompt({ card, claimId }: { card: Card<Country>; claimId: string
   return (
     <>
       {picture}
-      {title && <p className="prompt-title">{title}</p>}
+      {title && (
+        <p className="prompt-title" id={titleId}>
+          {title}
+        </p>
+      )}
       <p className="claim" id={claimId}>
         {line}
       </p>
@@ -218,10 +224,11 @@ type FeedbackProps = {
   given: Given
   correct: boolean
   exact: boolean
+  ambiguous: boolean
   onNext: () => void
 }
 
-export function Feedback({ card, given, correct, exact, onNext }: FeedbackProps) {
+export function Feedback({ card, given, correct, exact, ambiguous, onNext }: FeedbackProps) {
   const other = otherOption(card, given)
   return (
     <div
@@ -237,7 +244,10 @@ export function Feedback({ card, given, correct, exact, onNext }: FeedbackProps)
       {given.kind === 'typed' && given.text && correct && !exact && (
         <p className="note">Accepted. The usual spelling is {rightAnswers(card).join(' or ')}.</p>
       )}
-      {given.kind === 'typed' && given.text && !correct && (
+      {given.kind === 'typed' && given.text && !correct && ambiguous && (
+        <p className="note">&ldquo;{given.text}&rdquo; could mean more than one answer.</p>
+      )}
+      {given.kind === 'typed' && given.text && !correct && !ambiguous && (
         <p className="note">You typed &ldquo;{given.text}&rdquo;.</p>
       )}
       {other && <Comparison card={card} option={other} />}
