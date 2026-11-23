@@ -34,6 +34,24 @@ export async function saveState(db: FlagmaniaDb, state: ItemState): Promise<void
   await db.items.put(state)
 }
 
+/**
+ * Applies a change to one item inside a transaction. It starts from the saved record when that
+ * is newer than the copy in memory, so a second open tab does not overwrite this one's answers.
+ */
+export async function updateItem(
+  db: FlagmaniaDb,
+  inMemory: ItemState,
+  change: (current: ItemState) => ItemState,
+): Promise<ItemState> {
+  return db.transaction('rw', db.items, async () => {
+    const saved = await db.items.get(inMemory.id)
+    const base = saved && saved.lastSeenAt > inMemory.lastSeenAt ? saved : inMemory
+    const next = change(base)
+    await db.items.put(next)
+    return next
+  })
+}
+
 export async function loadSettings(db: FlagmaniaDb): Promise<Settings> {
   const row = await db.settings.get('main')
   return { decks: { ...defaultSettings.decks, ...row?.value.decks } }

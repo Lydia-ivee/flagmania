@@ -2,7 +2,15 @@ import 'fake-indexeddb/auto'
 import Dexie from 'dexie'
 import { afterEach, describe, expect, it } from 'vitest'
 import { newItemState } from '../core/scheduler.ts'
-import { defaultSettings, loadSettings, loadStates, openDb, saveSettings, saveState } from './db.ts'
+import {
+  defaultSettings,
+  loadSettings,
+  loadStates,
+  openDb,
+  saveSettings,
+  saveState,
+  updateItem,
+} from './db.ts'
 
 describe('storage', () => {
   const db = openDb('flagmania-storage-test')
@@ -24,6 +32,22 @@ describe('storage', () => {
     const loaded = await loadStates(db)
     expect(loaded.size).toBe(1)
     expect(loaded.get('fr-flag-to-country')?.box).toBe(3)
+  })
+
+  it('builds on a newer saved record, so two tabs do not overwrite each other', async () => {
+    const stale = { ...newItemState('fr-flag-to-country', 1000), box: 2 as const, lastSeenAt: 1000 }
+    // Another tab has since moved the item to box 3.
+    await saveState(db, { ...stale, box: 3, lastSeenAt: 2000, correctCount: 5 })
+    const result = await updateItem(db, stale, (s) => ({ ...s, correctCount: s.correctCount + 1 }))
+    expect(result).toMatchObject({ box: 3, correctCount: 6 })
+    expect((await loadStates(db)).get('fr-flag-to-country')).toEqual(result)
+  })
+
+  it('uses the copy in memory when it is the newest', async () => {
+    await saveState(db, { ...newItemState('fr-flag-to-country', 1000), lastSeenAt: 1000 })
+    const fresh = { ...newItemState('fr-flag-to-country', 1000), box: 4 as const, lastSeenAt: 3000 }
+    const result = await updateItem(db, fresh, (s) => s)
+    expect(result.box).toBe(4)
   })
 
   it('returns default settings until some are saved', async () => {
