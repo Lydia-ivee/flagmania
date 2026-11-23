@@ -15,8 +15,28 @@ export const defaultSessionOptions: SessionOptions = { length: 20, newPerSession
 export const maxRepeats = 3
 
 /**
+ * Reorders items so neighbours differ in group where possible, keeping the original order
+ * otherwise. Used to stop four flags from one region arriving in a row.
+ */
+export function spreadBy(ids: readonly string[], groupOf: (id: string) => string): string[] {
+  const pool = [...ids]
+  const result: string[] = []
+  while (pool.length > 0) {
+    const previous = result.at(-1)
+    const previousGroup = previous === undefined ? undefined : groupOf(previous)
+    const index = Math.max(
+      0,
+      pool.findIndex((id) => groupOf(id) !== previousGroup),
+    )
+    result.push(...pool.splice(index, 1))
+  }
+  return result
+}
+
+/**
  * Picks the items for a session. Due items come first, most overdue first. New items fill
- * any space left, up to the cap. The result is shuffled so regions do not bunch together.
+ * any space left, up to the cap, in random order. Within each part, neighbours are spread
+ * by group.
  */
 export function buildSession(
   catalogue: readonly string[],
@@ -24,6 +44,7 @@ export function buildSession(
   now: number,
   options: SessionOptions,
   random: Random,
+  groupOf: (id: string) => string = () => '',
 ): string[] {
   const due = catalogue
     .map((id) => states.get(id))
@@ -38,7 +59,8 @@ export function buildSession(
     random,
   ).slice(0, Math.max(0, space))
 
-  return shuffle([...due, ...fresh], random)
+  // Spread each group on its own so a new item never jumps ahead of a due one.
+  return [...spreadBy(due, groupOf), ...spreadBy(fresh, groupOf)]
 }
 
 export type SessionState = {

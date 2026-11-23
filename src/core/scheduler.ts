@@ -6,6 +6,13 @@ export const reviewDays: Record<Box, number> = { 1: 0, 2: 1, 3: 3, 4: 7, 5: 21 }
 /** Country-to-flag cannot be typed, so it tops out at four options. */
 export const maxTier = (facet: Facet): Tier => (facet === 'country-to-flag' ? 2 : 3)
 
+/** Typed answers (T3) are only offered once an item reaches this box. */
+const typedFromBox: Box = 3
+
+/** The highest tier an item in this box can be asked at. */
+export const tierCap = (facet: Facet, box: Box): Tier =>
+  Math.min(maxTier(facet), box < typedFromBox ? 2 : 3) as Tier
+
 /** A correct answer below this tier could be a lucky guess. */
 const guessTierLimit = 2
 /** The highest box a possible guess can reach. */
@@ -32,7 +39,8 @@ export function applyAnswer(state: ItemState, answer: Answer, facet: Facet): Ite
     return {
       ...state,
       box: 1,
-      tier: Math.max(0, state.tier - 1) as Tier,
+      // One step easier than the format that was just missed.
+      tier: Math.max(0, answer.tier - 1) as Tier,
       dueAt: dueAtFor(1, answer.at),
       lastSeenAt: answer.at,
       wrongCount: state.wrongCount + 1,
@@ -48,7 +56,8 @@ export function applyAnswer(state: ItemState, answer: Answer, facet: Facet): Ite
   return {
     ...state,
     box,
-    tier: Math.min(maxTier(facet), state.tier + 1) as Tier,
+    // One step harder than the format that was just answered, within what the box allows.
+    tier: Math.min(tierCap(facet, box), answer.tier + 1) as Tier,
     dueAt: dueAtFor(box, answer.at),
     lastSeenAt: answer.at,
     correctCount: state.correctCount + 1,

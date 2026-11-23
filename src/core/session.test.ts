@@ -1,7 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import { seeded } from './random.ts'
 import { newItemState } from './scheduler.ts'
-import { buildSession, isFinished, maxRepeats, recordAnswer, startSession } from './session.ts'
+import {
+  buildSession,
+  isFinished,
+  maxRepeats,
+  recordAnswer,
+  spreadBy,
+  startSession,
+} from './session.ts'
 import type { ItemState } from './types.ts'
 
 const now = Date.UTC(2026, 10, 23, 8)
@@ -24,8 +31,7 @@ describe('buildSession', () => {
       ['i2', stateFor('i2', now + 86_400_000)],
     ])
     const queue = buildSession(ids, states, now, options, seeded(2))
-    expect(queue).toContain('i0')
-    expect(queue).toContain('i1')
+    expect(queue.slice(0, 2)).toEqual(['i0', 'i1'])
     expect(queue).not.toContain('i2')
     expect(queue).toHaveLength(6)
   })
@@ -34,6 +40,35 @@ describe('buildSession', () => {
     const states = new Map(ids.map((id, i) => [id, stateFor(id, now - i * 1000)]))
     const queue = buildSession(ids, states, now, options, seeded(3))
     expect(queue.sort()).toEqual(ids.slice(20).sort())
+  })
+})
+
+describe('buildSession with regions', () => {
+  it('keeps every due item ahead of every new one', () => {
+    // All due items share a region, so spreading them across the session would be tempting.
+    const groupOf = (id: string) => (['i0', 'i1', 'i2'].includes(id) ? 'EU' : `R${id}`)
+    const states = new Map(['i0', 'i1', 'i2'].map((id) => [id, stateFor(id, now - 1000)]))
+    for (let seed = 0; seed < 20; seed++) {
+      const queue = buildSession(ids, states, now, options, seeded(seed), groupOf)
+      expect(queue.slice(0, 3).sort()).toEqual(['i0', 'i1', 'i2'])
+    }
+  })
+})
+
+describe('spreadBy', () => {
+  const regions: Record<string, string> = { a: 'EU', b: 'EU', c: 'EU', d: 'AF', e: 'AS', f: 'AF' }
+  const regionOf = (id: string) => regions[id] ?? ''
+
+  it('stops neighbours sharing a region when it can', () => {
+    const spread = spreadBy(['a', 'b', 'c', 'd', 'e', 'f'], regionOf)
+    expect(spread.slice().sort()).toEqual(['a', 'b', 'c', 'd', 'e', 'f'])
+    for (let i = 1; i < spread.length; i++) {
+      expect(regionOf(spread[i] as string)).not.toBe(regionOf(spread[i - 1] as string))
+    }
+  })
+
+  it('keeps the original order when every item shares a region', () => {
+    expect(spreadBy(['a', 'b', 'c'], regionOf)).toEqual(['a', 'b', 'c'])
   })
 })
 

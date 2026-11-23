@@ -73,6 +73,29 @@ describe('scheduler invariants', () => {
     )
   })
 
+  it('only offers typed answers (T3) once an item reaches box 3', () => {
+    fc.assert(
+      fc.property(facetArb, answersArb, (facet, answers) => {
+        for (const state of replay(facet, answers)) {
+          if (state.tier === 3) expect(state.box).toBeGreaterThanOrEqual(3)
+        }
+      }),
+    )
+  })
+
+  it('moves the tier exactly one step from the format that was asked', () => {
+    fc.assert(
+      fc.property(facetArb, answersArb, (facet, answers) => {
+        const states = replay(facet, answers)
+        answers.forEach((answer, i) => {
+          const after = states[i + 1] as ItemState
+          if (answer.correct) expect(after.tier).toBeLessThanOrEqual(answer.tier + 1)
+          else expect(after.tier).toBe(Math.max(0, answer.tier - 1))
+        })
+      }),
+    )
+  })
+
   it('never schedules a review before the answer that set it', () => {
     fc.assert(
       fc.property(facetArb, answersArb, (facet, answers) => {
@@ -111,6 +134,18 @@ describe('applyAnswer', () => {
     const boxThree: ItemState = { ...fresh, box: 3, tier: 2 }
     const next = applyAnswer(boxThree, { correct: false, tier: 2, at: start }, 'flag-to-country')
     expect(next).toMatchObject({ box: 1, tier: 1, dueAt: start, wrongCount: 1 })
+  })
+
+  it('keeps an item at T1 after any number of right answers at T0', () => {
+    let state = fresh
+    for (let day = 0; day < 10; day++) {
+      state = applyAnswer(
+        state,
+        { correct: true, tier: 0, at: start + day * 86_400_000 },
+        'flag-to-country',
+      )
+    }
+    expect(state).toMatchObject({ box: 2, tier: 1 })
   })
 
   it('caps country-to-flag at T2', () => {
