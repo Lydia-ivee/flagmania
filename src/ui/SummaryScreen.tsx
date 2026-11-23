@@ -23,7 +23,7 @@ export function SummaryScreen({ summary, onDone }: Props) {
           </ul>
         </>
       ) : (
-        <p>No misses. Everything moves up a box.</p>
+        <p>No misses. These come back in a day or more.</p>
       )}
       <button type="button" onClick={onDone} autoFocus>
         Back to start

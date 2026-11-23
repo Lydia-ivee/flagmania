@@ -1,6 +1,9 @@
-import { useState, type CSSProperties, type PointerEvent } from 'react'
+import { useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 
 export type SwipeDirection = 'left' | 'right' | 'down'
+
+/** A gesture is a real drag. A command is a button press or a key. */
+export type SwipeSource = 'gesture' | 'command'
 
 type Offset = { x: number; y: number }
 
@@ -37,17 +40,24 @@ type Drag = { origin: Offset; offset: Offset; width: number; height: number }
  * Drag a card with a finger, pen or mouse. Pointer Events cover all three, so there is no
  * gesture library. `commit` lets buttons and keys trigger the same fly-out as a swipe.
  */
-export function useSwipe(onSwipe: (direction: SwipeDirection) => void, enabled: boolean) {
+export function useSwipe(
+  onSwipe: (direction: SwipeDirection, source: SwipeSource) => void,
+  enabled: boolean,
+) {
   const [drag, setDrag] = useState<Drag | null>(null)
   const [leaving, setLeaving] = useState<SwipeDirection | null>(null)
+  // Set at once, unlike state, so two commits in the same moment cannot both get through.
+  const committed = useRef(false)
 
-  const commit = (direction: SwipeDirection) => {
-    if (leaving) return
+  const commit = (direction: SwipeDirection, source: SwipeSource = 'command') => {
+    if (!enabled || committed.current) return
+    committed.current = true
     setLeaving(direction)
     window.setTimeout(
       () => {
+        committed.current = false
         setLeaving(null)
-        onSwipe(direction)
+        onSwipe(direction, source)
       },
       prefersReducedMotion() ? 0 : flyOutMs,
     )
@@ -55,7 +65,7 @@ export function useSwipe(onSwipe: (direction: SwipeDirection) => void, enabled: 
 
   const handlers = {
     onPointerDown(event: PointerEvent<HTMLDivElement>) {
-      if (!enabled || leaving) return
+      if (!enabled || committed.current || !event.isPrimary) return
       const card = event.currentTarget
       card.setPointerCapture?.(event.pointerId)
       setDrag({
@@ -66,6 +76,7 @@ export function useSwipe(onSwipe: (direction: SwipeDirection) => void, enabled: 
       })
     },
     onPointerMove(event: PointerEvent<HTMLDivElement>) {
+      if (!event.isPrimary) return
       const { clientX, clientY } = event
       setDrag((current) =>
         current
@@ -73,11 +84,13 @@ export function useSwipe(onSwipe: (direction: SwipeDirection) => void, enabled: 
           : null,
       )
     },
-    onPointerUp() {
-      if (!drag) return
-      const direction = directionFor(drag.offset, drag.width, drag.height)
+    onPointerUp(event: PointerEvent<HTMLDivElement>) {
+      if (!drag || !event.isPrimary) return
+      // Measure from the release point itself. The last move may not have rendered yet.
+      const offset = { x: event.clientX - drag.origin.x, y: event.clientY - drag.origin.y }
       setDrag(null)
-      if (direction) commit(direction)
+      const direction = directionFor(offset, drag.width, drag.height)
+      if (direction) commit(direction, 'gesture')
     },
     onPointerCancel() {
       setDrag(null)

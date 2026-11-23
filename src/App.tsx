@@ -16,6 +16,9 @@ const catalogue = buildCatalogue(
   facetsInPlay,
 )
 
+const regionByIso = new Map(countries.map((c) => [c.iso2, c.region]))
+const regionOf = (id: string) => regionByIso.get(id.slice(0, 2)) ?? ''
+
 type Screen =
   | { kind: 'home' }
   | { kind: 'session'; queue: string[]; key: number }
@@ -27,6 +30,8 @@ export function App({ db: givenDb, random = Math.random }: Props) {
   const [db] = useState(() => givenDb ?? openDb())
   const [states, setStates] = useState<Map<string, ItemState> | null>(null)
   const [storageWarning, setStorageWarning] = useState(false)
+  // Off when saved progress could not be read, so a fresh record never overwrites a real one.
+  const [canSave, setCanSave] = useState(true)
   const [screen, setScreen] = useState<Screen>({ kind: 'home' })
   const [now, setNow] = useState(() => Date.now())
 
@@ -35,9 +40,19 @@ export function App({ db: givenDb, random = Math.random }: Props) {
       .then(setStates)
       .catch(() => {
         setStorageWarning(true)
+        setCanSave(false)
         setStates(new Map())
       })
   }, [db])
+
+  // A phone can keep the app open for days. Refresh what is due when it comes back.
+  useEffect(() => {
+    const refresh = () => {
+      if (document.visibilityState === 'visible') setNow(Date.now())
+    }
+    document.addEventListener('visibilitychange', refresh)
+    return () => document.removeEventListener('visibilitychange', refresh)
+  }, [])
 
   if (!states) {
     return (
@@ -52,7 +67,7 @@ export function App({ db: givenDb, random = Math.random }: Props) {
     setNow(at)
     setScreen({
       kind: 'session',
-      queue: buildSession(catalogue, states, at, defaultSessionOptions, random),
+      queue: buildSession(catalogue, states, at, defaultSessionOptions, random, regionOf),
       key: at,
     })
   }
@@ -69,7 +84,7 @@ export function App({ db: givenDb, random = Math.random }: Props) {
     // Every card is true or false (T0) until the other formats arrive in M2.
     const next = applyAnswer(current, { correct, tier: 0, at }, facet)
     setStates(new Map(states).set(itemId, next))
-    saveState(db, next).catch(() => setStorageWarning(true))
+    if (canSave) saveState(db, next).catch(() => setStorageWarning(true))
   }
 
   return (
