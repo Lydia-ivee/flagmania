@@ -10,7 +10,7 @@ import {
   loadStates,
   openDb,
   saveSettings,
-  saveState,
+  updateItem,
   type DeckId,
   type FlagmaniaDb,
   type Settings,
@@ -24,7 +24,7 @@ const regionByIso = new Map(countries.map((c) => [c.iso2, c.region]))
 const regionOf = (id: string) => regionByIso.get(id.slice(0, 2)) ?? ''
 
 type Screen =
-  | { kind: 'home' }
+  | { kind: 'home'; fromSummary?: boolean }
   | { kind: 'session'; queue: string[]; key: number }
   | { kind: 'summary'; summary: SessionSummary }
 
@@ -54,14 +54,20 @@ export function App({ db: givenDb, random = Math.random }: Props) {
       })
   }, [db])
 
-  // A phone can keep the app open for days. Refresh what is due when it comes back.
+  // A phone can keep the app open for days, and another tab may have saved progress meanwhile.
+  // Refresh both when the app comes back into view.
   useEffect(() => {
     const refresh = () => {
-      if (document.visibilityState === 'visible') setNow(Date.now())
+      if (document.visibilityState !== 'visible') return
+      setNow(Date.now())
+      if (!canSave) return
+      loadStates(db)
+        .then((states) => setLoaded((prev) => prev && { ...prev, states }))
+        .catch(() => setStorageWarning(true))
     }
     document.addEventListener('visibilitychange', refresh)
     return () => document.removeEventListener('visibilitychange', refresh)
-  }, [])
+  }, [db, canSave])
 
   if (!loaded) {
     return (
@@ -86,7 +92,7 @@ export function App({ db: givenDb, random = Math.random }: Props) {
 
   const goHome = () => {
     setNow(Date.now())
-    setScreen({ kind: 'home' })
+    setScreen({ kind: 'home', fromSummary: true })
   }
 
   const tierFor = (itemId: string): Tier => askTier(states.get(itemId), parseItemId(itemId).facet)
@@ -95,9 +101,17 @@ export function App({ db: givenDb, random = Math.random }: Props) {
     const at = Date.now()
     const { facet } = parseItemId(itemId)
     const current = states.get(itemId) ?? newItemState(itemId, at)
-    const next = applyAnswer(current, { correct, tier, at }, facet)
+    const answer = { correct, tier, at }
+    const next = applyAnswer(current, answer, facet)
     setLoaded({ settings, states: new Map(states).set(itemId, next) })
-    if (canSave) saveState(db, next).catch(() => setStorageWarning(true))
+    if (!canSave) return
+    // Save from the newest record, then show what was saved if another tab had moved it on.
+    updateItem(db, current, (base) => applyAnswer(base, answer, facet))
+      .then((saved) => {
+        if (saved === next) return
+        setLoaded((prev) => prev && { ...prev, states: new Map(prev.states).set(itemId, saved) })
+      })
+      .catch(() => setStorageWarning(true))
   }
 
   const toggleDeck = (deck: DeckId) => {
@@ -122,6 +136,7 @@ export function App({ db: givenDb, random = Math.random }: Props) {
           settings={settings}
           onToggleDeck={toggleDeck}
           onStart={start}
+          focusStart={screen.fromSummary === true}
           storageWarning={storageWarning}
         />
       )}

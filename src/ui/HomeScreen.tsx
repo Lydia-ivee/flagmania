@@ -10,12 +10,15 @@ type Props = {
   onToggleDeck: (deck: DeckId) => void
   onStart: () => void
   storageWarning: boolean
+  /** Coming back from a summary, so focus would otherwise fall to the page. */
+  focusStart?: boolean
 }
 
 const boxes: Box[] = [1, 2, 3, 4, 5]
 
 export function HomeScreen(props: Props) {
-  const { catalogue, states, now, settings, onToggleDeck, onStart, storageWarning } = props
+  const { catalogue, states, now, settings, onToggleDeck, onStart, storageWarning, focusStart } =
+    props
   const known = catalogue.map((id) => states.get(id)).filter((s) => s !== undefined)
   const due = known.filter((s) => s.dueAt <= now).length
   const unseen = catalogue.length - known.length
@@ -73,7 +76,7 @@ export function HomeScreen(props: Props) {
       )}
 
       {due > 0 || unseen > 0 ? (
-        <button type="button" className="start" onClick={onStart}>
+        <button type="button" className="start" onClick={onStart} autoFocus={focusStart}>
           Start session
         </button>
       ) : (

@@ -94,7 +94,7 @@ const split = (value: string) => (value ? value.split('|').filter(Boolean) : [])
 // Commas and brackets mark inverted or qualified forms such as "Lanka, Sri" or
 // "Korea (South)", which would let a bare "Korea" through, so those go too.
 const isUsefulAlias = (alias: string) =>
-  alias.length >= 4 &&
+  alias.replace(/[^\p{L}]/gu, '').length >= 4 &&
   /^\p{Script=Latin}[\p{Script=Latin}\p{M} '’.-]*$/u.test(alias) &&
   alias !== alias.toUpperCase()
 
@@ -135,17 +135,21 @@ for (const state of states) {
 
   const name = icons.name
   const seen = new Set([name.toLowerCase()])
+  // No prefix filter here. "Brunei" is the first word of "Brunei Darussalam" and is still its
+  // everyday name.
   const altNames = [row.label.value, ...split(row.aliases.value).filter(isUsefulAlias)]
-    .filter((alt) => !isWordPrefixOf(alt, [name]))
     .filter((alt) => !seen.has(alt.toLowerCase()) && seen.add(alt.toLowerCase()))
     .sort()
 
   const capitalSeen = new Set(capitals.map((c) => c.toLowerCase()))
-  const capitalAltNames = [
-    ...split(row.capitalAliases.value).filter(isUsefulAlias),
-    ...(override?.addCapitalAltNames ?? []),
-  ]
+  const ownNames = new Set([name, ...altNames].map(normalise))
+  const fromWikidata = split(row.capitalAliases.value)
+    .filter(isUsefulAlias)
     .filter((alt) => !isWordPrefixOf(alt, capitals))
+    // The country's own name is not another name for its capital ("Holy See" for Vatican City).
+    .filter((alt) => !ownNames.has(normalise(alt)))
+  // Overrides are deliberate, so the filters above do not apply to them ("Yaren").
+  const capitalAltNames = [...fromWikidata, ...(override?.addCapitalAltNames ?? [])]
     .filter((alt) => !capitalSeen.has(alt.toLowerCase()) && capitalSeen.add(alt.toLowerCase()))
     .sort()
 
@@ -191,9 +195,11 @@ const keepCountryAlts = dropShared(
   (c) => c.altNames,
   (c) => [c.name],
 )
+// Country names count here too, since typing a country is never another country's capital.
+// "The Garden City" is a name for Belmopan and for Singapore, so Belize drops it.
 const keepCapitalAlts = dropShared(
   (c) => c.capitalAltNames,
-  (c) => c.capitals,
+  (c) => [...c.capitals, c.name, ...c.altNames],
 )
 for (const country of countries) {
   const altNames = keepCountryAlts(country)

@@ -251,7 +251,15 @@ export function Feedback({ card, given, correct, exact, ambiguous, onNext }: Fee
         <p className="note">You typed &ldquo;{given.text}&rdquo;.</p>
       )}
       {other && <Comparison card={card} option={other} />}
-      <button type="button" onClick={onNext} autoFocus>
+      <button
+        type="button"
+        onClick={onNext}
+        // A held Enter repeats, and each repeat would click Next. Only the first press counts.
+        onKeyDown={(event) => {
+          if (event.repeat) event.preventDefault()
+        }}
+        autoFocus
+      >
         Next
       </button>
     </div>

@@ -60,7 +60,7 @@ describe('a first session', () => {
   it('plays through, then keeps progress after a reload', async () => {
     const db = freshDb()
     render(<App db={db} random={seeded(42)} />)
-    expect(allCards).toBe(780 - 13)
+    expect(allCards).toBe(780 - 14)
     expect(await screen.findByText(`0 of ${allCards}`)).toBeTruthy()
 
     const cards = await playSession()
@@ -267,18 +267,43 @@ describe('formats', () => {
 })
 
 describe('one answer per card', () => {
-  it('counts one answer when "don\'t know" lands while a swipe is still flying out', async () => {
+  it('lets the first input win when "don\'t know" lands while a swipe is still flying out', async () => {
     const db = await openWithDueItem('fr-flag-to-country', 2, 2)
     await screen.findByText('Pick the country')
-    // ArrowUp starts the fly-out. D arrives before it finishes.
+    const upOption = document.querySelector('.choice-pad .option.up')?.textContent ?? ''
+    // ArrowUp picks the top option and starts the fly-out. D arrives before it finishes.
     fireEvent.keyDown(window, { key: 'ArrowUp' })
     fireEvent.keyDown(window, { key: 'd' })
     await screen.findByRole('button', { name: 'Next' })
     await act(() => new Promise((resolve) => setTimeout(resolve, 400)))
     const item = await stored(db, 'fr-flag-to-country')
-    // The item started with no answers, so exactly one must be recorded.
+    // The item started with no answers, so exactly one must be recorded: the ArrowUp pick.
     expect((item?.correctCount ?? 0) + (item?.wrongCount ?? 0)).toBe(1)
-    expect(item).toMatchObject({ box: 1, wrongCount: 1 })
+    expect(item?.correctCount).toBe(upOption.includes('France') ? 1 : 0)
+  })
+})
+
+describe('a fresh start for every card', () => {
+  it('does not carry a held drag over to the next card', async () => {
+    const db = await openWithDueItem('fr-flag-to-country', 2, 2)
+    await screen.findByText('Pick the country')
+    const first = document.querySelector('.swipe-card') as Element
+    // Start dragging and keep holding, then answer with keys instead.
+    fireEvent.pointerDown(first, { isPrimary: true, pointerId: 1, clientX: 100, clientY: 200 })
+    fireEvent.pointerMove(first, { isPrimary: true, pointerId: 1, clientX: 150, clientY: 200 })
+    fireEvent.keyDown(window, { key: 'd' })
+    await screen.findByRole('button', { name: 'Next' })
+    fireEvent.keyDown(window, { key: 'Enter' })
+
+    await screen.findByRole('button', { name: 'True' })
+    const next = document.querySelector('.swipe-card') as HTMLElement
+    expect(next.style.transform).toMatch(/^translate\(0px(, 0px)?\) rotate\(0deg\)$/)
+    // Moving and releasing the held pointer over the new card must not answer it.
+    fireEvent.pointerMove(next, { isPrimary: true, pointerId: 1, clientX: 300, clientY: 200 })
+    fireEvent.pointerUp(next, { isPrimary: true, pointerId: 1, clientX: 300, clientY: 200 })
+    await act(() => new Promise((resolve) => setTimeout(resolve, 300)))
+    expect(screen.queryByRole('button', { name: 'Next' })).toBeNull()
+    expect(await db.items.count()).toBe(1)
   })
 })
 
@@ -287,6 +312,16 @@ describe('screen readers', () => {
     await openWithDueItem('fr-country-to-capital', 2, 1)
     const card = await screen.findByRole('group', { name: 'France Pick its capital' })
     expect(card).toBeTruthy()
+  })
+})
+
+describe('after a session', () => {
+  it('puts focus on Start session when returning from the summary', async () => {
+    render(<App db={freshDb()} random={seeded(50)} />)
+    await playSession()
+    fireEvent.click(screen.getByRole('button', { name: 'Back to start' }))
+    await screen.findByRole('button', { name: 'Start session' })
+    expect(document.activeElement?.textContent).toBe('Start session')
   })
 })
 

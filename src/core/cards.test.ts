@@ -128,6 +128,7 @@ describe('capitalGivesAway', () => {
     expect(named('Kuwait', ['Kuwait City'])).toBe(true)
     expect(named('Holy See', ['Vatican City'], ['Vatican City'])).toBe(true)
     expect(named('Tunisia', ['Tunis'])).toBe(true)
+    expect(named('Guinea-Bissau', ['Bissau'])).toBe(true)
     expect(named('Brazil', ['Brasília'], ['Brasil'])).toBe(false)
     expect(named('France', ['Paris'])).toBe(false)
   })

@@ -13,6 +13,14 @@ describe('normalise', () => {
     expect(normalise('Timor-Leste')).toBe('timorleste')
     expect(normalise('Washington, D.C.')).toBe('washingtondc')
   })
+
+  it('reads "&" as "and" and a whole-word "St" as "Saint"', () => {
+    expect(normalise('Trinidad & Tobago')).toBe(normalise('Trinidad and Tobago'))
+    expect(normalise('St Kitts & Nevis')).toBe(normalise('Saint Kitts and Nevis'))
+    expect(normalise("St. John's")).toBe('saintjohns')
+    expect(normalise('Estonia')).toBe('estonia')
+    expect(normalise('Bucharest')).toBe('bucharest')
+  })
 })
 
 describe('editDistance', () => {
